@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "mmc",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/dev-server.mjs", "8080"],
+      "port": 8080
+    }
+  ]
+}

@@ -1,0 +1,367 @@
+/* ===========================================================================
+   components.css — 元件。
+
+   方向（規格第八節）：螢光筆的外皮，配儀表的骨架。
+     儀表（領域頁／搜尋結果）：等寬數字、十格量表、髮絲線網格、密度高、對齊嚴格。
+     螢光筆（課程頁／心得）  ：淺色紙、課名一道筆痕、藍色學期標記、留白多。
+   兩者共用同一組領域色與同一套間距，切換時不會像兩個網站。
+
+   顏色一律 var(--token)，這個檔案裡沒有任何色碼。
+   =========================================================================== */
+
+/* ------------------------------------------------------------------ 頁首 */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--ground);
+  border-bottom: var(--hair) solid var(--line);
+}
+
+.site-header > .wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--s4);
+  min-height: 3.25rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: var(--fs-base);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.brand span { color: var(--muted); font-weight: 500; }
+
+.site-nav {
+  margin-left: auto;
+  display: flex;
+  gap: var(--s4);
+  font-size: var(--fs-sm);
+}
+.site-nav a { color: var(--ink-2); text-decoration: none; }
+.site-nav a:hover,
+.site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
+
+/* ------------------------------------------------------------ 搜尋（首頁） */
+
+.hero { padding-block: var(--s7) var(--s6); }
+
+.hero h1 {
+  font-size: var(--fs-2xl);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s2);
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 34rem;
+  margin-bottom: var(--s5);
+}
+
+.searchbox { position: relative; }
+
+.searchbox input {
+  width: 100%;
+  padding: var(--s3) var(--s5) var(--s3) var(--s4);
+  background: var(--surface);
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--r-md);
+  font-size: var(--fs-md);
+}
+.searchbox input::placeholder { color: var(--muted); }
+
+.searchbox kbd {
+  position: absolute;
+  right: var(--s3);
+  top: 50%;
+  translate: 0 -50%;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--r-sm);
+  padding: 0 var(--s1);
+  pointer-events: none;
+}
+.searchbox input:not(:placeholder-shown) ~ kbd { display: none; }
+
+/* ------------------------------------------------------------- 區塊標題 */
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  padding-block: var(--s6) var(--s3);
+}
+.section-head h2 { font-size: var(--fs-lg); }
+.section-head .count { color: var(--muted); font-size: var(--fs-sm); }
+.section-head .more { margin-left: auto; font-size: var(--fs-sm); color: var(--ink-2); }
+
+/* --------------------------------------------------------- 領域標籤（文字） */
+/*
+   規格第八節：領域名稱永遠以文字直接標示，顏色只是輔助。
+   色覺障礙者不會因為分不出兩個色而看錯領域 —— 不要拿掉文字標籤。
+*/
+
+.tag-domain {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--d);
+  white-space: nowrap;
+}
+.tag-domain::before {
+  content: "";
+  inline-size: 0.5em;
+  block-size: 0.5em;
+  border-radius: var(--r-pill);
+  background: var(--d);
+  flex: none;
+}
+
+/* ------------------------------------------------------------- 領域卡片 */
+
+/* 固定 4 欄：八個領域剛好兩排，不會留下空格。
+   auto-fill 會在寬螢幕排成 5 欄，剩下的 2 個空格會被網格底色填成灰塊。 */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--hair);
+  background: var(--line);
+  border: var(--hair) solid var(--line);
+}
+
+/* 手機維持兩欄：八張卡片疊成一長條的話，「最新心得」會被推到很下面。 */
+@media (max-width: 760px) { .domain-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 330px) { .domain-grid { grid-template-columns: 1fr; } }
+
+.domain-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  padding: var(--s4);
+  background: var(--surface);
+  text-decoration: none;
+  border-left: 3px solid var(--d);
+  transition: background 120ms ease;
+}
+.domain-card:hover { background: var(--surface-2); }
+
+.domain-card .name { font-weight: 600; font-size: var(--fs-md); }
+.domain-card .meta { color: var(--muted); font-size: var(--fs-sm); }
+
+/* --------------------------------------------------------------- 結果列 */
+/* 掃描任務：一列就要看完代碼、課名、教師、領域、星等、則數。 */
+
+.result-list {
+  border-top: var(--hair) solid var(--line);
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr auto;
+  align-items: baseline;
+  gap: var(--s2) var(--s4);
+  padding: var(--s3) var(--s2);
+  border-bottom: var(--hair) solid var(--line);
+  text-decoration: none;
+}
+.result-row:hover { background: var(--surface-2); }
+
+.result-row .code {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+.result-row .code.is-none { font-style: italic; }
+
+.result-row .title { font-weight: 600; }
+
+.result-row .sub {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+
+.result-row .right {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  align-self: center;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 560px) {
+  .result-row { grid-template-columns: 1fr auto; }
+  .result-row .code { grid-column: 1; }
+  .result-row .title { grid-column: 1 / -1; }
+  .result-row .sub { grid-column: 1 / -1; }
+  .result-row .right { grid-row: auto; grid-column: 1 / -1; flex-direction: row; text-align: left; gap: var(--s3); }
+}
+
+/* ----------------------------------------------------------------- 星等 */
+
+.stars {
+  display: inline-flex;
+  gap: 1px;
+  color: var(--star);
+  line-height: 1;
+}
+.stars .off { color: var(--line-2); }
+.stars.is-none { color: var(--muted); font-size: var(--fs-sm); }
+
+/* --------------------------------------------------------- 十格分段量表 */
+/*
+   規格第八節：甜度與涼度本來就是 0–10 的整數，不畫成連續長條。
+   十個小格、格距 2px、填滿的用領域色、未填滿的用 --meter-track。
+   缺項時整條全空，並在旁邊標「—」——「沒有資料」不會被誤讀成「0 分」。
+   量表旁必須直接標數字，不能只靠顏色。
+*/
+
+.meter-row {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.meter {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  inline-size: 6.5rem;
+  block-size: 0.6rem;
+  flex: none;
+}
+
+.meter i {
+  display: block;
+  background: var(--meter-track);
+  border-radius: 1px;
+}
+.meter i.on { background: var(--d); }
+
+/* 資料缺項：整條全空，外加降低存在感，避免看起來像「全 0」。 */
+.meter.is-none { opacity: 0.55; }
+
+.meter-value {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  min-inline-size: 2.5ch;
+}
+.meter-value.is-none { color: var(--muted); }
+
+.meter-label {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  min-inline-size: 3em;
+}
+
+/* ------------------------------------------------------------- 學期徽章 */
+/* 螢光筆外皮的一部分：學期代碼是藍色標記。 */
+
+.badge-term {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: var(--fs-xs);
+  padding: 0 var(--s1);
+  border-radius: var(--r-sm);
+  background: var(--mark-term);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------- 螢光筆課名 */
+/*
+   規格第八節的招牌元件。box-decoration-break:clone 讓筆跡在換行時跟著斷 ——
+   這是它的細節。八個領域各用自己的筆色（--m 由 .d-* 提供）。
+*/
+
+.course-name {
+  background-image: linear-gradient(transparent 58%, var(--m) 58%,
+                                    var(--m) 94%, transparent 94%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+/* --------------------------------------------------------------- 儀表面板 */
+/* 領域頁與搜尋結果的骨架皮膚。深底、髮絲網格、嚴格對齊。 */
+
+.panel {
+  --meter-track: var(--meter-off);
+  background: var(--panel);
+  color: var(--panel-ink);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.panel a { color: inherit; }
+
+/* ----------------------------------------------------------------- 提示 */
+
+.notice {
+  padding: var(--s3) var(--s4);
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+}
+
+.empty {
+  padding: var(--s7) var(--s4);
+  text-align: center;
+  color: var(--muted);
+}
+
+.is-none { color: var(--muted); }
+
+/* ------------------------------------------------------------- 最新心得 */
+
+.latest-item {
+  display: block;
+  padding: var(--s4) var(--s2);
+  border-bottom: var(--hair) solid var(--line);
+  text-decoration: none;
+}
+.latest-item:hover { background: var(--surface-2); }
+
+.latest-item .head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+  margin-bottom: var(--s2);
+}
+.latest-item .head .name { font-weight: 600; }
+.latest-item .head .teacher { color: var(--muted); font-size: var(--fs-sm); }
+
+.latest-item .excerpt {
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------------------- 頁尾 */
+
+.site-footer {
+  margin-top: var(--s8);
+  border-top: var(--hair) solid var(--line);
+  padding-block: var(--s5) var(--s7);
+  color: var(--muted);
+  font-size: var(--fs-sm);
+}
+.site-footer p { margin-bottom: var(--s1); }
+.site-footer strong { color: var(--ink-2); font-weight: 600; }
+.site-footer .disclaimer { margin-top: var(--s3); max-width: 42rem; }

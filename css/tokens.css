@@ -1,0 +1,210 @@
+/* ===========================================================================
+   tokens.css — 全站唯一的顏色、字級、間距定義處。
+
+   規則（規格第八節）：
+     - 所有顏色只在這個檔案定義一次，元件一律 var(--token) 取色。
+     - 不可以在 media query 或 [data-theme] 區塊裡直接寫元件樣式，
+       那兩個區塊裡只能重新指定 token 的值。
+     - 深色不是淺色的反轉，兩套各自調過。
+   =========================================================================== */
+
+:root {
+  /* --- 介面底層 ------------------------------------------------------- */
+  --ground: #F4F5F3;
+  --surface: #FFFFFF;
+  --surface-2: #EAECE8;
+  --ink: #15181A;
+  --ink-2: #3F4A45;
+  --muted: #697570;
+  --line: #DCE0DB;
+  --line-2: #C6CCC4;
+
+  /* --- 螢光筆外皮（課程頁／心得） ------------------------------------- */
+  --paper: #FCFCFA;
+  --mark: #B9F04B;
+  --mark-term: #7ED9F5;
+  --star: #E8A317;
+
+  /* --- 儀表骨架（領域頁／表格） --------------------------------------- */
+  --panel: #131311;
+  --panel-2: #1B1B18;
+  --panel-ink: #E9EAE4;
+  --panel-line: #2A2B27;
+  --meter-off: #2F312C;
+
+  /* --- 八領域識別色（已通過色覺障礙驗證） ----------------------------- */
+  --d-tian: #1F7A4D;
+  --d-di: #B07B12;
+  --d-ren: #2E6FD4;
+  --d-xin: #D14A6E;
+  --d-xuan: #7A55CC;
+  --d-tiyu: #0090A6;
+  --d-yu: #DB6A1E;
+  --d-other: #9C4F7E;
+
+  /* --- 各領域的螢光筆色 -----------------------------------------------
+     規格：「八個領域各用自己的筆色（把 --mark 換成該領域色的高亮版本）」。
+     淺色模式用同色相的淡亮版，黑字壓在上面仍可讀。 */
+  --m-tian: #A8EFC4;
+  --m-di: #F5DF9A;
+  --m-ren: #B9D6FA;
+  --m-xin: #F8C2D0;
+  --m-xuan: #D6C6F5;
+  --m-tiyu: #A8E6EF;
+  --m-yu: #F8CFA8;
+  --m-other: #EEC2DC;
+
+  /* --- 狀態色 ---------------------------------------------------------- */
+  --focus: #2E6FD4;
+  --warn-bg: #FBF3DC;
+  --warn-ink: #6B5310;
+
+  /* 量表未填滿的格子。淺色紙上用髮絲線色，進到儀表深底時改指向 --meter-off
+     （在 components.css 的 .panel 作用域內重新指向，不寫色碼）。 */
+  --meter-track: var(--line-2);
+
+  /* --- 字型 -----------------------------------------------------------
+     中文一律系統字（思源黑體全集數 MB，不值得自帶）。
+     拉丁字與數字用自帶子集，見 assets/fonts/ 與 scripts/subset-fonts.mjs。
+     字型檔還沒到位時 fallback stack 就是完整可用的畫面。 */
+  --sans: "Archivo", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", "Heiti TC",
+          system-ui, sans-serif;
+  --serif: "Songti TC", "Noto Serif TC", "PMingLiU", "Source Han Serif TC",
+           Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", "Cascadia Mono", "Consolas",
+          "Noto Sans Mono", monospace;
+
+  /* --- 字級 ------------------------------------------------------------ */
+  --fs-xs: 0.75rem;    /* 12px 徽章、註腳 */
+  --fs-sm: 0.8125rem;  /* 13px 表格內文 */
+  --fs-base: 0.9375rem;/* 15px 一般內文 */
+  --fs-md: 1.0625rem;  /* 17px 心得內文 */
+  --fs-lg: 1.25rem;    /* 20px 區塊標題 */
+  --fs-xl: 1.625rem;   /* 26px 頁面標題 */
+  --fs-2xl: 2.125rem;  /* 34px 首頁主標 */
+
+  --lh-tight: 1.25;
+  --lh-base: 1.6;
+  --lh-read: 1.95;     /* 閱讀模式 */
+
+  /* --- 間距（4px 基底，儀表與螢光筆兩區共用同一套） -------------------- */
+  --s1: 0.25rem;   /* 4  */
+  --s2: 0.5rem;    /* 8  */
+  --s3: 0.75rem;   /* 12 */
+  --s4: 1rem;      /* 16 */
+  --s5: 1.5rem;    /* 24 */
+  --s6: 2rem;      /* 32 */
+  --s7: 3rem;      /* 48 */
+  --s8: 4rem;      /* 64 */
+
+  /* --- 圓角與線 --------------------------------------------------------
+     舊站那個 3px 黑框不保留：粗框會讓表格、量表、長心得每一塊變成同等
+     重量，層級就死了。要延續的是顏色與手作感，不是邊框。 */
+  --r-sm: 3px;
+  --r-md: 6px;
+  --r-pill: 999px;
+  --hair: 1px;
+
+  --maxw: 68rem;
+  --maxw-read: 42rem;  /* 心得內文的舒適行長 */
+}
+
+/* ===========================================================================
+   深色模式。只重新指定 token 的值，不寫任何元件樣式。
+   =========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #131614;
+    --surface: #1B1F1D;
+    --surface-2: #232825;
+    --ink: #EDF0EC;
+    --ink-2: #C2CBC5;
+    --muted: #93A099;
+    --line: #2C322F;
+    --line-2: #3C443F;
+
+    --paper: #1B1F1D;
+    --mark: #4E7A1E;
+    --mark-term: #1F5A70;
+    --star: #D9A03A;
+
+    --d-tian: #35A46B;
+    --d-di: #BC8722;
+    --d-ren: #5A8AE0;
+    --d-xin: #DC6082;
+    --d-xuan: #9375DA;
+    --d-tiyu: #12A3BC;
+    --d-yu: #D4753A;
+    --d-other: #A96BB8;
+
+    --m-tian: #1E5637;
+    --m-di: #6B4A0C;
+    --m-ren: #23477F;
+    --m-xin: #7A2A40;
+    --m-xuan: #46318A;
+    --m-tiyu: #0A5460;
+    --m-yu: #7E3D12;
+    --m-other: #5C2E4A;
+
+    --focus: #5A8AE0;
+    --warn-bg: #2E2716;
+    --warn-ink: #E4CE8B;
+  }
+}
+
+/* 手動切到深色時要贏過系統設定，內容與上面完全相同。 */
+:root[data-theme="dark"] {
+  --ground: #131614;
+  --surface: #1B1F1D;
+  --surface-2: #232825;
+  --ink: #EDF0EC;
+  --ink-2: #C2CBC5;
+  --muted: #93A099;
+  --line: #2C322F;
+  --line-2: #3C443F;
+
+  --paper: #1B1F1D;
+  --mark: #4E7A1E;
+  --mark-term: #1F5A70;
+  --star: #D9A03A;
+
+  --d-tian: #35A46B;
+  --d-di: #BC8722;
+  --d-ren: #5A8AE0;
+  --d-xin: #DC6082;
+  --d-xuan: #9375DA;
+  --d-tiyu: #12A3BC;
+  --d-yu: #D4753A;
+  --d-other: #A96BB8;
+
+  --m-tian: #1E5637;
+  --m-di: #6B4A0C;
+  --m-ren: #23477F;
+  --m-xin: #7A2A40;
+  --m-xuan: #46318A;
+  --m-tiyu: #0A5460;
+  --m-yu: #7E3D12;
+  --m-other: #5C2E4A;
+
+  --focus: #5A8AE0;
+  --warn-bg: #2E2716;
+  --warn-ink: #E4CE8B;
+}
+
+/* ---------------------------------------------------------------------------
+   領域對應：每個領域一個 class，同時帶出識別色與筆色。
+   元件只要讀 --d 與 --m 就好，不必知道自己是哪個領域。
+   --------------------------------------------------------------------------- */
+
+.d-tian    { --d: var(--d-tian);  --m: var(--m-tian); }
+.d-di      { --d: var(--d-di);    --m: var(--m-di); }
+.d-ren     { --d: var(--d-ren);   --m: var(--m-ren); }
+.d-xin     { --d: var(--d-xin);   --m: var(--m-xin); }
+.d-xuanxiu { --d: var(--d-xuan);  --m: var(--m-xuan); }
+.d-tiyu    { --d: var(--d-tiyu);  --m: var(--m-tiyu); }
+.d-yuyan   { --d: var(--d-yu);    --m: var(--m-yu); }
+.d-other   { --d: var(--d-other); --m: var(--m-other); }
+
+/* 沒有領域脈絡時的預設，讓元件不會落到 undefined。 */
+:root { --d: var(--ink-2); --m: var(--mark); }

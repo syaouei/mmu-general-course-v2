@@ -1,0 +1,25 @@
+{
+  "$comment": [
+    "投稿表單與 repo 設定。表單網址不寫死在 JS 裡（規格第十三節）。",
+    "submissionsCsv 留空代表停用執行期即時投稿，只顯示已烘焙資料。",
+    "階段五接上表單後再填入。"
+  ],
+  "site": {
+    "name": "馬偕通識分享區",
+    "version": "v2",
+    "designer": "syaouei",
+    "legacyAuthor": "Bean1450",
+    "legacyUrl": "https://haoyu050735.github.io/MMCGeneralCourse/"
+  },
+  "forms": {
+    "submitUrl": "",
+    "reportUrl": "",
+    "submissionsCsv": "",
+    "reportsCsv": ""
+  },
+  "repo": {
+    "owner": "",
+    "name": "",
+    "branch": "main"
+  }
+}
