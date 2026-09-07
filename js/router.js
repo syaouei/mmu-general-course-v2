@@ -46,13 +46,27 @@ export function buildHash(path, params = {}) {
   return `#${path}${s ? '?' + s : ''}`;
 }
 
-/** 導航。replace 為 true 時不留下上一頁紀錄（用於條件微調）。 */
-export function navigate(hash, { replace = false } = {}) {
+/** 真的要換頁時用這個。會觸發 hashchange，路由重跑、view 重新渲染。 */
+export function navigate(hash) {
   const target = hash.startsWith('#') ? hash : '#' + hash;
   if (location.hash === target) return;
-  if (replace) history.replaceState(null, '', target);
-  else location.hash = target;
-  if (replace) handle();
+  location.hash = target;
+}
+
+/**
+ * 把目前 view 的狀態（搜尋字串、排序、篩選）鏡射到網址列。
+ *
+ * 只改網址，**不重跑路由**。view 自己已經渲染過了，再跑一次會把整個
+ * #main 換掉 —— 連帶把使用者正在打字的 <input> 換成新節點、焦點掉光。
+ * 中文輸入法組字中遇到這件事會直接中斷，打一個注音就跳出來。
+ *
+ * history.replaceState 不會觸發 hashchange，所以這裡不會有隱性的重繪；
+ * 同時也不留下歷史紀錄，打字才不會塞爆上一頁。
+ */
+export function syncUrl(hash) {
+  const target = hash.startsWith('#') ? hash : '#' + hash;
+  if (location.hash === target) return;
+  history.replaceState(null, '', target);
 }
 
 export const getCurrent = () => current;

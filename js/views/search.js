@@ -4,10 +4,10 @@
 // 所以 #/search?q=易經&sweet=8 可以直接貼給同學。
 
 import { el, replace } from '../dom.js';
-import { setMeta, buildHash, navigate } from '../router.js';
+import { setMeta, buildHash, syncUrl } from '../router.js';
 import * as store from '../store.js';
 import { buildIndex, query as runQuery, filter, sort, SORTS } from '../search.js';
-import { courseList } from '../ui.js';
+import { courseList, bindSearchInput } from '../ui.js';
 
 let index = null;
 
@@ -53,19 +53,14 @@ export default async function searchView(ctx) {
   const results = el('div', {});
   const status = el('p', { class: 'filter-note', role: 'status', 'aria-live': 'polite' });
 
+  // syncUrl 只鏡射狀態到網址，不重跑路由 —— 重跑會換掉正在打字的 <input>。
   const sync = () => {
-    navigate(buildHash('/search', toQuery()), { replace: true });
+    syncUrl(buildHash('/search', toQuery()));
     render();
   };
 
-  let timer = null;
-  input.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => { params.q = input.value.trim(); sync(); }, 150);
-  });
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') { input.value = ''; params.q = ''; clearTimeout(timer); sync(); }
-  });
+  // 中文組字期間不查、不改網址，等組完才動作。
+  bindSearchInput(input, (q) => { params.q = q; sync(); });
 
   const thresholds = (max) => [['', '不限'],
     ...Array.from({ length: max }, (_, i) => [max - i, `${max - i} 以上`])];

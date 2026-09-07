@@ -127,6 +127,67 @@ export function courseList(courses, domainsById, emptyText = '沒有符合的課
     courses.map((c) => courseRow(c, domainsById.get(c.domain))));
 }
 
+/**
+ * 綁定搜尋輸入框，處理輸入法組字。
+ *
+ * 中文輸入時瀏覽器會在組字過程中連續發 input 事件，每一發帶的是還沒組完
+ * 的注音（「ㄊ」「ㄊㄨ」⋯⋯）。那些不是查詢字串，拿去搜尋只會閃爍，
+ * 而且組字期間任何重繪都會把 <input> 換掉、讓輸入法中斷。
+ *
+ * 所以：組字期間完全不動作，等 compositionend 才查一次。
+ * 英文與貼上不會觸發 composition 事件，走原本的 debounce 路徑。
+ *
+ * 回傳解除綁定的函式。
+ */
+export function bindSearchInput(input, onQuery, { delay = 150 } = {}) {
+  let composing = false;
+  let timer = null;
+
+  const fire = (immediate = false) => {
+    clearTimeout(timer);
+    const run = () => onQuery(input.value.trim());
+    if (immediate) run();
+    else timer = setTimeout(run, delay);
+  };
+
+  const onInput = (e) => {
+    // e.isComposing 為 true 代表這一發是組字中間態，直接略過。
+    if (composing || e.isComposing) return;
+    fire();
+  };
+
+  const onStart = () => { composing = true; clearTimeout(timer); };
+
+  const onEnd = () => {
+    composing = false;
+    // 組字完成，這時 input.value 才是真的字。立刻查，不再等 debounce ——
+    // 使用者已經選完字了，沒有理由再讓他等。
+    fire(true);
+  };
+
+  const onKeydown = (e) => {
+    if (e.key !== 'Escape') return;
+    // 輸入法用 Esc 取消候選字，那不是「清空搜尋」的意思。
+    if (composing || e.isComposing) return;
+    e.preventDefault();
+    input.value = '';
+    fire(true);
+  };
+
+  input.addEventListener('input', onInput);
+  input.addEventListener('compositionstart', onStart);
+  input.addEventListener('compositionend', onEnd);
+  input.addEventListener('keydown', onKeydown);
+
+  return () => {
+    clearTimeout(timer);
+    input.removeEventListener('input', onInput);
+    input.removeEventListener('compositionstart', onStart);
+    input.removeEventListener('compositionend', onEnd);
+    input.removeEventListener('keydown', onKeydown);
+  };
+}
+
 /** 區塊標題列。 */
 export function sectionHead(title, { count = null, more = null } = {}) {
   return el('div', { class: 'section-head' }, [

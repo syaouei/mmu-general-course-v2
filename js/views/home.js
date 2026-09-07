@@ -5,11 +5,12 @@
 // 「最新心得」是舊版完全沒有的入口，缺了它新投稿等於沒有曝光。
 
 import { el, replace, clear } from '../dom.js';
-import { setMeta, buildHash, navigate } from '../router.js';
+import { setMeta, buildHash, syncUrl } from '../router.js';
 import * as store from '../store.js';
 import { buildIndex, query } from '../search.js';
 import {
   courseList, sectionHead, domainTag, termBadge, domainHref, courseHref,
+  bindSearchInput,
 } from '../ui.js';
 
 const DEBOUNCE_MS = 150;
@@ -134,27 +135,15 @@ export default async function home(ctx) {
   }
 
   // --- 事件 ---------------------------------------------------------------
+  //
+  // bindSearchInput 處理輸入法組字：中文組字期間不查、不改網址，
+  // 等 compositionend 才動作。syncUrl 只改網址不重跑路由 —— 重跑會把
+  // 這個 <input> 換成新節點，正在組字的注音會直接斷掉。
 
-  let timer = null;
-  input.addEventListener('input', () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      const q = input.value.trim();
-      renderResults(q);
-      // 查詢寫進網址，重新整理與分享都保得住。用 replace 免得每打一個字
-      // 就在瀏覽器歷史裡塞一筆。
-      navigate(q ? buildHash('/', { q }) : '#/', { replace: true });
-    }, DEBOUNCE_MS);
-  });
-
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      input.value = '';
-      clearTimeout(timer);
-      renderResults('');
-      navigate('#/', { replace: true });
-    }
-  });
+  bindSearchInput(input, (q) => {
+    renderResults(q);
+    syncUrl(q ? buildHash('/', { q }) : '#/');
+  }, { delay: DEBOUNCE_MS });
 
   renderResults(initialQ);
 

@@ -6,7 +6,7 @@
 // 所有條件都寫進網址 query，貼給同學就是同一個畫面。
 
 import { el, replace } from '../dom.js';
-import { setMeta, buildHash, navigate } from '../router.js';
+import { setMeta, buildHash, syncUrl } from '../router.js';
 import * as store from '../store.js';
 import { SORTS, filter, sort } from '../search.js';
 import { courseList, meterView, starsView, courseHref, domainClass } from '../ui.js';
@@ -90,8 +90,10 @@ export default async function domainView(ctx) {
 
   function renderControls() {
     const onChange = () => {
-      // 條件改變 → 改網址（replace，不塞爆上一頁），畫面跟著重畫。
-      navigate(buildHash(`/d/${domain.id}`, toQuery(params)), { replace: true });
+      // 條件改變 → 鏡射到網址（不留歷史紀錄），畫面自己重畫。
+      // 用 syncUrl 而不是 navigate：後者會重跑路由把整頁換掉，正在操作的
+      // <select> 會變成新節點，焦點與展開中的選單都會掉。
+      syncUrl(buildHash(`/d/${domain.id}`, toQuery(params)));
       render();
     };
 
@@ -137,7 +139,7 @@ export default async function domainView(ctx) {
             sort: 'code', dir: null, minStars: null, minSweet: null,
             minCool: null, teacher: null, hasReviews: false,
           });
-          navigate(buildHash(`/d/${domain.id}`), { replace: true });
+          syncUrl(buildHash(`/d/${domain.id}`));
           renderAll();
         },
       }, '清除條件'),
@@ -176,7 +178,7 @@ export default async function domainView(ctx) {
               params.sort = c.key;
               params.dir = null;
             }
-            navigate(buildHash(`/d/${domain.id}`, toQuery(params)), { replace: true });
+            syncUrl(buildHash(`/d/${domain.id}`, toQuery(params)));
             render();
           },
         }, [
