@@ -1,0 +1,121 @@
+
+.login_frame {
+width: 400px;
+height: 450px;
+padding: 13px;
+position: absolute;
+left: 50%;
+top: 50%;
+margin-left: -200px;
+margin-top: -200px;
+background-color: #f0f2f5;
+border-radius: 10px;
+text-align: center;
+}
+#inside_frame {
+width: 500px;
+height: 550px;
+padding: 13px;
+position: absolute;
+left: 50%;
+top: 50%;
+margin-left: -200px;
+margin-top: -200px;
+background-color: #f0f2f5;
+border-radius: 10px;
+text-align: center;
+}
+#a01_frame {
+margin:0px auto;
+text-align:center;
+}
+form p > * {
+display: inline-block;
+vertical-align: middle;
+}
+
+.label_title {
+font-size: 25px; font-weight: bold;
+width: 500px;
+line-height: 24px;
+text-align: center;
+color: black;
+background-color: #87e967;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+padding: 10px;
+border-radius:10px;
+
+border-width:3px;
+border-color:#000000;
+border-style:solid;
+}
+
+.label_info {
+font-size: 20px; font-weight: bold;
+width: 500px;
+text-align: center;
+color: black;
+background-color: #fddb69;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+padding: 10px;
+border-radius:10px;
+
+border-width:3px;
+border-color:#000000;
+border-style:solid;
+}
+
+.label_comment {
+font-size: 20px;
+width: 500px;
+line-height: 28px;
+text-align: left;
+color: black;
+background-color: #ffffff;
+border-radius:10px;
+padding: 10px;
+border-width:3px;
+border-color:#000000;
+border-style:solid;
+}
+
+#btn_home {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+font-size: 20px;
+font-weight: bold;
+text-align: center;
+color: black;
+background-color: #7edcfc;
+border-radius:10px;
+padding: 10px;
+border-width:3px;
+border-color:#000000;
+border-style:solid;
+cursor: pointer;
+box-shadow: 3px 3px 3px  #29c6fa;
+}
+.btn_a01 {
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+font-size: 20px;
+width: 500px;
+line-height: 28px;
+text-align: center;
+color: black;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+padding: 5px;
+}
+
+@media screen and (max-width:600px){
+	.label_title{width:90%; text-align:center}
+	.label_info{width:90%; text-align:center}
+	.index_choosebox{width:90%; text-align:center}
+	.label_comment{width:90%; }
+	.btn_a01{width:90%; text-align:center}
+}

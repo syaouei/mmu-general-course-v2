@@ -1,0 +1,4487 @@
+{
+  "meta": {
+    "updatedAt": "2026-09-07T13:25:03.016Z",
+    "schemaVersion": 2,
+    "courseCount": 89,
+    "reviewCount": 258,
+    "generatedBy": "scripts/migrate-legacy.mjs"
+  },
+  "domains": [
+    {
+      "id": "tian",
+      "name": "天領域",
+      "order": 1
+    },
+    {
+      "id": "di",
+      "name": "地領域",
+      "order": 2
+    },
+    {
+      "id": "ren",
+      "name": "人領域",
+      "order": 3
+    },
+    {
+      "id": "xin",
+      "name": "心領域",
+      "order": 4
+    },
+    {
+      "id": "xuanxiu",
+      "name": "系選修",
+      "order": 5
+    },
+    {
+      "id": "tiyu",
+      "name": "體育類",
+      "order": 6
+    },
+    {
+      "id": "yuyan",
+      "name": "語言類",
+      "order": 7
+    },
+    {
+      "id": "other",
+      "name": "其他類",
+      "order": 8
+    }
+  ],
+  "courses": [
+    {
+      "id": "HE139A-caiweimin",
+      "code": "HE139A",
+      "name": "由電影認識亞洲諸宗教",
+      "domain": "tian",
+      "teacher": "蔡維民",
+      "reviews": [
+        {
+          "id": "lg-tian-a01-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 6,
+          "grade": 90,
+          "text": "基本上就是介紹一個宗教，再看宗教相關的電影。作業就是每次看電影的心得，會需要回答老師設計好的三、四個問題，成績也會依此計算。有一些電影會有一些沉悶，有時候會看不太下去。但是只要心得有認真寫，分數都會很不錯。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度6｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a01-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 85,
+          "text": "很涼 。上課基本做自己的事，但隔一週就要寫電影心得，心得部分整個學期寫了很多，分數也沒有好看到哪去",
+          "rawHeader": "1092｜4星｜85分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a01-03",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "全心得\n\n真的學得到東西，也很涼，但是分數不是很好看",
+          "rawHeader": "1091｜4星",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE119A-caichengzhi",
+      "code": "HE119A",
+      "name": "從文學看道德-倫理學的基礎",
+      "domain": "tian",
+      "teacher": "蔡承志",
+      "reviews": [
+        {
+          "id": "lg-tian-a02-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 97,
+          "text": "上課回答10題平常成績即可滿分期中期末\n\n期中期末都是開書考不難",
+          "rawHeader": "1101｜5星｜甜度10｜涼度8｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a02-02",
+          "term": "1082",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "出席、期中考、期末考、上課回答加分(85基金、不滿85可加到85)\n\n有大概4-5篇英文、1-2白話文、1-2篇古文的文本要讀，期中期末就考問答題，所以必須了解全文內容，但可以帶文本去考試，查詢內容。只是個人沒什麼想法的最好不要修，否則沒辦法在這堂課表達意見的話，分數應該不會太好看。",
+          "rawHeader": "1082｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE138A-chenzhirong",
+      "code": "HE138A",
+      "name": "世界宗教與倫理議題",
+      "domain": "tian",
+      "teacher": "陳志榮",
+      "reviews": [
+        {
+          "id": "lg-tian-a03-01",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 2,
+          "cool": 2,
+          "grade": 81,
+          "text": "平時作業+期中+期末\n\n老師說每次都有出席的人會比較高，但我還是跟翹課仔同分(可能還比較低)。然後考試有認真回答的人也會比較高，然後我就很認真在期末的時候想把期中爛爛的成績板回一城，然後先備稿再去考試現場抄，結果勒QQ 考得比期中亂抄網路還沒統整的資料還爛。老師真的很會騙，啊我就很好騙(重點金句：不是字多就分高) 感覺平常上課也要多跟老師互動讓他記得，然後邏輯要跟他match，他是很酷的老師，以前是辯論社的去應該會涼一點",
+          "rawHeader": "1101｜3星｜甜度2｜涼度2｜81分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a03-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 5,
+          "cool": 5,
+          "grade": 89,
+          "text": "課堂手寫筆記+期中期末考\n\n算是天領域宗教色彩比較不重的課(議題內容是跟宗教有關的，但是不會一直宣揚宗教理念，比較著重討論層面)，每堂課都要求手寫筆記，期中期末考自選四個主題手寫1000字(限時一小時)，學到的議題跟觀點都滿多元的，但是不能算涼或甜",
+          "rawHeader": "1101｜4星｜甜度5｜涼度5｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a03-03",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 89,
+          "text": "雖然上課要一直寫東西，期中期末也要寫一堆字，但上課內容充實，老師也很風趣",
+          "rawHeader": "1091｜4星｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a03-04",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "期中之後的出席率、期中期末各一次考試、上課筆記算分\n\n這堂課會在上課要求手寫筆記（須交回）並回答一些問題、發表自己的想法。其中期末各一次考試，在之前上過的內容提出看法，250字，寫4題，需要事先準備。\n上課方式部分，主要用切得非常快的ppt，前幾節課我不太懂在上什麼，不過到後面一些議題的討論教授給的資料豐富度、議題選擇都還不錯，可以學到東西。",
+          "rawHeader": "1091｜4星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE130A-caichengzhi",
+      "code": "HE130A",
+      "name": "邏輯導論",
+      "domain": "tian",
+      "teacher": "蔡承志",
+      "reviews": [
+        {
+          "id": "lg-tian-a04-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "期中、期末、課堂加分\n\n一般涼，甜不甜看個人努力。對於數學符號那類不排斥的人可以來修，如果數學好的應該蠻吃香的。基本上有上課的話期中考要考到8或9字頭不是問題，期末考會稍微有難度一點。總結來說，老師不會管你上課在幹嘛，也不會想當學生，但是如果想要有好成績，認真上課、回答加分還是多少要顧一下(?",
+          "rawHeader": "1092｜4星｜97",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a04-02",
+          "term": "1082",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 78,
+          "text": "期中期末考、課堂小考\n\n期中考要考到9開頭不是問題，但要認真上課；期中過後比較困難，真的要有認真在聽課才能拿好成績",
+          "rawHeader": "1082｜2星｜78",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE012A-caiweimin",
+      "code": "HE012A",
+      "name": "影像中的宗教哲學",
+      "domain": "tian",
+      "teacher": "蔡維民",
+      "reviews": [
+        {
+          "id": "lg-tian-a05-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 95,
+          "text": "老師開的課基本上就是一堂課上宗教知識，一堂課看電影並在課後寫學習單，沒有考試。老師所謂的「期中考」「期末考」其實也只是學習單。所以如果是不想要冒著考試的風險，且不排斥寫學習單的人的話，這一堂課很適合。在這一整個學期，包含「期中考」，總共寫了六份的學習單。老師在上學期開的「由電影認識亞洲諸宗教」也是差不多這個樣子。",
+          "rawHeader": "1112｜5星｜甜度10｜涼度8｜95分(1/19)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a05-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 86,
+          "text": "全心得，超涼不甜\n\n一節課看電影一節課討論，遠距上課前沒事做，偶爾寫寫心得。但遠距後突然多出一堆心得要寫，其實滿累的。也不知道他的算分方式如何，我總是拿到86附近的分數。總體來說涼到爆，就差在課是開在禮拜四晚上五點到七點",
+          "rawHeader": "1092｜4星｜86",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a05-03",
+          "term": "1092",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 87,
+          "text": "不甜不涼，但是有趣，應該是天領域中的少數好課",
+          "rawHeader": "1092｜2星｜87",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE407A-caichengzhi",
+      "code": "HE407A",
+      "name": "真理與悖論－哲學分析概論",
+      "domain": "tian",
+      "teacher": "蔡承志",
+      "reviews": [
+        {
+          "id": "lg-tian-a06-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "期中期末考各25%，平時成績50%(上課回答問題、出席率)\n\n不錯甜但不涼\n\n應該是有付出就會有很不錯的收穫(分數)的一門課，課程內容包含哲學分析技巧、語言分析、時空理論等，前半學期比較技術性，不是原本以為的「真理」，比較像醫學系必修邏輯課那樣，但是更難，後半學期有時空悖論、人格同一論等，稍微不那麼技術性，比較多思考的部分。\n如果對這些沒興趣建議不要修，你會很痛苦(因為會聽不懂)；有興趣的人也要做好考前需要花時間複習的心理準備，開書考有唸就有分，考古好好看。\n然後這堂課的承志容光煥發!!!",
+          "rawHeader": "1092｜4星｜97",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a06-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "很甜但是不涼！課程扎實，真的可以學到東西，實質接觸到哲學領域，我覺得很棒！唯獨期中期末考不涼，需要認真準備",
+          "rawHeader": "1092｜4星｜95",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a06-03",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "出席，期中期末，小組討論，上課貢獻\n\n很甜但不太涼 老師人很好，應該算少數有期中期末考的通識課，要拿高分的話上課要認真，期中期末開書考，就靠你平常的筆記了",
+          "rawHeader": "1092｜4星｜97",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a06-04",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 92,
+          "text": "平時50% 期中期末各25%\n\n很甜但不太涼 如果要認真上的話不甜也不涼，但老師也理解這點所以平常分數其實很好拿，拿到平常分數期中期末通常幾十分就能過了。",
+          "rawHeader": "1092｜4星｜92",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a06-05",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 82,
+          "text": "上課回答10分+出席率10分+討論課出席10+期中25+期末25，剩下的我忘了\n\n頗麻煩，但課程內容有趣",
+          "rawHeader": "1092｜3星｜82",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE136A-chenzhirong",
+      "code": "HE136A",
+      "name": "世界宗教搜奇",
+      "domain": "tian",
+      "teacher": "陳志榮",
+      "reviews": [
+        {
+          "id": "lg-tian-a07-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 8,
+          "grade": 92,
+          "text": "基本上上課方式類似馬講，每堂課要寫一張學習單。學習單的上課內容可以直接抄ppt的問題和回答，同時也要寫上課心得。期中考和期末考要寫對於老師4堂課的心得，每篇250左右，總共1000字。老師同意考試時帶著寫好的內容，只要在考試卷抄一遍就好。所以可以在上課時就先把那一堂課的心得寫好，這樣考試的時候可以直接抄學習單的心得。這堂課的優點就是上課只要寫好學習單，就可以開始滑手機了，完全不會影響到課後的時間。",
+          "rawHeader": "1112｜5星｜甜度9｜涼度8｜92分(1/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a07-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 92,
+          "text": "學習單+期中期末\n\n很甜很涼\n\n每節課都要寫學習單(課程重點摘錄+心得+問老師的問題)，下課前要交，但似乎只要有交就100分(我課程重點就都抄他ppt的內容，心得寫超多幹話結果拿100)。上課有點無聊。期中期末會要求在上課的8個主題中挑4個寫，各250字，一樣就是寫課程內容跟心得(其實就是把學習單的抄上去而已)。因為平時成績大放送，所以期中期末的分數不好看是正常的，不用太擔心。老師的笑聲很有特色。",
+          "rawHeader": "1091｜4星｜92",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a07.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE135A-huanglinglan",
+      "code": "HE135A",
+      "name": "兒童哲學",
+      "domain": "tian",
+      "teacher": "黃苓嵐",
+      "reviews": [
+        {
+          "id": "lg-tian-a08-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 8,
+          "grade": null,
+          "text": "喜愛演戲和小組報告的很讚 沒有個人報告 老師人很好 這應該是大家都知道的吧",
+          "rawHeader": "1112｜5星｜甜度8｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 8,
+          "grade": 94,
+          "text": "平時(出席 課堂表現 課堂討論)30%、期中繪本報告(口頭+書面)30%、期末分組活動設計40%\n\n獲益良多~是一堂即便很累也不會想翹課、有時候上完課還會覺得被治癒的課 而且老師真的很讚 只是很常會需要假裝成小朋友或是當大哥哥大姊姊帶教案或活動 還有組內討論 看你覺得自己適不適合喽!",
+          "rawHeader": "1101｜5星｜甜度9｜涼度8｜94(1/24)分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-03",
+          "term": "1092",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 6,
+          "grade": 95,
+          "text": "分數滿甜的，但不算涼\n上課不能用3c產品，要參與討論，上課有小組討論，期末要有一個繪本的教案，期末也有一個教案，但可以學到很多，很好玩，老師上課也很有趣，人很好，基本上給分不會給到太差，超推",
+          "rawHeader": "1092｜5星｜甜度8｜涼度6｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-04",
+          "term": "1092",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 96,
+          "text": "甜ww(涼不涼看個人努力)，上課老師會帶一些有趣的教案，也會帶我們看繪本，甚至是電影欣賞，整體來說如過用心上課其實能從老師身上學到許多東西。此外，看看同學或學長姐帶的教案其實也能收穫許多。 作業的部分，期中期末各有一次小組與大組的教案，輕鬆的話有人簡單帶個繪本討論一下老師不會特別說甚麼，甚至還會給你正向反饋，那當然分數可能就不那麼高；但如果願意花心思去設計新穎的活動，你的用心相對老師一定感受的到，而且自己也會有成就感。修行在個人囉！總之，來到馬偕一定要修一次兒哲，我敢說這絕對是馬偕數一數二的好課，輕鬆有趣又能學到東西，還不修爆？",
+          "rawHeader": "1092｜5星｜甜度10｜涼度8｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-05",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "期中跟平時各30%、期末40%\n\n普通，是有內容的課程",
+          "rawHeader": "1092｜4星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-06",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "期中報告+期末報告\n\n普通涼普通甜\n\n老師人很好也很認真教，學得到東西也能實際設計、執行教案，上課主要會以分組討論方式進行，並有兩次的電影欣賞、討論。期中期末是各組帶教案，其他人當小朋友，還蠻有趣的～",
+          "rawHeader": "1092｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-07",
+          "term": "1051",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "老師人很好，乖乖交作業(兩次而已)，上課可以活潑回答老師喲～老師人超~~~~~好，溫柔到爆炸，希望以後也能像她一樣",
+          "rawHeader": "1051｜5星｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a08-08",
+          "term": "1041",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "期中個人報告30%，選一本繪本是適合給兒童觀看的，然後想出一個主題(就是你覺得這本繪本可以交給兒童什麼)上臺報告分享給大家，形式不拘，可以是用PPT口述，也可以邊玩遊戲邊講繪本~~\n\n期末團體報告30%，總共會有四組，每一組都會抽到一個跟兒童哲學相關的主題，例如:團體合作，跟組員討論要用什麼方式讓兒童了解這個主題在生命中的重要性。\n\n平時成績40%，平常沒有作業，就看上課出席率囉\n\n這堂課基本上是馬偕最推的通識課(我覺得拉)，老師超溫柔人超好!!!!!!!!雖然沒有考試也沒有作業壓力，但因為老師超溫柔人超好所以就會認真上課~~而且上課也真的有學到東西，除了講課也會放兩次電影跟大家一起討論兒童議題，總之只有兩個字形容，必修!!!!!!!!!!!!",
+          "rawHeader": "1041｜5星｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE412A-zhangnanji",
+      "code": "HE412A",
+      "name": "信仰與人生",
+      "domain": "tian",
+      "teacher": "張南驥",
+      "reviews": [
+        {
+          "id": "lg-tian-a09-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 9,
+          "grade": 90,
+          "text": "寫學習單計算分數\n\n這堂課基本上就是另一堂馬講，每次聽老師講話，寫學習單，下課交出去就沒事了。只是要額外參加一次信望愛社的團契，並寫一張心得，算是修這門課的唯一作業。分數甜，只是唯一的問題就是不能翹課，要不然就要請同學拍好上次上課的學習單來「參考」。祝各位都能成為歐洲人抽到這門課。",
+          "rawHeader": "1111｜5星｜甜度10｜涼度9｜90分(16/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a09-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 6,
+          "grade": 90,
+          "text": "每堂課都要寫心得，主要看心得內容評分吧\n\n上課都會發像馬講那樣的學習單，就根據他的內容寫關鍵字和心得。老師將生物科學知識(微免基因之類)與聖經或他個人的人生觀連結，期中考週放假，中途還有看電影。我的分數印象中在班上的後1/3，分數挺甜的。",
+          "rawHeader": "1101｜4星｜甜度9｜涼度6｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a09-03",
+          "term": "1051",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "評分方式：上課心得、出席率、報告繳交程度、報告內容的量總加起來的印象分數\n\n心得：用宗教的方式來解釋生活中的種種事情",
+          "rawHeader": "1051｜4星｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE013A-chenshangren",
+      "code": "HE013A",
+      "name": "耶穌及基督教倫理觀(陳尚仁)",
+      "domain": "tian",
+      "teacher": "陳尚仁",
+      "reviews": [
+        {
+          "id": "lg-tian-a10-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 90.8,
+          "text": "平時20%+期中35%(分組演戲)+期末45%(個人報告)\n涼。上課可以完完全全做自己的事情，上課主題都是有關基督教的歷史或相關事件。平時成績是老師會問上周上課的內容，答對的人可以拿到加分卡，以此加分。期中自己分組，老師會提供一些劇本，大家簡單演一演即可，老師給分不會太苛，期中成績包含同學間的給分。期末是針對上課的主題或是馬偕博士做發表，老師給分還不錯。整體而言，老師人非常好，但除非你本身信仰基督教等宗教，不然應該沒有強大專注力每節課都認真聽課，適合拿來讀書或是做事的課",
+          "rawHeader": "1092｜4星｜90.8分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a10-02",
+          "term": "1092",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 95,
+          "text": "很甜很涼\n分數很甜、上課極涼。可以做自己的事，回答問題還有加分。期中是分組演戲，老師也會給我們劇本參考； 期末是個人上台報告，要事先傳稿給老師，報告時就可以照樣講。",
+          "rawHeader": "1092｜5星｜甜度10｜涼度10｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE118A-xiaoxufu",
+      "code": "HE118A",
+      "name": "孔子與論語",
+      "domain": "tian",
+      "teacher": "蕭旭府",
+      "reviews": [
+        {
+          "id": "lg-tian-a11-01",
+          "term": "1091",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 7,
+          "grade": 89,
+          "text": "旭府的課就是那樣，不涼不甜作業多，89分班排4，但可以學到一些東西就是了。",
+          "rawHeader": "1091｜4星｜甜度8｜涼度7｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a11.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE125A-xiaoxufu",
+      "code": "HE125A",
+      "name": "易經與人生",
+      "domain": "tian",
+      "teacher": "蕭旭府",
+      "reviews": [
+        {
+          "id": "lg-tian-a12-01",
+          "term": "1101",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "期中期末有背卦名和八卦衍生意義就有基本分，解卦的部分基本上合理就會給滿分。 我個人是覺得上課其實蠻有趣的，老師會引例子來解釋卦義。大概就跟老師國文課的感覺差不多吧，沒有想像中那麼枯燥乏味。",
+          "rawHeader": "1101｜4星｜93(9/25)分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a12-02",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 5,
+          "cool": 7,
+          "grade": null,
+          "text": "可以自習，不過會有老師講解的聲音當背景音（如同國文必修一樣） 平時沒小考，可是會有一堆zuvio 期中期末範圍不多，算是輕鬆的考試 不過整體而言，上課內容多數都是自學便可以學會，或是上網查就找到跟老師說的一模一樣的解釋，知識密度相當不高，若期待精實地學到易經的話，可以先跳過此門課。",
+          "rawHeader": "1101｜3星｜甜度5｜涼度7",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a12-03",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 4,
+          "grade": 95,
+          "text": "平時40%+期中30%+期末30%\n期中期末都要背掛名和八卦，但不會太難，有背就有分。其他解掛的題只要照著上課記的筆記寫就好，老師給分都很寬鬆(基本上是滿分)。個人覺得上課還蠻輕鬆的，但考試還是需要準備一下啦。",
+          "rawHeader": "1101｜4星｜甜度8｜涼度4｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a12-04",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 96,
+          "text": "比較硬的地方在於要背卦序跟一些相關的知識，但我覺得以通識來說花一點時間背這些東西其實也還好，尤其個人覺得蠻有趣的(?)而且上完這堂課其實基本上就會簡單的卜卦解卦，然後聽一些旭府的人生經驗以及易經的解釋來反省自己的人生我覺得很不錯。",
+          "rawHeader": "1101｜5星｜甜度9｜涼度7｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a12-05",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 4,
+          "grade": 94,
+          "text": "期中、期末考試，出席率(?) Zuvio答題\n對易經有興趣可修，但不涼，要背的東西滿多的。是有卜卦教學，但還是要懂卦義嘛，你說是不是呢，所以上課加減聽，會考。有背就會甜。",
+          "rawHeader": "1092｜4星｜甜度8｜涼度4｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a12.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE137A-linmenglong",
+      "code": "HE137A",
+      "name": "宗教觀光巡禮",
+      "domain": "tian",
+      "teacher": "林孟龍",
+      "reviews": [
+        {
+          "id": "lg-tian-a13-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 89,
+          "text": "基本上可以翹掉幾乎所有的課，除了前一兩堂可以稍微聽一下作業說明。整學期基本上只要寫一份期末報告就可以了，期中和期末則要寫一兩份小學習單。只要搞定期末報告和期中期末的學習單，你整學期就自由了。",
+          "rawHeader": "1112｜5星｜甜度9｜涼度10｜89分(6/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a13.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a13-02",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 9,
+          "grade": 97,
+          "text": "超級大爽課！老師第一堂課會說之後的課想來就來不強迫（但沒事可以去上課幫老師衝一下出席率，課滿好玩的，老高信徒會很愛），分數也跟出席率沒啥關係（我整學期只去3堂最後97）比較麻煩的就是期中期末有各5題申論題、課堂心得、期末的旅遊報告要做，但如果都早早做完基本上就早早穩拿學分了，想舒服拿高分的人必選！",
+          "rawHeader": "1111｜5星｜甜度9｜涼度9｜97分(2/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a13.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a13-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 9,
+          "grade": 90,
+          "text": "期中考20%,期末考20%,學期報告50%,課堂參與10%\n基本上不去上課應該不會怎樣，印象中老師沒點名過（除了第一次），老師上他的課，同學桌上都擺著一臺電腦做自己的事，最麻煩的作業大概就是期末作業，要規劃一份旅遊行程，除此之外沒有什麼作業上的負擔。其實老師講解神話故事還蠻有趣的，有興趣的人可以考慮修這門課。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度9｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a13.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a13-04",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 4,
+          "cool": 6,
+          "grade": 84,
+          "text": "學期報告（佔蠻重）期中期末學習單 兩個作業\n上課本身很涼可以做自己的事不會點名 學期報告需要花些時間 期中期末學習單偏申論題根據上課內容回答自己的看法 建議對設計國外旅遊（學期報告）有興趣的人再選",
+          "rawHeader": "1101｜3星｜甜度4｜涼度6｜84分(17/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a13.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE013A-zhangzhiwei",
+      "code": "HE013A",
+      "name": "耶穌及基督教倫理觀(張志偉)",
+      "domain": "tian",
+      "teacher": "張志偉",
+      "reviews": [
+        {
+          "id": "lg-tian-a14-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 97,
+          "text": "期中期末和平時\n平時成績只要都有回答老師問題即可，基本上都可以做自己的事，回想當初自己邊看有機化學邊回答老師問題平時成績拉好拉滿100分，上課沒有缺席，但偶爾有遲到，回答問題的答案都在ppt上，所以拉滿輕輕鬆鬆\n期中是演戲的部分，因為是分組演戲再由老師和同學打分數取平均，所以這個蠻吃團隊合作的，所以我們團隊的分數是班上倒數第二\n期末是報告，任何題材只要跟課程相關的即可，像我就是「我心目中理想的醫師」，跟基督教八竿子打不著，但我硬喇賽，照拿97，所以算是通事必修吧？",
+          "rawHeader": "1111｜5星｜甜度10｜涼度10｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a14.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a14-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 94.88,
+          "text": "平時20% 期中演戲35% 期末個人報告 45%\n老師人很好，多跟老師互動，平時成績就會很高 但很多人上課都在做自己的事情... 對基督教有興趣的人可以修。",
+          "rawHeader": "1101｜4星｜甜度9｜涼度7｜94.88分(排名:11/24)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a14.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tian-a14-03",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 97.7,
+          "text": "期中演戲、期末7分鐘個人ppt報告(可照稿念) 好像還有一點平時成績(?)\n涼，一群人坐後面做了一整學期自己的事老師都沒說甚麼，只要適時給予老師一點回應相信就會給你不錯的成績。 期中劇本老師也會給，只要花一點時間(老實說我們這組事前準備幾乎不到1小時，實際也演沒幾分鐘，反正超涼老師又不刁難啦)找些音效、道具，讓老師看見你們有用心且切合主題，分數感覺都給很高。 阿如果對這間學校過多基督教置入反感不願意修也沒關係，至少我覺得這堂課的老師不會像曾X光或其他那種硬要你信教的fu",
+          "rawHeader": "1101｜4星｜甜度10｜涼度10｜97.7分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n01_tian/a14.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE810A-zhangshunquan",
+      "code": "HE810A",
+      "name": "生活統計學",
+      "domain": "di",
+      "teacher": "張順全",
+      "reviews": [
+        {
+          "id": "lg-di-b01-01",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 7,
+          "grade": 85,
+          "text": "老師的上課很隨興，不管是作業還是成績很常看老師喜歡不喜歡你。作業的部分會需要寫5-6次小作業，然後有分組報告。如果覺得作業太難，可以跟老師說，有機會不會那麼難。成績的話，就盡量讓老師留下好印象吧。留下好印象之後，之後要翹課比較不會對成績有影響。",
+          "rawHeader": "1111｜4星｜甜度8｜涼度7｜85分(12/16)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b01-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "印象分數\n做一些作業就好，翹課也可以掰理由跟老師說，還可以加印象分數",
+          "rawHeader": "1091｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b01-03",
+          "term": "1091",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "應該全印象分數\n\n一般涼一般甜\n\n\r\n上課老師都在分享，可以做自己的事，只是我覺得作業滿多的，修起來很累。認真上課是很累很苦，但分數還可以。做自己的事也不會被說什麼，反正老師上課會點人回答的也就那幾個會被點到",
+          "rawHeader": "1091｜3星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b01-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "印象分數\n\n很甜很涼\n\n\r\n拿高分只有一個要訣：讓老師記住你，看你是要作業都交好交滿，還是要搶答都搶第一都沒關係，反正盡可能留下印象就對了。女同學會比較容易受到老師的照顧，男同學就靠實力拿分吧XD",
+          "rawHeader": "1091｜5星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE808A-yangmingzheng",
+      "code": "HE808A",
+      "name": "科技生活與智慧財產權",
+      "domain": "di",
+      "teacher": "楊明正",
+      "reviews": [
+        {
+          "id": "lg-di-b02-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "期中期末測驗+平時上課作業+portal學習討論\n\n上課不能完全睡著但也滿涼的，分數給很甜",
+          "rawHeader": "1092｜4星｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b02-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "作業+期中期末+5分平時\n\n不涼很甜\n\n這個課的內容前半部會上智慧財產權，個人覺得滿硬的，但學到很多，每堂課都有作業要交。\n後半部會上學術倫理，期末考是上學術倫理的網站考試。我覺得有夠難，我就是爆在這個期末考，很多要注意題目敘述的考題。",
+          "rawHeader": "1092｜4星｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b02-03",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "作業成績30%+平時成績5%+期中30%+期末35%\n超級甜&涼，作業成績：每次上課都會立刻要繳交作業，不用擔心，都是上網搜尋然後複製貼上即可，老師說每次作業的分數一定都是95正負3分這個範圍(我最低只拿到96分,其他都97或98分)\n平時成績：老師會一直在學習&討論那裏放一些議題，只要在期末考之前回覆「10則」學習&討論的議題，就一定可以拿滿這5分，每次回覆至少一兩句就可以了不用很多。\n期中考：選擇題，就是考前一天把老師上課講義讀過至少一遍，最好2-3次，就可以考100分。\n期末考：學術倫理認證，一樣把上課講義讀熟，就可以考過~\n\np.s.如果你的同學上課不會睡覺，可以請他在要做作業時叫你起床，除了做作業時間忙著上網查資料，其他時間可以睡覺或做自己的事情\n整體而言：超級推！",
+          "rawHeader": "1092｜5星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE228A-zhangshunquan",
+      "code": "HE228A",
+      "name": "統計程式語言在社會科學的應用",
+      "domain": "di",
+      "teacher": "張順全",
+      "reviews": [
+        {
+          "id": "lg-di-b03-01",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 10,
+          "grade": 92,
+          "text": "看老師心情+印象分數\n 在上R語言，大部分只要複製貼上懂基本的規則就可以，上課可以做自己的事，偶爾會有小作業，應該不算太難",
+          "rawHeader": "1111｜4星｜甜度8｜涼度10｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b03-02",
+          "term": "1101",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 86,
+          "text": "上課基本上就是從講義上複製貼上程式碼還有聽老師分享一些事情。趕課的時候，老師比較少主動解釋程式碼的意義，要靠自己意會或啃講義。總而言之，如果你是個非常積極上進有熱情的人的話，應該能在這堂課學到不少東西，老師的講義應該也可以餵撐你。",
+          "rawHeader": "1101｜2星｜86(7/8)分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b03-03",
+          "term": "1101",
+          "stars": 2,
+          "sweet": 7,
+          "cool": 7,
+          "grade": null,
+          "text": "此門課所謂的統計程式語言是「R語言」\n 若想學到東西，絕對得靠自己上網查資料與練習。上課從頭到尾都只有複製課本程式碼再貼到R studio中。\n 想得高分的話要想辦法讓老師記住你的名字，老師算是滿人治的（？）\n 另，偶爾對於不同生理性別會有差別性言論。",
+          "rawHeader": "1101｜2星｜甜度7｜涼度7",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b03-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "看課名是個很可怕的東西。這堂課主要是在學R語言，個人覺得有一點硬啦，但如果有好好看老師給的資料是可以學到很多，不過整學期下來我覺得有點累就是了，但還好分數不錯。我覺得老師教得也很細心，是個讓我又愛又恨的課。",
+          "rawHeader": "1091｜5星｜90+分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b03-05",
+          "term": "1082",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "期中報告、出席、少部分作業\n\n幾乎都是聽老師上課，會用R語言寫程式交作業，我以前學過所以覺得很輕鬆，不建議不喜歡程式的人來。女生敢和老師互動的可以來修，老師對你印象深刻會給高分。期中報告就解讀一段程式碼，分析在做什麼。",
+          "rawHeader": "1082｜4星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE221A-yangshuncong",
+      "code": "HE221A",
+      "name": "全球化議題與科技",
+      "domain": "di",
+      "teacher": "楊順聰",
+      "reviews": [
+        {
+          "id": "lg-di-b04-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 89,
+          "text": "平常自己看影片回答問題，每個月會有兩個申論題（約寫300字），跟約三到四個影片的問題，整學期只要上五次實體課（一個月一次），上課可以不用聽，只要叫到你的時候唸一下自己作業就好，整體感覺很不錯，只是要記得在時間內完成作業～",
+          "rawHeader": "1102｜5星｜甜度8｜涼度8｜89分(2/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-02",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 7,
+          "cool": 7,
+          "grade": 91,
+          "text": "每個月會有一個大主題 裡面有2-4個小主題 每個小主題看完影片跟資料填答問題、針對老師給的題目寫自己的看法 字數多少跟成績有一點成正比 但老師感覺主要還是看你的想法跟論述 阿每個月只有一次實體上課 簡單分享自己寫的東西即可 期末有一個專題報告 有同學互評跟老師評分 占分較重一點\n\n每個月只需要上一次課確實頗好 去那也可以做自己的事 只要點到你的時候稍微講一下你寫啥就可以了 老師人很好\n只是最後發現 其實換算下來 自己看moodle+完成作業+評論別人留言的時間有可能會遠超過很多正常每周實體上課一次的通識\n但也有可能是我太放不下(? 如果只是想有個還可以的分數+每個月有三次不用去上課 這堂課應該可以修得很涼",
+          "rawHeader": "1101｜3星｜甜度7｜涼度7｜91分(2/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-03",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 6,
+          "cool": 7,
+          "grade": 90,
+          "text": "大部分是遠距上課，遠距的時候分配好自己的時間在老師規定期限內完成作業就好，如果想做到很好但又不太了解那個議題可能會需要花很多時間查資料，沒有期中、期末考，期末有報告要交。個人覺得作業偏多但是沒有考試也還不錯。給分應該不算太甜，我90是第三名。實體上課的時候滿涼的，做自己的事老師也不會說什麼，老師點到你的時候記得回答就好。",
+          "rawHeader": "1101｜4星｜甜度6｜涼度7｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-04",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 6,
+          "cool": 4,
+          "grade": 90,
+          "text": "一個月回去一次實體上課，在一個月內把一個大主題的功課寫完(大概就是各種跟全世界相關的議題，去查點資料回來寫)，實體上課的時候把你寫的功課內容報告給全班聽\n期末的專題作業選題慎，一不小心就區域性議題(EX：區域性戰爭或某個地方的水資源爭奪)，不夠「全球」，分數就會比較醜，但重點是互評的人有沒有良心讓你快樂放假去 ，老師通常不會當壞人(不要給人家打太低分啦)",
+          "rawHeader": "1101｜3星｜甜度6｜涼度4｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-05",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 6,
+          "cool": 8,
+          "grade": 87,
+          "text": "每四個禮拜去上一次課就好真的蠻吸引人的，但是中間每個單元都需要看好幾個影片，而且影片不能只放著在那邊給他播，每三分鐘他就會暫停放問你有沒有在看，然後每個單元都有三題問答題需要回答，題目有些是需要去查資料才能回答的，感覺分數是看字數的多寡去評分的？如果很會想問答題的人就蠻推薦這門課的，但如果不擅長回答很長篇大論的回答就比較不推薦，會想的很痛苦，最後的期末報告可能需要花點時間，上課大部分都是在做自己的事，讓老師講這樣，大家都在用自己的筆電或平板之類的，之後就輪流發表一下自己對於議題的看法。",
+          "rawHeader": "1101｜4星｜甜度6｜涼度8｜87分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-06",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 9,
+          "grade": 87,
+          "text": "課程內容完成度25%,單元測驗15%,課程報告40%,專題作業成績20%\n\n大多是非同步課程（不用去上實體課），偶爾幾次實體課去上就好（老師好像也沒點名）。線上授課自己看老師錄好的影片，如果不想看也要留下觀看紀錄即可，作業記得做，字數越多分數好像會越高。",
+          "rawHeader": "1101｜5星｜甜度9｜涼度9｜87分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b04-07",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "作業+課程小問題。沒有期中期末。\n\n這是遠距課程，時間上滿彈性的。課程會有4個大主題，每個大主題下都各有2~4個小主題。課程基本上就是把影片看完，然後回答問題，然後評論一下那個議題這樣。期末會有一個占分比較重的專題作業(20%)，就是從學期課程的所有主題中，選一個主題，然後一樣寫對這個議題的看法。評論基本上字數跟分數呈正相關，不要寫太少分數都不錯。",
+          "rawHeader": "1091｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE224A-yangshuncong",
+      "code": "HE224A",
+      "name": "創意思考與創新",
+      "domain": "di",
+      "teacher": "楊順聰",
+      "reviews": [
+        {
+          "id": "lg-di-b05-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 10,
+          "grade": null,
+          "text": "每兩週的moodle 作業及一份學期作業\n\n有遠距課堂，可以自己選擇什麼時候看。作業有點難寫，其實看了課堂影片寫的時候也不容易。實體課老師會問你問題，如果不懂回答沒關係，老師人很好。只是要注意準時交作業～",
+          "rawHeader": "1111｜5星｜甜度8｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b05-02",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 7,
+          "cool": 6,
+          "grade": 84.6,
+          "text": "課程內容完成度(15%)、課程內容討論與回應(有建設性的回應一則加2分)(25%)、四次課程報告(40%)、專題作業成績(期末作業)(20%)\n\n上課方式是在moodle上根據當月課程看影片和寫作業(兩個大作業/月)，寫作業就是以發表留言的方式張貼你的想法，一個月上一次實體課，是進行當個月作業的報告，也就是老師滑到你的留言，你就要發表自己對於該題目的看法，基本上就是解釋一下你的回答。\r\n主要是喜歡動腦想奇奇怪怪的東西的人就會滿喜歡這堂課，因為有些題目是要根據教學影片回答的練習題，滿多發散性思考的東西，基本上是都回答得出來，但是越特別越想不到的越好。",
+          "rawHeader": "1102｜4星｜甜度7｜涼度6｜84.6分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b05-03",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "四個星期一次實體上課，一定要到喔，其他時候都是線上課程。時間管理好的話，應該提早完成作業不難，課程扎實，有些東西需要想一下。",
+          "rawHeader": "1091｜4星",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b05-04",
+          "term": "1081",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 89,
+          "text": "每個月去一次教室進行簡單的報告，其他時候都是線上課，但會有作業。基本上按部就班完成的話負擔不大，老師人也很好，會給很多引導的方向。",
+          "rawHeader": "1081｜4星｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE229A-xiaoningxin",
+      "code": "HE229A",
+      "name": "機能營養學",
+      "domain": "di",
+      "teacher": "蕭寧馨",
+      "reviews": [
+        {
+          "id": "lg-di-b06-01",
+          "term": "1091",
+          "stars": 2,
+          "sweet": 7,
+          "cool": 6,
+          "grade": null,
+          "text": "算分:報告\n可能上課大家都很尬，不回答老師問題，老師覺得我們都沒有反應，有點小生氣吧，但一直跟台大學生比較真的ㄏ，我就馬偕。老師分數都打得甜，倒是不錯。",
+          "rawHeader": "1091｜2星｜甜度7｜涼度6",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b06-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "這門課沒有考試，成績都是用作業和蔬果汁報告來算，沒什麼負擔。老師還蠻認真上課的，但是大家都在做自己的事。老師會睜一隻眼閉一隻眼",
+          "rawHeader": "1091｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE222A-zhengshuli-yangxingyu-hongjiadai",
+      "code": "HE222A",
+      "name": "健康與人生",
+      "domain": "di",
+      "teacher": "鄭淑利，楊星瑜，洪佳黛",
+      "reviews": [
+        {
+          "id": "lg-di-b07-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 7,
+          "cool": 9,
+          "grade": 88.4,
+          "text": "期中辯論、期末報告跟考試\n\n整體蠻涼的、辯論頗好玩的 多一個經驗、期末報告跟考試都負擔不大 蠻簡單的、老師們都很好 推推",
+          "rawHeader": "1101｜5星｜甜度7｜涼度9｜88.4分(3/23)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b07-02",
+          "term": "1081",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 88,
+          "text": "還不錯，其實也有實用知識，但滿放鬆的",
+          "rawHeader": "1081｜4星｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b07.html",
+          "hidden": false
+        }
+      ],
+      "teachers": [
+        "鄭淑利",
+        "楊星瑜",
+        "洪佳黛"
+      ]
+    },
+    {
+      "id": "HE005A-yangmingzheng",
+      "code": "HE005A",
+      "name": "人工智慧與Python程式設計",
+      "domain": "di",
+      "teacher": "楊明正",
+      "reviews": [
+        {
+          "id": "lg-di-b08-01",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 98,
+          "text": "每次會有作業，上課做完，期中期末有open book的考試\n\n如果希望衝分數絕對建議修楊明正教授的課，作業都有交分數絕對爆炸高。作業內容老師都會教作法，如果不會也可以直接問老師，教授很願意回答。（段考的時候也可以喔）。人工智慧部分建議買書自己看，會比較省時間有效率。",
+          "rawHeader": "1091｜5星｜98分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b08-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "平時作業40% 期中期末各30%\n\n能學到一些東西但不多。每堂課都會交一份作業，由老師帶著寫，不會的他都會教，作業基本上都能拿到96以上，期中考期末考也不難，考前一兩天讀好書(他會畫要考的重點)，寫程式的部分可以看之前自己的課堂筆記(作業)，分數都能拿得不錯。\r\n想輕鬆過的可以選這個。但很想學寫程式的，這堂課能給你的很有限(當然自己鑽研再去問老師應該也是可以啦)。",
+          "rawHeader": "1091｜4星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE231A-guohuimin",
+      "code": "HE231A",
+      "name": "健康照護行動裝置程式設計入門",
+      "domain": "di",
+      "teacher": "郭惠敏",
+      "reviews": [
+        {
+          "id": "lg-di-b09-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "上課蠻涼。一半的時間在上觀念類的課，能學到東西；另一半是實作課，用PPT的介面去做APP，只要照著老師的步驟去做就能學會。最後再做一個健康APP 互評。",
+          "rawHeader": "1092｜4星",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b09-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": 5,
+          "cool": 5,
+          "grade": 87.6,
+          "text": "平時+期中考+期末實做\n普通、不涼(上課其實算涼)，如果是因為不懂程式而卻步，那麼大可放心，這堂課連我這3C白癡都能上手。老師很用心也很溫柔，只是實作上真有點累人，有點像做一堆ppt然後加上一堆動畫的感覺；不過當完成時，驚訝自己的作品真的變成一個app的時候，成就感真的挺滿足的。\n說真的，這堂課沒有想像中恐怖啦，尤其期初到期中其實涼爆，重點是期末作業而已。",
+          "rawHeader": "1091｜4星｜甜度5｜涼度5｜87.6分(名次2/9)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE806A-yangmingzheng",
+      "code": "HE806A",
+      "name": "資訊概論",
+      "domain": "di",
+      "teacher": "楊明正",
+      "reviews": [
+        {
+          "id": "lg-di-b10-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 91,
+          "text": "作業25+平時5+期中35+期末35\n\n很涼很甜的一堂課，老師上課很輕鬆。\n可以選擇兩種上課人生：1.認真上課，可以學到很多電腦方面的小常識；2.耍廢上課，坐後排做自己的事情。\n一開始老師會規定不可以用自己的電腦、平板、手機，但其實你用了他也不會說什麼，不要太明目張膽就可以了。\n每堂課都會有一個小作業，但都會在課堂上完成，只有一兩個是需要課後做的。\n平時成績部分，老師會在問題討論的地方丟一些電腦醫療相關時事的議題，只要做簡單的評論，一學期10次評論，平時成績5分全拿。（老師上課的時候都會針對這些議題稍作講解，我都用這個時候評論）\n期中期末要考的內容都在老師的講義裡面，還會特別幫你標示考試重點，所以稍微唸就可以有不錯的分數。\n總之很涼很甜。\n建議大一新生可以來修這堂課，老師一開始會教很多的軟體應用，例如word、Endnote，還會導覽一下學校圖書館的電子資源，我覺得新生可以學這些，以後做共筆、查paper都會比較快速。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜91分(班排16名)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b10-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 96,
+          "text": "平時5% 期中期末各35% 作業25%\n老師上課一開始會教怎麼利用學校資源，跟如何操作office365。會介紹基本的資訊操作，但我覺得有點雜有點累，上課當天要交作業，不難，但是每次都要交很煩。老師很用心，分數也給不錯，算能學到東西，推薦想認識資訊基礎的人來選",
+          "rawHeader": "1101｜5星｜甜度10｜涼度8｜96分(第八名)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE811A-yangmingzheng",
+      "code": "HE811A",
+      "name": "程式設計概論",
+      "domain": "di",
+      "teacher": "楊明正",
+      "reviews": [
+        {
+          "id": "lg-di-b11-01",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 94,
+          "text": "幾乎每堂課都要交作業，但課堂作業比較像是老師帶著你做一次，偶爾會有一些是需要自己想一下的東西，有時候課堂做不完會需要下課後自行完成\n作業有交分數都蠻高的，我幾乎每次作業成績都是95\n也因為都會有課堂作業，會需要每堂課都到沒辦法翹課\n期中期末都是開書考，不用背程式碼\n老師期中有洩漏比較難的一題先讓我們回家寫\n但我覺得需要跟同學一起修這堂課才有辦法討論，除非自己本身早就有程式設計的底",
+          "rawHeader": "1102｜4星｜甜度9｜涼度7｜94（班排4）",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b11-02",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 94,
+          "text": "期中考期末考各30%+作業40%\n\n請注意這堂課學的是C#，雖然為C家族中最好學的了，但如果沒程式基礎來修會很累。老師上課輕鬆會一步一步帶，可以學到怎麼寫程式。這堂課應該是楊明正開的最不涼的課了，但老師一樣人很好，推薦大家來修。但是對初學者來說老師上課上太快，容易吸收有困難，記得抱會寫程式的人的大腿",
+          "rawHeader": "1102｜5星｜甜度9｜涼度7｜94（4/18）",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b11.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE230A-lijunting",
+      "code": "HE230A",
+      "name": "電腦繪圖概論",
+      "domain": "di",
+      "teacher": "李俊廷",
+      "reviews": [
+        {
+          "id": "lg-di-b12-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 99,
+          "text": "超推！老師人超好！而且分數給很高！\n老師上課會一個步驟一個步驟帶著我們做\n然後不會的隨時舉手也都會過去幫你看\n原本有期中小組報告但因為疫情老師就取消了\n改成只有期末個人報告，但這個也蠻簡單的，就設計一個小東西然後課堂上教大家怎麼做就好\n幾乎每堂課都會有作業要交但是作業就是老師上課一個步驟一個步驟帶的東西",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10｜99（班排1）",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-di-b12-02",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "交1個作品\n老師人很好，可以一直問。是會學到東西的課。每堂課就是學1~2個操作技巧，像是怎麼在模型上挖洞之類的。沒啥設計細胞也沒關係，作品就算跟我一樣做得很破也還是會拿高分，所以推薦修這堂課。",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b12.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE225A-shenyongshun",
+      "code": "HE225A",
+      "name": "環境變化與人類健康",
+      "domain": "di",
+      "teacher": "申永順",
+      "reviews": [
+        {
+          "id": "lg-di-b13-01",
+          "term": "1112",
+          "stars": 3,
+          "sweet": 5,
+          "cool": 3,
+          "grade": 90,
+          "text": "10%作業、10%平時、40%期中報告、40%期末報告\n\n這堂課基本上可以稱作馬講2.0，每堂課都有學習單，樣式和馬講差不多，然後期中報告是報告一個國家常見的氣候災害、衝擊、調適。期末報告是報告一家醫院（外國）因氣候災害及氣候災害衍伸的疾病而有什麼衝擊、調適等。然後學期間還有辦一個展，也是做報告然後再把報告弄成海報公告在走廊，然後每組派人去站崗解說。雖然老師上的內容很有意義，但真的蠻累的。要選之前建議先考量自己當學期的課業量",
+          "rawHeader": "1112｜3星｜甜度5｜涼度3｜90分（2/13）",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n02_di/b13.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE316A-wuyingde",
+      "code": "HE316A",
+      "name": "民法概論",
+      "domain": "ren",
+      "teacher": "吳盈德",
+      "reviews": [
+        {
+          "id": "lg-ren-c01-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 90,
+          "text": "平時30+期中30+期末40\n\n通識選修中的「必修」。真的涼到爆！ 也可以選擇認真上課，老師有時候討論的很多議題都跟我們自身相關，聽他講一些故事也很有趣。如果不想上課，老師也不會說什麼，就默默坐後排，不要影響別人就沒事了。老師偶爾會點人問意見，但如果你看起來就沒在上課，老師也不會點你。 期中期末的考試方式，老師丟在portal上，自己寫好答案上傳就可以了，題目答案google就有了，都是民法國考題。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜90分(第13名)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c01-02",
+          "term": "1101",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 92,
+          "text": "上課很喜歡岔題聊天，是有學到一點點跟民法有關的東西啦，最讓我不能接受的是老師期中考期末考竟然出完全一樣的題目(沒騙!整張考卷完全一樣)",
+          "rawHeader": "1101｜2星｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c01-03",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 85,
+          "text": "老師在上課一開始就說他其實也沒有很想來上課XDD然後他也沒有很在意出席這樣，但他其實大概都知道誰是誰。上課的時候他滿常扯一些其他東西（個人覺得他有時候立場稍微偏激），一扯一個小時就過去了。還有他滿喜歡跟大家互動討論、點人發言的。期中期末都是提前給25題的考卷，放在portal上，填完答案再上傳繳交就好。啊那些題目，google全部找得到正確答案（別像我一樣一開始一條一條法條慢慢翻QQ）。總而言之是一個本身內容偏硬但可以上得很涼老師也不會為難你的課！（但老師一直說他沒有很想來上，所以下學年會不會再是他不好說）",
+          "rawHeader": "1091｜4星｜85分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE019A-zhengguanyu",
+      "code": "HE019A",
+      "name": "民法總則",
+      "domain": "ren",
+      "teacher": "鄭冠宇",
+      "reviews": [
+        {
+          "id": "lg-ren-c02-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 95,
+          "text": "筆記XDDDDDDD\n畢竟是法律有些東西就是比較硬，好在老師沒有為難我們，直接省去期中期末考，只有在倒數第二堂課突襲檢查筆記XD 總體來說只要你平常該上課的有上課，有拿出你的態度讓老師看到，分數應該都不會太難看。(班上有人在突襲筆記那堂翹課，或是謊稱筆記沒帶回去抄，聽說老師事後就比較不開心，但其實他人很好啦，而且法條真的是直接信手捻來，超強)",
+          "rawHeader": "1101｜5星｜甜度10｜涼度8｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE517A-wujingqin",
+      "code": "HE517A",
+      "name": "法律與生活",
+      "domain": "ren",
+      "teacher": "吳景欽",
+      "reviews": [
+        {
+          "id": "lg-ren-c03-01",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 6,
+          "cool": 10,
+          "grade": 73,
+          "text": "做報告+出席率\n原則上會有期中考+期末考，皆為申論手寫題（好像可以查資料），平時老師會點同學來問問題，當作出席率的一部分。可以選擇要不要做報告，有做報告分數會比較高，基本上是門很涼的課，但是分數的高低由自己決定（老師保證不當人，還真的沒當人）。舉我為例，整學期只去3堂課（包含期中考）、沒做報告，學期成績73分（真的非常低，最後一名）。",
+          "rawHeader": "1102｜4星｜甜度6｜涼度10｜73",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c03-02",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 10,
+          "grade": null,
+          "text": "其實我是聽別人說然後來寫的，聽說上課只要點名，然後也可以都不去上課，期末那次有到就好，然後因為這學期是遠距上課，所以又變得更涼了，就給到10分嘿嘿",
+          "rawHeader": "1102｜4星｜甜度9｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c03-03",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 6,
+          "cool": 9,
+          "grade": null,
+          "text": "不會點名，做自己的事老師也不會管。老師上課會以一些生活中可能遇到的法律相關現象或案例來延伸講解。期中考就是寫心得，期末可以選要書面報告還是口頭報告（口頭報告分數比較高）報告題目自己訂。老師好像有說期末不交報告也沒關係，就都用期中成績算。整體來說沒什麼loading，但成績就要看老師喜不喜歡你的心得或報告了",
+          "rawHeader": "1092｜4星｜甜度6｜涼度9",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE321A-liaoenci",
+      "code": "HE321A",
+      "name": "醫療發展進步史",
+      "domain": "ren",
+      "teacher": "廖恩慈",
+      "reviews": [
+        {
+          "id": "lg-ren-c04-01",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 6,
+          "grade": 96.4,
+          "text": "老師上課會講很多台灣醫療發展的故事，我個人覺得聽起來很有趣，認真上課是真的可以學到東西。期中有個人報告，期末是申論題筆試（15題選10題寫），筆試內容都會從簡報裡面出，老師打分也不會太嚴，有寫出一點內容分數應該就不會太慘",
+          "rawHeader": "1111｜4星｜甜度8｜涼度6｜96.4分(3/24)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c04-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 6,
+          "grade": null,
+          "text": "應該是報告、期末考還有出缺席吧\n\n整體而言算挺涼的吧，一開始會分配好每個人的報告題目，幾乎都跟課程相關，恩慈也都會給鼓勵。 期末考的話就是跟上課有關的問題們，雖然不能openbook，但上課有聽到就能寫！ 上課內容就是台灣及世界醫療史上的一些重要疾病和故事，可以當故事聽，做自己的事或不小心睡著恩慈也不太會管(雖然他可能會桑心)。",
+          "rawHeader": "1101｜5星｜甜度8｜涼度6",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c04-03",
+          "term": "1091",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 85,
+          "text": "期末考、出席、報告各30%，課程參與10%\n\n很累，期末考爆難。報告常常會被前面的人拖到時間。能學到東西，但我覺得很累",
+          "rawHeader": "1091｜2星｜85分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c04-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 91,
+          "text": "很甜很涼\n\n對於歷史也興趣的同學可以考慮看看，教授會用ppt講歷史故事，再額外加入一些現代微生物的概念，識亦們有趣的課。期中有一次報告，需要就抽到的醫療史主題。期末考試，16題中自己選10題回答，題目如：「請說明台灣烏腳病有貢獻者」「切膚之愛的典故」",
+          "rawHeader": "1091｜5星｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c04-05",
+          "term": "1081",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "出席、期中報告、期末考\n\n出席部分：很多人簽完名，第二節閃人。期中報告：有用心準備，恩慈都會給你鼓勵，不會diss。期末考：20題選10題，可以自己帶大抄。恩慈人不錯，上課會講到學校跟他個人的事情，當作經驗分享。課程內容，很像歷史，好好聽都會記起來，期末甚至可以不用大抄；而且可以學到很多台灣如何對抗某些疾病的歷史，我是覺得很有趣，你們覺得呢？",
+          "rawHeader": "1081｜5星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE515A-zhangshunquan",
+      "code": "HE515A",
+      "name": "醫療行銷管理學",
+      "domain": "ren",
+      "teacher": "張順全",
+      "reviews": [
+        {
+          "id": "lg-ren-c05-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 92,
+          "text": "大概五個小作業+一個期中分組報告（+印象分數）\n\n作業有點小多，但是不會太難，老師不會太刁難",
+          "rawHeader": "1111｜5星｜甜度10｜涼度8｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c05-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 10,
+          "grade": null,
+          "text": "甜+涼 會有小作業但不難 分數也很不錯",
+          "rawHeader": "1101｜4星｜甜度8｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c05-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 96,
+          "text": "多半是印象分，有一次報告，好好做會讓老師印象深刻，比較容易拿高分。\n\n每堂幾乎都有作業，不算太涼，但是老師對你有印象會好過很多:'')",
+          "rawHeader": "1101｜5星｜甜度9｜涼度7｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c05-04",
+          "term": "1092",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 91,
+          "text": "很涼很甜，整學期的課我都在做自己的事情。只用交三次作業，大多數都是團隊作業，所以找對隊友很重要，有神隊友，你就躺分就可以了。",
+          "rawHeader": "1092｜5星｜甜度9｜涼度10｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c05-05",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 88,
+          "text": "很涼\n\n上課幾乎都可以做自己的事，偶爾翹幾趟沒關係。順全的課只要報告、他說要交的作業有做好，讓他有個好印象分數就會很甜。如果他說的自發性繳交作業有交，那你的分數也會再往上加！不過這學期我很懶，所以分數就沒到那麼甜了(88分第20名)",
+          "rawHeader": "1092｜4星｜甜度9｜涼度10｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c05-06",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "作業30%、平時20%、期中20%、期末30%\n\n超甜超涼，根本不知道在幹嘛",
+          "rawHeader": "1092｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE004A-luohuiqun",
+      "code": "HE004A",
+      "name": "同是醫家人-醫療專業與家庭疾病故事",
+      "domain": "ren",
+      "teacher": "羅惠群",
+      "reviews": [
+        {
+          "id": "lg-ren-c06-01",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 8,
+          "grade": 92,
+          "text": "老師本身是馬偕醫院的心理諮商師，上課會分享他在醫院遇到的實際案例與故事，會點人回答問題(不過不知道怎麼回答也沒關係，沒有強制)。期中與期末各交一篇課堂心得，約6、7百字即可，期中還要交一份自己畫的家庭關係圖，最後還有期末分組報告。個人覺得負擔不會太重，可以偶爾翹課(老師不點名，但不清楚會不會影響成績)。還有老師期初有說過醫學系的同學如果需要分數比較高的話可以跟他講。",
+          "rawHeader": "1101｜4星｜甜度9｜涼度8｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c06-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "報告 （團體 個人） 出席 期末心得\n\n老師上課會分享醫院的家庭疾病故事，有時候蠻感人的，也會分享醫院的生態，要學東西也學的到，也可以做自己的事。團體跟個人報告準時交就ok ，老師人蠻好的 推薦這門課！",
+          "rawHeader": "1091｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE420A-unknown",
+      "code": "HE420A",
+      "name": "英國文化巡禮",
+      "domain": "ren",
+      "teacher": "老師名稱",
+      "reviews": [
+        {
+          "id": "lg-ren-c07-01",
+          "term": "1082",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "出席、各種報告、作業\n\n上課和馬克互動，他會分享事情，你也要給予回應，不會聽說英文的會比較辛苦。報告和作業的話，露西常常突然出，所以有時候會打亂行程，要預留時間比較好。不過整體來說，有得吃有得拿分，建議大家來跟馬克露西聊天。還可以跟馬克出去吃飯，他會負擔部分費用，我吃的好爽。",
+          "rawHeader": "1082｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c07.html",
+          "hidden": false
+        }
+      ],
+      "needsReview": [
+        "教師=\"老師名稱\""
+      ]
+    },
+    {
+      "id": "HE320A-linyiying",
+      "code": "HE320A",
+      "name": "社會學導論",
+      "domain": "ren",
+      "teacher": "林宜穎",
+      "reviews": [
+        {
+          "id": "lg-ren-c08-01",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 10,
+          "grade": 96,
+          "text": "考試，小組口頭報告，需要參加課堂討論\n\n老師人很好，初段有遠距授課，後段要上實體課，沒有回答老師問題沒關係，只要報告時候有來就好。",
+          "rawHeader": "1111｜4星｜甜度8｜涼度10｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-02",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 6,
+          "grade": 97,
+          "text": "電影心得20%期中報告20%期中考30%期末報告30%\n這門課老師在一開始的時候會詢問要入門的社會學還是完整的社會學，結果雖然大家都選擇入門的社會學，但是實際上也沒有多簡單QQ。說真的這門課沒有到特別涼，因為除了評分項目之外，實際上老師在課堂上還會有課堂討論，所以實際上感覺會做的更多。如果想要涼的課程社會學導論不會是首選，但是感覺蠻甜的，所以要賺分數的可以考慮看看。\n期中報告和期末報告都是要報告時勢結合社會學的知識，期中期末可以是同一個新聞，只是期末的報告會要求更深入地以社會學角度來探討。期中考不能開書考，不過老師會在考試前一周給考試重點的ppt，所以就讀那一份就好。電影心得會挑一堂課播放，所以記得不要翹到那一堂課，要不然20%就可能會飛走惹~",
+          "rawHeader": "1111｜4星｜甜度10｜涼度6｜97分(1/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 9,
+          "grade": null,
+          "text": "很甜又很涼 老師人很好，上課的內容如果認真上也能夠很有感觸，學到很多東西，考試是申論題但不難，老師給分不會很嚴，整體來說是一堂值得很認真學到東西，分數又非常高的一堂通識！",
+          "rawHeader": "1101｜5星｜甜度10｜涼度9",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-04",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 98,
+          "text": "平時30%期中30%期末40%\n老詩人很好，很溫柔，會介紹一些社會學理論，但沒有講得很深入，讓原本想學到很多的我有點失望，但對於社會學沒有先備知識的人來說應該會覺得很有收穫 完全可以做自己的事，也可以睡覺 期中期末考筆試，但老師會先準備課堂重點整理，看那份就好，考試題目有一點點選擇題、名詞解釋、申論題(最多) 好好寫就會很高分 (我們幾位同學都期中期末皆拿100分) 學期中有個上台報告，稍微查些資料準備即可",
+          "rawHeader": "1101｜4星｜甜度10｜涼度10｜98分(最高)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-05",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 7,
+          "grade": 98,
+          "text": "平時30% 期中考30% 期末考40%\n真的能學到很多社會學的知識，而且不會太難，適合新手。 老師人很好，但她很喜歡一直點我回答問題(我有一堂課被她連續點6次)",
+          "rawHeader": "1101｜5星｜甜度10｜涼度7｜98分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-06",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "期中期末開書考+一次課堂報告\n是個很涼很甜的課，考試前把老師提供的期中期末整理ppt看過一次就可以去考試了(?)，考題比較著重你的想法，所以就算文筆很差也可以拿到很高分。上課內容也很豐富，社會學的知識深度滿適合新手或想大略了解這個領域的孩子，但如果是本身就已經學很多社會學的人可能就會覺得有點簡單XD",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-07",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 98,
+          "text": "期中考+期末考+報告\n老師人很好，也有很多課堂討論，能學到很多東西！",
+          "rawHeader": "1091｜5星｜98分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-08",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 98,
+          "text": "我自己是很喜歡，有認真上課的話真的會學到很多東西，努力跟分數有成正比，很推薦真的！",
+          "rawHeader": "1091｜5星｜98分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c08-09",
+          "term": "1081",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "期中期末報告、期中考\n\n如果願意多參與課堂討論的話，這是能夠學到很多的一堂課！老師人也很好，會給很多鼓勵。",
+          "rawHeader": "1081｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE326A-linyiying",
+      "code": "HE326A",
+      "name": "社會設計與實作",
+      "domain": "ren",
+      "teacher": "林宜穎",
+      "reviews": [
+        {
+          "id": "lg-ren-c09-01",
+          "term": "1082",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "出席、上課討論、期末報告\n\n很多討論跟分享，有時候會覺得累，喜歡講話不怕尷尬可以來，但請有腦發言，不然會拖累同組隊友。老師很用心，可惜上課氣氛不太會帶。",
+          "rawHeader": "1082｜4星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c09-02",
+          "term": "1082",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "報告以及討論成績\n\n會有比較多課堂討論，主動性要高，有點想Light版本的馬講，但只需要寫企劃不需要實際執行",
+          "rawHeader": "1082｜3星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE323A-linjinyuan",
+      "code": "HE323A",
+      "name": "阿美族語言與文化",
+      "domain": "ren",
+      "teacher": "林金源",
+      "reviews": [
+        {
+          "id": "lg-ren-c10-01",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90.5,
+          "text": "一個挺可愛老師上的課。期中期末考上課的講義跟筆記(包括一些阿美族單字，問候語)有讀基本上不會很難，有背分數很容易拿到；比較麻煩是期末要上台唱歌，然後錄自己唱歌影片上傳，不過其實就連我這種不會唱歌都順利唱完了,老師也不會刻意刁難啦~對於原住民語言好奇的學弟妹，歡迎體驗看看，我個人蠻喜歡這堂課的~但如果你是想修超級涼課的那種，就請你去修順全(?)囉!",
+          "rawHeader": "1091｜5星｜90.5分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c10-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 70,
+          "text": "出席+期中，期末考\n\n除非很愛阿美族語否則不推",
+          "rawHeader": "1091｜5星｜70+分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c10-03",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 92.5,
+          "text": "出席+期中考＋期末考＋唱阿美族歌\n\n甜。每次上課老師都會讓全班講過一次自我介紹（因為大家不熟阿美族語，通常全班講完就會花掉一節課，自己講完自我介紹或是還沒輪到自己時可以做自己的事情）老師每次上課的進度不會很快，其實每次上課不一定要完全理解每句阿美族語的意思，抄下來就好。期中期末時把這些全部背起來，就能拿到很高的分數（我期中考超過100分）真的是有背有分，而且老師很親切不會為難，推！",
+          "rawHeader": "1091｜5星｜92.5分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE324A-lijunting",
+      "code": "HE324A",
+      "name": "新產品開發導論",
+      "domain": "ren",
+      "teacher": "李俊廷",
+      "reviews": [
+        {
+          "id": "lg-ren-c11-01",
+          "term": "1111",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 6,
+          "grade": 98,
+          "text": "今年老師把創意競賽加到課程裡，所以沒有像前幾次那麼涼，基本上前半學期都會是小組討論競賽的產品、簡報之類的，是小組成績佔比較重的一堂課。期末有要自己設計新產品然後做成錄影簡報上傳。整體來說老師人很好，要求的東西不會太難，分數也給很甜，推薦想參加競賽來豐富人生經驗順便拿獎金的人選修",
+          "rawHeader": "1111｜4星｜甜度9｜涼度6｜98分(3/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c11-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 94,
+          "text": "有期中和期末報告，但期末後來取消了(開心)上課會介紹一些產品開發、創意發想的方式，不算很有趣比較是理論介紹，上課時會需要分組完成課堂作業，蠻簡單的老師人很好，會給很多協助，對期中報告的內容也很鼓勵，強調不用回去做作業和報告，也真的只需要在上課時操作就好可以做自己的事、可以睡覺，分組作作業時起來做就好",
+          "rawHeader": "1101｜4星｜甜度10｜涼度10｜94分(11/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c11-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "上課小練習\n\n是個人很好的老師，我上課玩摩爾莊園他也沒有生氣。每堂課都會有一些簡單有趣的小練習，因為是小組型的練習所以其實每個人的負擔不大。沒有作業，分數也給得很夠意思。如果是想要學產品開發的人也很推薦，理論或方法都上得很扎實，如果聽不懂的話老師也會讓你一直問問題，是個會學到東西的課。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c11-04",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "期中期末兩次報告\n\n老師人超～～好！每次都會很有耐心的講解，不會生氣，也完全不會為難學生。整學期基本上就是要開發出一個新的產品，依階段分成期中跟期末各一次報告。上課會講一些理論跟流程，推薦大家可以去修！",
+          "rawHeader": "1091｜4星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c11.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE315A-zhangshunquan",
+      "code": "HE315A",
+      "name": "經濟學原理與應用",
+      "domain": "ren",
+      "teacher": "張順全",
+      "reviews": [
+        {
+          "id": "lg-ren-c12-01",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 9,
+          "cool": 9,
+          "grade": 88,
+          "text": "上課可以做自己的事還算涼，不過作業很多，聽說老師在考慮之後要有考試，給分應該算滿甜的，我88分已經是倒數的了。如果老師記住你的話修這堂課分數好像會比較高，因為我作業幾乎都滿分，也沒翹課但分數是倒數的。",
+          "rawHeader": "1101｜3星｜甜度9｜涼度9｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c12-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "一般作業，有寫有分，詳細不知道\n只要一份作業認真讓他有印象，以後每堂課分數都會高",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c12.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c12-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 97,
+          "text": "感覺很多是印象分，一學期只有一次報告，表現好被老師認識就比較容易拿高分。\n順全老師比較人治，上課積極回應、報告作業好好寫可以拿高分。",
+          "rawHeader": "1101｜5星｜甜度9｜涼度7｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c12.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE305A-caibihua",
+      "code": "HE305A",
+      "name": "英語讀者劇場",
+      "domain": "ren",
+      "teacher": "蔡碧華",
+      "reviews": [
+        {
+          "id": "lg-ren-c13-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 96,
+          "text": "很推！而且可以說中文，功課等等課堂內都會給時間，基本上不太需要花自己的時間進行",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c13.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE014A-zhangshunquan",
+      "code": "HE014A",
+      "name": "健康保險與健康政策",
+      "domain": "ren",
+      "teacher": "張順全",
+      "reviews": [
+        {
+          "id": "lg-ren-c14-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 6,
+          "grade": 90,
+          "text": "滿甜的課",
+          "rawHeader": "1092｜4星｜甜度8｜涼度6｜90+分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c14.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE905A-laiyunliang-huangmingyuan",
+      "code": "HE905A",
+      "name": "醫學與絕症-苦難中找希望的醫學",
+      "domain": "ren",
+      "teacher": "賴允亮、黃銘源",
+      "reviews": [
+        {
+          "id": "lg-ren-c15-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 6,
+          "cool": 9,
+          "grade": 90,
+          "text": "期中個人報告20%/期末分組報告30%/出席35%/期末考15%\n想了解安寧緩和醫療的人非常推薦這門課!課程安排用心，內容豐富實用，老師上課也很認真，想了解更多的話，助教和老師也很願意回答；但也不用擔心負擔很大，上課時若不想聽也可以做自己的事，還常提早半小時下課XD，期中期末報告需要花一點心思準備，但是不會太難，也蠻有意義的，期末考有是非題、選擇題、填空題，不難，而且最後一堂課老師還全部複習一次，平時若沒特別認真上課，只要有看那份PPT期末考就沒問題了!!這堂課唯一比較麻煩的地方可能是出席吧，每堂課都很準時點名，遲到好像也會登記(但不確定有什麼影響)",
+          "rawHeader": "1102｜5星｜甜度6｜涼度9｜90分(2/24)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c15.html",
+          "hidden": false
+        }
+      ],
+      "teachers": [
+        "賴允亮",
+        "黃銘源"
+      ]
+    },
+    {
+      "id": "HE021A-blake-knox",
+      "code": "HE021A",
+      "name": "西洋現代史",
+      "domain": "ren",
+      "teacher": "Blake Knox(Jamie)",
+      "reviews": [
+        {
+          "id": "lg-ren-c16-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": null,
+          "text": "1次報告+課堂參與\nJamie的課，總之在講西洋史。跟高中的上課方式差距很大，會比較想要聽你怎麼看待這個歷史事件，屬於觀點性的表達。上課方式就是大家討論聊聊天這樣。如果想練英文的話可以選，個人覺得比起高階會話/寫作要涼的非常多。如果英文不好的話就找歷史或英文好的同學抱大腿就可以了(?)",
+          "rawHeader": "1102｜5星｜甜度10｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c16.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE022A-lindongmao",
+      "code": "HE022A",
+      "name": "刑法概要",
+      "domain": "ren",
+      "teacher": "林東茂",
+      "reviews": [
+        {
+          "id": "lg-ren-c17-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 98,
+          "text": "老師印象、心得報告\n這位老師是刑法界裡的優秀學者，以簡單易懂的方式解釋刑法概念，聽他上課就像是聽故事一樣，毫無壓力卻可以學到東西，偶爾也會分享人生經驗，因此上起課來不會感到無聊。老師雖然口頭上說不會在意出席率，但心裡還是很在意出席率，假如被他發覺你有翹課不，他就會記住你，上課就比較有可能被他問問題。分數給的很高吧（98分班排7），但據說也有人被當掉。",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10｜98分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c17.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE022A-linshukai",
+      "code": "HE022A",
+      "name": "刑法",
+      "domain": "ren",
+      "teacher": "林書楷",
+      "reviews": [
+        {
+          "id": "lg-ren-c18-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 96,
+          "text": "平時30%+期中35%+期末35%\n\n遠距教學超涼。期中期末開書考，可以參考任何資料，用表單回答。基本上我都沒在上課，考前把 PPT 快速看過一遍、知道要去哪份檔案找答案。如果找不到答案就 Google 。",
+          "rawHeader": "1112｜5星｜甜度10｜涼度10｜96分(3/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c18.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-ren-c18-02",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 97,
+          "text": "平時20% 期中期末各40%\n\n上課不會點名，又會錄上課的影片，所以也可以不用在該上課的時候上課。老師上課很有趣，講解的滿清楚的，有興趣的人可以好好上。",
+          "rawHeader": "1112｜5星｜甜度10｜涼度10｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n03_ren/c18.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE425A-zengwenying",
+      "code": "HE425A",
+      "name": "台灣當代小說中的社會史貌",
+      "domain": "xin",
+      "teacher": "曾文瑩",
+      "reviews": [
+        {
+          "id": "lg-xin-d01-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 92,
+          "text": "上台+期中+期末報告\n老師教得很精采，不過不會管同學在做什麼，所以基本上大家都在做自己的事情。整學期的課只要準備好上台報告就好。期中報告的時候，老師會在那堂課提醒要聽課，期末報告則是可以在google找到答案。可以說是心領域中的爽課。",
+          "rawHeader": "1102｜5星｜甜度9｜涼度10｜92(6/20)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d01-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 9,
+          "grade": 93,
+          "text": "學期初就會分好要報告的組別主題跟內容也會先確定，每兩個禮拜一組報告，報告的時候還蠻喜歡打斷人更正你可能講得不太對（？）的地方，報告完她就會補充，然後她講的東西有些會變成期末的申論題答案，所以還是可以大概聽一下，她也不太會管底下的人在幹嘛， 期中沒有考試只要交書面作業就好。",
+          "rawHeader": "1101｜4星｜甜度8｜涼度9｜93(1/22)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d01-03",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 91,
+          "text": "老師上課很有趣，可以在上課做自己的事，每組會有一次的小說報告，老師會給予很充沛的知識補充及很鼓勵性的回饋。",
+          "rawHeader": "1092｜5星｜91(第5名/25人)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d01-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "老師上課很Free的，我常看到許多人在教室後方做自己的事，老師其實都閉兩隻眼在看。聖誕節還自掏腰包請每個人吃零食，還抽出幾個人送老師精心準備的禮物(諸如乳液之類)，可以感受到老師滿滿愛心。基本上開學會分組，大約4個人一組介紹指定的一個文人並於課堂上報告(像張愛玲、黃春明等)，老師將於報告後做一個更深入的講解。對華文文壇文人有興趣的可以學到東西，對文學沒興趣的我認為這堂課負擔也不會太大。期中以書面報告呈現，有一至二個禮拜能夠書寫；期末則是在一個禮拜前給題目，當天手寫。期中的題目傾向自我上網找資料以及自我心得感想，期末題目則建議閱讀課堂上介紹的小說篇章，才能理解題目欲表達的意思。老師人真的超耐斯，且對於台灣當代小說的社會史貌其實有相當淵博的知識，如果你也喜歡閱讀，歡迎來上這堂課。(順帶一提，90是這學期最高分，如果有分數考量的朋友，可以多多思量囉)",
+          "rawHeader": "1091｜5星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE424A-jamie",
+      "code": "HE424A",
+      "name": "創意寫作",
+      "domain": "xin",
+      "teacher": "Jamie",
+      "reviews": [
+        {
+          "id": "lg-xin-d02-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 95,
+          "text": "雖然全英文授課有點壓力，但裡面的作業頗輕鬆，自己作業大部分都沒交，如果有交的話，常常是上課花30秒搞定，就因為這種敷衍的態度，和破爛的英文，導致我分數是倒數第二，但學期95，夠拉GPA吧？ 又不用動腦，只要坐在那邊兩節課，就完事了",
+          "rawHeader": "1111｜5星｜甜度10｜涼度8｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d02-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 6,
+          "grade": null,
+          "text": "上課參與\n\n總之就是盡可能地跟他聊天還有課堂參與就行了，英文好不好我倒是覺得其次，因為我上課有大概一半的時間都聽不懂他在講甚麼，但他還是很喜歡跟我們說話(?)。",
+          "rawHeader": "1101｜5星｜甜度9｜涼度6",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d02-03",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "甜，不太涼\n\n每個禮拜都有文章要寫，但不確定老師知不知道每個人有沒有交，期末因為遠距，要弄個劇本，線上演戲蠻好玩的",
+          "rawHeader": "1092｜3星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d02-04",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 91,
+          "text": "出席率、有作業(不知道佔多少)、期末分組演戲(?之類的\n\n不太涼 頗甜\n\n幾乎每星期都有作業 有些有點麻煩 而且經常要分組(有時候會跟完全不認識的一起 有好有壞) P.s. 我的英文程度不太好 有時會有點壓力 因為大家英文都蠻好的",
+          "rawHeader": "1092｜3星｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d02-05",
+          "term": "1082",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "跟寫作、會話差不同\n同寫作、會話",
+          "rawHeader": "1082｜4星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d02-06",
+          "term": "1082",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "很甜很涼\n\n如果不排斥講英文又願意跟Jamie聊天的話分數還不錯。作業有點麻煩 可能要分組報告或是寫文章。可以練習英語口說跟寫作",
+          "rawHeader": "1082｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE418A-baieya",
+      "code": "HE418A",
+      "name": "親密關係",
+      "domain": "xin",
+      "teacher": "白爾雅",
+      "reviews": [
+        {
+          "id": "lg-xin-d03-01",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "上課會有一些討論，如果不討厭和別人討論的話可以修！期中期末要寫告白信與分手信，可以事先準備減輕壓力。",
+          "rawHeader": "1091｜5星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d03-02",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 89,
+          "text": "平常成績為小組報告，總共兩次；期中考為告白信，期末考為分手信，總共2000字\n\n需要兩本教材，無考試",
+          "rawHeader": "1091｜4星｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE413A-linshengying",
+      "code": "HE413A",
+      "name": "藝術元素剖析",
+      "domain": "xin",
+      "teacher": "林聖縈",
+      "reviews": [
+        {
+          "id": "lg-xin-d04-01",
+          "term": "1101",
+          "stars": 2,
+          "sweet": 4,
+          "cool": 3,
+          "grade": 80,
+          "text": "平時成績+期中考+期末考各占1/3\n\n上課可以學到許多也不無趣，但如果想要拿高分不建議選，因為考試真的蠻硬的，上課要認真記筆記，也需要花一些時間讀。老師有規定上課不能用手機。",
+          "rawHeader": "1101｜2星｜甜度4｜涼度3｜80分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d04-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 86,
+          "text": "作業34%期中33%期末33%\n\n老師人很好，上課會教要怎麼看一幅畫的空間線條顏色光線之類的，喜歡藝術的人應該會覺得很有趣；期中期末會考試，但老師上到會考的地方都會特別強調 如果上課都有認真聽應該不用花太多時間準備XD",
+          "rawHeader": "1091｜5星｜86分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE421A-baieya",
+      "code": "HE421A",
+      "name": "社會觀察與影像創作",
+      "domain": "xin",
+      "teacher": "白爾雅",
+      "reviews": [
+        {
+          "id": "lg-xin-d05-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 10,
+          "grade": 88,
+          "text": "自訂項目20+期中40+期末40\n上課以看紀錄片為主，紀錄片內容主要會探討一些時事議題：女性平權、外籍新娘、外籍勞工等，老師在課前或課後會有導讀跟一些講解，但都是老師講話，學生之間不用互動，如果討厭跟別人討論的人，很推薦XD 老實說老師挑的議題都蠻有趣的，但這種就是見仁見智了。 如果想划水上課的人，只需要有認識的朋朋在裡面上課，每次告訴你紀錄片的名字就好了。 期中、期末考是手寫題，主要考試內容為平常播的紀錄片的想法跟反思，而考試期間可以用電子產品查詢，所以忘記內容沒關係（沒上課也沒關係），只要知道片名查一下就可以了。基本上寫好寫滿應該還行拉。",
+          "rawHeader": "1101｜5星｜甜度8｜涼度10｜88分(第11名)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d05-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 7,
+          "cool": 9,
+          "grade": 91,
+          "text": "平時作業20%期中期末各40%\n每堂課會看紀錄片 不會點名 但會有兩三次要寫一下作業 期中期末很簡單就是寫你對紀錄片的議題的一些想法",
+          "rawHeader": "1101｜4星｜甜度7｜涼度9｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d05-03",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "很甜很涼\n\n上課就是看紀錄片，然後影片播完會留時間給你紀錄一下你看到甚麼，寫完交給老師保管就可以走人。不會點名。期中就是開學~期中前的電影挑一部，然後在課堂上寫心得(可以查手機、上網找資料，當然還有你每堂課的紀錄紙)，期末也是期中~期末挑一部寫心得，考試形式跟期中考一樣；原則上把那張作答用的A4紙填越滿，分數就越好看。",
+          "rawHeader": "1091｜5星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE409A-linshengying",
+      "code": "HE409A",
+      "name": "舞台劇音樂欣賞",
+      "domain": "xin",
+      "teacher": "林聖縈",
+      "reviews": [
+        {
+          "id": "lg-xin-d06-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 94,
+          "text": "報告67%+平時33%\n\n期中期末各一篇報告，兩篇報告都在期末周後繳交。一篇是杜蘭朵改寫、另一篇是瘋狂理髮師結局分析，老師的報告題目都很開放、讓大家自由發揮，不會有太多限制。我個人覺得寫這兩篇報告滿有趣的。（杜蘭朵我寫了超過一萬字，96分；瘋狂理髮師則搭配圖表做分析，96分）\n老師說他能容忍一學期至多翹2次課，翹超過2次會被當掉。每堂都會點名，不需要寫筆記或考試，只要去聽課就好。報告好好寫的話單篇分數可以拿 87~90 以上不是問題。雖然不是特別甜，但看舞台劇滿有趣的、是一門幫助發掘新興趣的課。",
+          "rawHeader": "1112｜5星｜甜度8｜涼度8｜94分(1/18)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d06-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 87,
+          "text": "期中期末報告各33%，平時成績34%(出席率、回答問題之類的)\n\n普通涼普通甜\n\n收穫很多!想了解歌劇的同學很推薦選修，不論有沒有古典樂底子都行，老師講課很有趣還會欣賞歌劇。沒有考試!只有期中期末各一篇歌劇欣賞的報告，認真寫分數就會不錯。不過分數跟其他很甜的課比起來就沒那麼高，(87.0排名第3)",
+          "rawHeader": "1092｜4星｜87分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE423A-baieya",
+      "code": "HE423A",
+      "name": "台灣女性生命傳記",
+      "domain": "xin",
+      "teacher": "白爾雅",
+      "reviews": [
+        {
+          "id": "lg-xin-d07-01",
+          "term": "1092",
+          "stars": 1,
+          "sweet": 3,
+          "cool": 1,
+          "grade": 89,
+          "text": "硬，認真上課可以認識很多厲害的女性偉人，但每堂課都要寫關於上課介紹的女性偉人的A4紙本小作業，期中是看影片寫一千字以上的心得，期末是你要採訪一位人物(或是上網蒐集某位人物的資料)並報告，整體來說真的硬",
+          "rawHeader": "1092｜1星｜甜度3｜涼度1｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d07-02",
+          "term": "1091",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "普通涼但不甜！真的可以學到東西，每堂課用講故事的方式在上課，我很喜歡。老師也很可愛！",
+          "rawHeader": "1091｜3星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d07-03",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "要訪問做報告，每堂課都有心得。大致上蠻涼的",
+          "rawHeader": "1091｜4星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d07.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE416A-baieya",
+      "code": "HE416A",
+      "name": "性別研究與生活",
+      "domain": "xin",
+      "teacher": "白爾雅",
+      "reviews": [
+        {
+          "id": "lg-xin-d08-01",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 8,
+          "grade": 87,
+          "text": "課堂參與、作業、報告\n老師人很好，很願意聆聽同學的問題並提供許多建議，假如願意認真學習應該會學到一些東西。假如只是想獲得心領域的學分，這門課也是個不錯的選擇，有一些作業要處理，但負擔不會太重。",
+          "rawHeader": "1102｜4星｜甜度9｜涼度8｜87分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d08-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 85,
+          "text": "有蠻多小組討論，上課有時候會叫人發言，只要作業都有繳交不會低分，還滿不錯的",
+          "rawHeader": "1092｜4星｜甜度8｜涼度8｜85分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xin-d08-03",
+          "term": "1092",
+          "stars": 2,
+          "sweet": 3,
+          "cool": 4,
+          "grade": 88,
+          "text": "甜度涼度都普普\n\n我覺得老師上課很認真，但期中成績是小組報告，期末是要你針對平時留意到的社會性別議題來分享、報告，整體我覺得分數沒有很甜",
+          "rawHeader": "1092｜2星｜甜度3｜涼度4｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE204A-linshengying",
+      "code": "HE204A",
+      "name": "藝術鑑賞",
+      "domain": "xin",
+      "teacher": "林聖瑩",
+      "reviews": [
+        {
+          "id": "lg-xin-d09-01",
+          "term": "1091",
+          "stars": 4,
+          "sweet": 5,
+          "cool": 7,
+          "grade": 82.21,
+          "text": "普通涼普通甜\n雖說是藝術鑑賞，其實也講了蠻多建築喔\n老師上課方式我個人挺喜歡的，會用引導式問問題來互動，同時也能從不同的角度去看一些未曾想像的東西，如果沒有藝術細胞也不用害怕，上課絕對不是一堆專有名詞。\n上課有聽基本上考試都不會太難，會考的老師都有強調(雖然我期末還是恍神了一下XD)，如果想學一些特別的東西，或是想嘗試不同領域的知識，那還蠻推薦的！\nP.s原本老師要帶我們去看展覽，可惜疫情取消，不然應該能收獲更多",
+          "rawHeader": "1091｜4星｜甜度5｜涼度7｜82.21分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE217A-linshengying",
+      "code": "HE217A",
+      "name": "音樂基礎訓練",
+      "domain": "xin",
+      "teacher": "林聖縈",
+      "reviews": [
+        {
+          "id": "lg-xin-d10-01",
+          "term": "1092",
+          "stars": 2,
+          "sweet": 2,
+          "cool": 2,
+          "grade": null,
+          "text": "除非對樂理有極大的興趣不然別選：）\n有期中期末，有一點音樂基礎的話對期中有一點點用，期中考不會很難，盡量考高分一點不然期末會死很慘；）\n上課要認真聽，因為選課人數通常不多，所以老師會點人問問題，每一個人都會在課堂上練習到題目，不會的問題可以盡量問（老師人其實很好但就是考試出題不太善良）\n會有作業但可寫可不寫，確定選課的話會加老師的Line，作業寫完就拍照傳給老師，老師改完就會回傳",
+          "rawHeader": "1092｜2星｜甜度2｜涼度2｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE211A-linshengying",
+      "code": "HE211A",
+      "name": "音樂欣賞",
+      "domain": "xin",
+      "teacher": "林聖縈",
+      "reviews": [
+        {
+          "id": "lg-xin-d11-01",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 3,
+          "cool": 5,
+          "grade": 79,
+          "text": "老師講話很幽默、表現方式很有趣！也會直接彈鋼琴示範(是在馬偕講堂上課)。但上課不能用手機、做其他事，所以超容易睡著...真的不是故意的XD睡覺老師其實也不會生氣不會管，中間下課完還會開玩笑說要先起來她才能催眠我們。 不過期中期末是認認真真地考上課的東西(音樂家的八卦也不會考QQ)，大部分形式會是聽老師放的音樂然後選是哪一種曲式。期中是一組寫一張考卷，期末個人覺得內容比較難(冬天上課又更好睡)而且是個人寫。 不容易考好，所以分數不會太好看，但上課當故事聽聽還是不錯的，沒有什麼負擔！",
+          "rawHeader": "1101｜3星｜甜度3｜涼度5｜79(8/24)分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d11.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE402A-caibihua",
+      "code": "HE402A",
+      "name": "三芝桃花源誌",
+      "domain": "xin",
+      "teacher": "蔡碧華",
+      "reviews": [
+        {
+          "id": "lg-xin-d12-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 95,
+          "text": "很涼又很甜，基本上老師出的功課，在課堂內都可以完成",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d12.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE023A-shijin",
+      "code": "HE023A",
+      "name": "素描基礎",
+      "domain": "xin",
+      "teacher": "施瑾",
+      "reviews": [
+        {
+          "id": "lg-xin-d13-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 7,
+          "grade": 85,
+          "text": "每堂課都會點名，感覺出席的佔分算蠻大的（可能）。老師人超級好、很可愛，基本上每次上課都會畫一張素描，每個禮拜有不同主題（人物、風景、自畫等等）。如果畫不完可以帶回家畫，也不用擔心自己畫不好！我大概是全班畫最醜的😂老師只會提醒你比例大概的樣子，很尊重每個人的畫風，上課不會很有壓力。不過期末要辦展算是比較累一點，但比起做報告還是好很多。整體來說是一堂老師很棒、不會很有壓力，對新手而言能學習到素描大概在幹嘛。",
+          "rawHeader": "1112｜5星｜甜度10｜涼度7｜85分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n04_xin/d13.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME122A-chenxuzhao-xujianqi",
+      "code": "ME122A",
+      "name": "[醫學]醫學與人文的對話",
+      "domain": "xuanxiu",
+      "teacher": "陳旭照 、 徐堅棋",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e01-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "涼爆，醫學系絕對必修，上課完全可以做自己的事，若仔細聽講的話也能獲得不少反思和收穫，老師人都很好而且願意和學生討論。\n考試只有期中期末，每次各三到四題申論題，多為時事題（像今年跟COVID-19有關）或者跟上課主題有關（但不上課也能寫出來啦⋯）\n結論：為了醫學人文選修的4學分，請務必修爆（唯一的缺點是上課時間為16:00～18:00，稍稍偏晚一些）",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e01-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 92,
+          "text": "有時候會點名，但上課真的很涼，分數也很甜，算是醫學系選修中的「必修」。老師上課的內容其實也蠻有趣的，基本上當聽故事上課就可以了。老師會提供ppt，期中期末看ppt就行了。考試內容都是申論題，正反兩面寫好寫滿就可以了XD",
+          "rawHeader": "1091｜5星｜甜度10｜涼度10｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e01-03",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "點名+期中+期末\n\n不會當人。偶爾會點名。沒有平時作業，上課可以做自己的事。期中期末就是把上課介紹過的議題挑兩個議題問你的看法。基本上就是一門很棒的課 ：）",
+          "rawHeader": "1091｜5星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e01-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "甜&涼。\n上課可以做自己的事情，但至少要留神注意一下每次上課的主題，因為期中期末是根據上課的內容請我們做延伸&舉例(申論題)，還有看影片時要認真看，老師有可能在播完影片時點人回答問題，但多數時候都是老師單向的授課。\n只要對老師客氣一點，上課盡量不遲到，課中不做影響課堂的事情，老師也會對學生很好，也不會管大家各自在做什麼。\n綜合這個分數我想算的上甜&涼",
+          "rawHeader": "1091｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e01.html",
+          "hidden": false
+        }
+      ],
+      "teachers": [
+        "陳旭照",
+        "徐堅棋"
+      ]
+    },
+    {
+      "id": "ME237A-chenyiquan",
+      "code": "ME237A",
+      "name": "[醫學]閱讀醫學人文",
+      "domain": "xuanxiu",
+      "teacher": "陳奕全",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e02-01",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": null,
+          "text": "作業\n\n很涼很甜\n\n學期初會把大家分成4組，各組要介紹一篇小說，如果不幸選到很長的小說就會很崩潰，所以加油^^\n作業整學期有4篇，每篇寫個1000字左右而已(我推薦用語音輸入)，算是CP值非常高的課，基本上寫越多分數會越好看(我大概都寫個5000字左右)，不過如果是不太會寫幹話的人應該會滿痛苦的",
+          "rawHeader": "1092｜5星",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e02-02",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 92.7,
+          "text": "普通涼不甜！\n\n老師選的書都不錯，但是心得寫再認真也不會反映在分數上（有可能是看字數而非品質）很可惜",
+          "rawHeader": "1092｜3星｜92.7分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e02-03",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "普通涼普通甜\n\n一學期有四篇小說要看，寫四篇心得，還算是蠻有趣的，還有寫兩篇推薦小說的想法，喜歡討論跟寫心得的可以推",
+          "rawHeader": "1092｜4星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e02-04",
+          "term": "1092",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 92,
+          "text": "不甜不涼\n\n跟醫學系上學期的醫學與人文的對話比，要付出一大堆努力，而且不知道在做什麼。\n上課方式是一堂課同學上台報告一本書，然後下一堂討論，再下一堂在上課時間寫1000字左右的討論心得。心得每次問題都一樣，建議要修的人可以先打好心得就可以在那邊發呆了。\n我覺得付出超多結果沒拿到很好的成績，但老師會適時的引導討論，這點我覺得不錯，但還是累爆",
+          "rawHeader": "1092｜2星｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "NU123A-huangshengmiao",
+      "code": "NU123A",
+      "name": "[護理]臨床護理實務入門",
+      "domain": "xuanxiu",
+      "teacher": "黃升苗",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e03-01",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 90,
+          "text": "算蠻涼的但要做一次小組報告，報告需要影片跟簡報，老師蠻有自己的理念，所以能發揮的部份不多。但上課認真聽還是能學到一些醫學小常識～個人覺得不錯",
+          "rawHeader": "1092｜4星｜甜度8｜涼度8｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e03-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 9,
+          "grade": 91.3,
+          "text": "平時成績10%期中20%期末20%\n偏涼而且分數甜（91.3分排名14）\n上課就是聽同學報告然後老師補充（前一兩堂還沒分組的時候就是聽老師上課，我記得蠻無聊的，可以做自己的事）\n會分組然後搶報告題目\n老師會給報告題目，同學要依照題目演一小段戲然後延伸介紹\n分組報告的ppt就是期末報告（所以早點報告完期末就輕輕鬆鬆(◐‿◑)早死早操生）\n期中、期末都要交一份反思學習單，不會很難，就是從同學報告的題目選一個印象深刻的寫反思，好好打分數可以有個90、95",
+          "rawHeader": "1092｜4星｜甜度8｜涼度9｜91.3分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e03-03",
+          "term": "1092",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": null,
+          "text": "交報告2份+一份分組報告PPT、上課演戲\n又甜又涼\n小小編排個老師指定主題的戲＋期中期末\n但不知道為什麼她Zuvio永遠都抽到特定的幾個人:)，要回答問題。\nㄛㄛ 而且其實老師上課教的東西真的真的真的真的真的真的真的可以幫助以後臨床使用，幫助我們思考怎麼面對病人。(除非你本來就很有面對病人的腦袋) 算是打個基礎。\n所以上課還是可以聽喔~~~~~~~~~~",
+          "rawHeader": "1092｜5星｜甜度10｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME236A-wuyizhe",
+      "code": "ME236A",
+      "name": "[醫學]輔助、另類醫療與人文素養",
+      "domain": "xuanxiu",
+      "teacher": "吳懿哲",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e04-01",
+          "term": "1091",
+          "stars": 4,
+          "sweet": 6,
+          "cool": 8,
+          "grade": null,
+          "text": "期中考 20% 期末考30% 出席率20% 針灸實作10% 中醫期末TBL10% 校外教學10%\n\n個人覺得蠻涼的 但是甜度大家分數通常都差不多不會差距很大。期中考是筆試老師會先把題目給我們讓我們自己去查答案看大家要寫多完整。期末考是用ZUVIO線上考前一堂課老師有讓我們先練習過一樣的題目。所以基本上考試都是很輕鬆的。\n\n上課每堂都會點名 過程蠻有趣的 學到蠻多中醫的入門知識跟一些應用方式 對於有興趣的人來說蠻不錯的針灸也蠻好玩的 建議一定要試試看",
+          "rawHeader": "1091｜4星｜甜度6｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e04-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 95,
+          "text": "計分方式：系主任的課會點名 其他老師可以翹課（出席算一點分數）另外有期中期末考分數\n\n其中有一點點累，要背一點中醫的知識，但是100%考古，背熟就100分。期末好像是繳個報告就可以了會設定在期末考週之後幾天為dead line。整體來說，二年級修這堂課就對了。",
+          "rawHeader": "1091｜5星｜甜度10｜涼度8｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME235A-huanglinglan",
+      "code": "ME235A",
+      "name": "[醫學]敘事、理解與溝通",
+      "domain": "xuanxiu",
+      "teacher": "黃苓嵐",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e05-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 7,
+          "grade": null,
+          "text": "書面報告\n可以學到很多溝通的技巧，老師人也很好，非常推薦這門課",
+          "rawHeader": "1101｜5星｜甜度8｜涼度7",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME241A-zengxiangguang",
+      "code": "ME241A",
+      "name": "[醫學]醫學生早期臨床體驗：高齡社會面對面(一)",
+      "domain": "xuanxiu",
+      "teacher": "曾祥洸",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e06-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 10,
+          "grade": 90,
+          "text": "0.5學分的課。一個學期預計上五次，我們這次有遇到放假所以是只有上四次。前一個小時老師會講課，後一個小時會找老人來跟我們對話。對於醫學系必修的在地醫療資訊活動個人覺得幫助很大，可以提前知道怎麼問以及問題該著重在哪。分數沒特別甜，但也不用付出什麼努力，所以我是滿推薦這堂課的，可以提前知道高齡醫療的一些狀況。",
+          "rawHeader": "1101｜5星｜甜度8｜涼度10｜90",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e06-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 7,
+          "grade": null,
+          "text": "上課就是坐在教室裡跟三芝的老人聊天然後做健康評估，一學期只上6節課，但對之後的跨領域在地醫療諮詢學習滿有幫助的，因為這節課會有很多練習，所以比較知道詢問的技巧。不過星期一的早八應該是個硬傷...",
+          "rawHeader": "1101｜5星｜甜度8｜涼度7",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME241A-zengxiangguang-2",
+      "code": "ME241A",
+      "name": "[醫學]醫學生早期臨床體驗：高齡社會面對面(二)",
+      "domain": "xuanxiu",
+      "teacher": "曾祥洸",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e07-01",
+          "term": "1102",
+          "stars": 2,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 92,
+          "text": "很涼的課，可以學到高齡的知識。但老師會強迫禱告以及強迫你唸聖經的內文，還會自己幫來的阿嬤冠夫姓，很不尊重女性。非基督教的會覺得被宗教霸凌，女生會覺得被污辱到",
+          "rawHeader": "1102｜2星｜甜度9｜涼度10｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e07-02",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "跟高齡社會面對面(一)差不多。一邊學習專業知識，一邊還能虔誠信仰，CP值簡直不要太高。如果還沒去社區醫療的人建議修一下，這堂課會跟老人訪問，先模擬演練起來，才不會社區醫療的時候被電。",
+          "rawHeader": "1102｜4星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e07.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME519A-liuguotong",
+      "code": "ME519A",
+      "name": "[醫學]進階針灸學",
+      "domain": "xuanxiu",
+      "teacher": "劉國同",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e08-01",
+          "term": "1102",
+          "stars": 3,
+          "sweet": 5,
+          "cool": 1,
+          "grade": 81,
+          "text": "平時40%期中期末考各30%\n\n對針灸有興趣，而且願意在唸人體結構學和寄蟲的同時花時間唸針灸的人，可以選\n如果你必修課就有點吃力了那最好別選><\n老師非常用心教學，每堂課都有實作，會讓我們實際針當天學的穴道，\n期中期末考必須認真準備，全部都是簡答/申論題，大致上都是上課內容，但是因為沒有考古題，所以若沒有唸很札實，成績就會不太好看\n要的東西很多，臟象學說、十二條正經上的穴道(以及各穴道的主治項目、取穴方式等)，可以理解那些確實是中醫的基礎啦。\n期末考除了筆試，還有實際針灸or放血的考試，也是要背熟穴道的知識才能考好。\n如果有心想學而且有花時間好好學，你一定會有很多收穫的!",
+          "rawHeader": "1102｜3星｜甜度5｜涼度1|81分(4/7)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "NU225A-xiongyifang",
+      "code": "NU225A",
+      "name": "[護理]生死學",
+      "domain": "xuanxiu",
+      "teacher": "熊誼芳",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e09-01",
+          "term": "1102",
+          "stars": 2,
+          "sweet": 6,
+          "cool": 5,
+          "grade": 90,
+          "text": "一堆作業50%+平時成績30%+期末表演20%\n\n作業很多，整學期大概做了6~7樣，課程部分還可以(就當聽聽故事)，但期末報告真的有夠麻煩，又要影片又要報告又要心得又要開會討論，整體而言並不推薦，但老師們人都還不錯。",
+          "rawHeader": "1102｜2星｜甜度6｜涼度5｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "ME128A-wuziwei",
+      "code": "ME128A",
+      "name": "[醫學]當代生物醫學新知",
+      "domain": "xuanxiu",
+      "teacher": "吳子維",
+      "reviews": [
+        {
+          "id": "lg-xuanxiu-e10-01",
+          "term": "1101",
+          "stars": 1,
+          "sweet": 5,
+          "cool": 5,
+          "grade": 88,
+          "text": "基本上就是聽台籍的老師說英文。有一些老師還不錯，但是有一些老師真的不知道是來幹嘛的，講的超級爛。而且上課的時間還會因為老師的時間而調整，所以搞到我們在期末考前一周還在聽老師在台上說廢話。如果你是想湊學分的，我不會推薦。一學分的課搞到後來可能還比兩學分的課還累。如果你不會在意上課爛的老師，那可以考慮一下。",
+          "rawHeader": "1101｜1星｜甜度5｜涼度5｜88(11/24)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-xuanxiu-e10-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 8,
+          "grade": null,
+          "text": "會請在美國教學的台籍教授上課。老師們都很熱情，也很願意回答問題。即便是全英文上課也不用太擔心，從PPT上的文字+一點散裝英文就能聽懂大部分課程，就算真的聽不懂私下問老師都是沒問題的(老師非常喜歡大家找他們問問題!)。如果想知道美國那邊的第一手醫學新知的話非常適合選這門課。",
+          "rawHeader": "1101｜4星｜甜度8｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n05_xuanxiu/e10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE123A-xiaozhibin",
+      "code": "PE123A",
+      "name": "籃球",
+      "domain": "tiyu",
+      "teacher": "蕭志彬",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f01-01",
+          "term": "1081",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "出席很重要，缺課大於三次會直接被當掉，有術科考試，但配分不重\n\n參與感很高，玩得很盡興",
+          "rawHeader": "1081｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE103A-zhangyuzhen",
+      "code": "PE103A",
+      "name": "有氧舞蹈(張育禛)",
+      "domain": "tiyu",
+      "teacher": "張育禛",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f02-01",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 88,
+          "text": "基本上就是跟著跳舞，會分小組，如果跟很會跳舞的人一組分數會滿好看的，但就算不太會也沒關係因為我們班最低大概也就88分（就是我本人^_^），整體分數算漂亮、負擔也不大",
+          "rawHeader": "1091｜5星｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE109A-zhangyuzhen",
+      "code": "PE109A",
+      "name": "皮拉提斯",
+      "domain": "tiyu",
+      "teacher": "張育禛",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f03-01",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 92.5,
+          "text": "甜",
+          "rawHeader": "1092｜5星｜92.5分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE107A-xiaocunyi",
+      "code": "PE107A",
+      "name": "桌球",
+      "domain": "tiyu",
+      "teacher": "蕭存沂",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f04-01",
+          "term": "1112",
+          "stars": 0,
+          "sweet": 1,
+          "cool": 1,
+          "grade": 78,
+          "text": "一直考試一直考試，每堂課都是從頭打到尾。老師人本身不錯，但分數高低蠻吃本身桌球實力的（我都有很認真打認真考TT）真的不推，去搶其他體育",
+          "rawHeader": "1112｜0星｜甜度1｜涼度1｜78分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tiyu-f04-02",
+          "term": "1101",
+          "stars": 0,
+          "sweet": 1,
+          "cool": 1,
+          "grade": 87,
+          "text": "大糞課，每次上課都在考試，考完這個換考下一個。整個學期考完三次試後就開始每堂課打好打滿兩個小時的比賽。老師不太教學生怎麼打好球，只會在比賽時電學生。老師上課都在跟學生打球很少教學，跟老師反映考試太難他只會回：「我在其他學校桌球隊弄更難」。如果有遇到連假，跟他說他還是讓你打好打滿才讓你可以回家剛好遇上大塞車。總結來說，很不建議修",
+          "rawHeader": "1101｜0星｜甜度1｜涼度1｜87分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tiyu-f04-03",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 5,
+          "cool": 3,
+          "grade": null,
+          "text": "每節課都會打比賽所以滿累的，不過倒是很適合想要運動的人。真的是兩個小時打好打滿的那種課喔，會一直輪轉輪轉輪轉輪轉，比七彩霓虹燈還會轉。體力不好的me是覺得很累啦(體力上的)，不過桌球技術有進步也是真的。如果想學桌球但又很爛的人就很適合來選，至少我上的很快樂啦，不過就很累QQ",
+          "rawHeader": "1101｜3星｜甜度5｜涼度3",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE138A-xieyuzhen",
+      "code": "PE138A",
+      "name": "射箭",
+      "domain": "tiyu",
+      "teacher": "謝育臻",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f05-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 88,
+          "text": "涼爆！！！！！\n老師很有趣，認真教射箭，但想划水也可以，老師只要你有出席就好。每學期可以請3次假（包括生理假）。偶爾會有好玩的活動，聖誕節射氣球之類的。但射箭真的有趣，大家可以試試看。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜88分(第12名)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tiyu-f05-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 92,
+          "text": "TM抽到這堂課在馬偕基本上是橫著走。\n每堂課提早30分鐘放人，上課學得到東西而且有成就感，老師又超耐斯還願意手把手教你，無論你想學想划都適合。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE103A-xiewanting",
+      "code": "PE103A",
+      "name": "有氧舞蹈(謝宛廷)",
+      "domain": "tiyu",
+      "teacher": "謝宛廷",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f06-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 6,
+          "grade": 99,
+          "text": "平時70% 期末考30%\n每堂課都要跳芭蕾有氧 大概1個小時左右吧 中間會有休息時間啦 跟著老師做動作不會很難 老師人很好~也可以學到很多芭蕾姿勢動作\n阿幾乎每堂都會有個時間練腹肌、臀肌 很偶爾會練手臂肌肉 老師如果看大家很累有可能會帶大休息(就是 躺平深呼吸 睡著沒關係(?)\n總之整體而言 如果你是真的想運動的人 這堂課強烈推薦你 可以減肥、長肌肉 老師分數也給很高 讚讚",
+          "rawHeader": "1101｜5星｜甜度10｜涼度6｜99分(1/31)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f06.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tiyu-f06-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 4,
+          "grade": 92,
+          "text": "平時(出席)70% 期末考30%\n老師人很好很親切，非常用心教學，可以確實運動到\n但也蠻累的，建議真心想要運動的人選",
+          "rawHeader": "1101｜5星｜甜度8｜涼度4｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f06.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE139A-huangyuping",
+      "code": "PE139A",
+      "name": "健身氣功八段錦",
+      "domain": "tiyu",
+      "teacher": "黃玉萍",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f07-01",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 5,
+          "grade": 95,
+          "text": "上課就一直打氣功滿累的，不過是在教室打氣功所以夏天有冷氣可以吹，冬天太冷也可以把冷氣溫度調高一點就不會那麼冷。有期中、期末考，平時認真學的話不用花太多時間準備。老師給分很甜，我95分是第9名。",
+          "rawHeader": "1101｜4星｜甜度10｜涼度5｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f07.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "健身太極武術-huangyuping",
+      "code": null,
+      "name": "健身太極武術",
+      "domain": "tiyu",
+      "teacher": "黃玉萍",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f08-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 9,
+          "grade": null,
+          "text": "平時上課投入加期中期末考試\n如果對武打片有興趣的可修\n如果害怕球類的可修\n如果怕流汗的人可修\n這堂課除了內容涼、身心靈也真的很涼\n會打太極打到想睡覺的那種\nㄛ而且老師是一個非常認真的人，同一個動作會重複教很多次，所以真的不怕學不會\n他也會很認真的在你每次打完後給予回饋<3，也不怕麻煩重複做給你看你哪裡沒打好\n每個人學期末一定都可以完美的打出太極的一到八式，from起式to收式\n重點是如果不要打得太不好，分數都有90以上，非常甜甜甜\n容易浮躁的人，推你來打這個，包準腦波跟心電圖都變一直線",
+          "rawHeader": "1102｜5星｜甜度9｜涼度9",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f08.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-tiyu-f08-02",
+          "term": "1102",
+          "stars": 3,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 91,
+          "text": "整學期就學太極八式。教學節奏很慢，不太會流汗，蠻輕鬆的，但是沒有運動到的感覺，而且要一直站著聽老師講話，腳會很痠。\n老師人很好，非常用心教學，但是感覺要不太可能透過這堂課學到太極拳真正的精髓，只是學會動作、認識一些基本概念。\n有期中期末考",
+          "rawHeader": "1102｜3星｜甜度8｜涼度8｜91分(22/28)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f08.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE109A-xiewanting",
+      "code": "PE109A",
+      "name": "皮拉提斯(謝宛廷)",
+      "domain": "tiyu",
+      "teacher": "謝宛廷",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f09-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": null,
+          "text": "雖然有點小累但會瘦，適合給想減肥又沒決心的人，或是有各種肩頸問題四處痠痛的朋友。",
+          "rawHeader": "1102｜5星｜甜度10｜涼度8",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "PE103A-linmeiling",
+      "code": "PE103A",
+      "name": "有氧舞蹈(林美玲)",
+      "domain": "tiyu",
+      "teacher": "林美玲",
+      "reviews": [
+        {
+          "id": "lg-tiyu-f10-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 8,
+          "grade": 92,
+          "text": "出席70%+考試30%\n\n老師教得十分的用心，雖然上課之後會有點累，但是感覺是值得的。上課的形式通常是一小時左右的有氧舞蹈，以及一小時的伸展操。在有氧舞蹈時，老師會提到肌肉的名字，可以順便記一下解剖，在伸展操則可以接收老師的正面心靈能量XD期中考和期末考要分組並自己設計動作，然後跳給老師看。",
+          "rawHeader": "1112｜5星｜甜度9｜涼度8｜92分(2/11)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n06_tiyu/f10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE524A-zhangjiayan",
+      "code": "HE524A",
+      "name": "台語(一)",
+      "domain": "yuyan",
+      "teacher": "張嘉嬿",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g01-01",
+          "term": "1111",
+          "stars": 3,
+          "sweet": 7,
+          "cool": 7,
+          "grade": 90,
+          "text": "唱台語歌，個人口頭報告，讀課本內容\n\n上課不能滑手機跟任何3c產品，不能聊天，只能跟老師聊天。老師是台語的權威，她強調自己教的是正宗台語。",
+          "rawHeader": "1111｜3星｜甜度7｜涼度7｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-02",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 93,
+          "text": "一個報告（最愛吃的食物）+期中唱歌+期末唸課文\n\n老師很注重認真學習，上課不要滑手機，然後認真學，老師給的分數不會讓你失望",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-03",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "老師上課很有趣，只要願意練習、回應，分數就不錯",
+          "rawHeader": "1092｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-04",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "非常涼 需要唱歌跟報告，但不用花很多時間準備。 老師上課會先放幾首台語歌、講一下故事（差不多會花個30分鐘）然後會帶大家唸課文或點人唸。老師會選班代，班代分數好像會是最高分，其他人的分數從班代以下開始打",
+          "rawHeader": "1092｜5星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-05",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 89,
+          "text": "算簡單的課，只是上課會被點起來念台語",
+          "rawHeader": "1092｜5星｜89分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-06",
+          "term": "1092",
+          "stars": 2,
+          "sweet": 6,
+          "cool": 7,
+          "grade": null,
+          "text": "嗯…很看學生，老師通常只會叫一些她認識、他喜歡的學生回答問題，那些學生分數就比較高，跟台語程度也沒什麼關係，台語程度好老師覺得很棒，台語程度不好老師也覺得你很努力，我就是那個沒被老師記住也沒被在乎的分數普普可憐蟲",
+          "rawHeader": "1092｜2星｜甜度6｜涼度7｜",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-07",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "這堂課很重要是要讓老師喜歡妳 只要願意練習 老師給的分數都不會太低 而且上課的時候也不用到很認真 老師講故事的時候可以睡覺",
+          "rawHeader": "1091｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g01-08",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "前半堂課不用太認真，開始講台語課本的時候要開始認真聽，最好能稍微練習一下，只要老師發現你有進步，分數都不會太差。上課可以多多回應老師，老師會很喜歡你。",
+          "rawHeader": "1091｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE525A-zhangjiayan",
+      "code": "HE525A",
+      "name": "台語(二)",
+      "domain": "yuyan",
+      "teacher": "張嘉讌",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g02-01",
+          "term": "1111",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 92,
+          "text": "期中報告、期末口試\n\n前半部分老師會放台語歌、分享故事，然後讓同學報告。後半部分(大概下課前30分鐘)會用課本上課，會帶大家一句一句唸過課文，然後讓大家聽音檔複習，最後輪流每人念一句。",
+          "rawHeader": "1111｜5星｜甜度10｜涼度10｜92分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-02",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 91,
+          "text": "期中報告、期末口試\n\n老師非常有教學的熱忱，常常跟同學互動，要有跟老師互動的心理準備，對於有一定台語能力的同學來說，這堂通識課上起來不會有太大的負擔。",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-03",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 6,
+          "grade": 91,
+          "text": "期中考(唱台語歌)+報告+期末考(念課文)\n\n拜託，如果不會台語，或是程度普通，請去修台語一，不要相信「台語一和台語二是一樣的課」這種事情。我就是那個被騙來上的傻子，所以痛苦的過了一學期。上課基本上就是念課文，不過老師發現你不會說之後，會不時的電你，要有心理準備。老師的情緒起伏也很大，所以要適應一下。",
+          "rawHeader": "1102｜4星｜甜度9｜涼度6｜91分(13/29)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-04",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 5,
+          "grade": 91,
+          "text": "上課不算涼，不太能做自己的事，不過做自己的事老師好像也不會抓？如果真心想學臺語修這個課可以學到很多。給分很甜我91是23名。老師說話滿直接的，如果不太能接受可能盡量不要選這堂課。",
+          "rawHeader": "1101｜4星｜甜度9｜涼度5｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-05",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 10,
+          "cool": 7,
+          "grade": 91,
+          "text": "期中考(唱歌)、報告、期末帶讀、老師的喜好\n\n感覺上課就是聽歌、聽老師八卦&講故事，帶讀課本有時候還會叫台語比較好的同學帶，其實有一點沒有學得很紮實的感覺，不過課本的內容還有附音檔倒是挺划得來(她只提供給自己的學生)。\n分數還挺甜的，也是少數可以練到醫用台語的機會",
+          "rawHeader": "1101｜3星｜甜度10｜涼度7｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-06",
+          "term": "1101",
+          "stars": 3,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 92,
+          "text": "老師不會放棄每個認真學的學生，但老師情緒很激昂\n上課方式: 聽台語歌 ，聊一下天， 輪流報告，唸單字，帶課文，小考(不會算成績)",
+          "rawHeader": "1101｜3星｜甜度9｜涼度7｜92分(14/30)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-07",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "很甜很涼\n\n該做的報告、考試認真做(不用花很多時間)，分數自然就會不錯。唯一小缺點是老師個性比較特別，需要習慣一下。對會講台語的人來說非常甜和涼",
+          "rawHeader": "1092｜5星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g02-08",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "平時作業為台語一次自我介紹以及一次台語聽寫考；期中考為唱歌，期末考為念台語課文\n\n需要購買300元的教材，家傳若有則免，不需用任何基礎也可學",
+          "rawHeader": "1091｜4星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g02.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE518A-liliyun",
+      "code": "HE518A",
+      "name": "日語(一)",
+      "domain": "yuyan",
+      "teacher": "李麗雲",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g03-01",
+          "term": "1102",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 9,
+          "grade": 95,
+          "text": "出席10分+50音默寫10分+其他我不知道80分\n一整個學期下來不知道學到了什麼，我也不知道我上課在幹嘛。上課瘋狂飆車，我是覺得沒學會日文，但分數意外的甜。認真想學日文的別來修，學不到日文。如果修課人數太多老師會飆車，最適合修課的人數聽說是10個初，這樣老師會很輕鬆上課",
+          "rawHeader": "1102｜4星｜甜度9｜涼度9｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-02",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 95,
+          "text": "本人是完全沒有日文基礎(連五十音都不會那種)來修，但是是真心有興趣、有想學！推薦也是有想學皮毛的人可以選(麗雲名言：之後要自學的話，要先學會基礎才知道怎麼查字典。)，認真聽一下真的可以學到一點東西。\n期中是考五十音平假名，期末是講兩人對話的一小篇自我介紹(老師有給稿，基本上改一些名字什麼的就好了 蠻簡單~)+基本動詞變化&助詞重組句子的筆試(上課有聽考前研究一下就沒什麼大問題)。上課其實可以做自己的事，尤其老師內容常常會重複講，點人也大部分都那幾位(真的被點到趕快問旁邊XD)，但平常都完全沒在聽的話期末可能有點危險，會需要找同學教一下。",
+          "rawHeader": "1101｜4星｜甜度9｜涼度7｜95分(11/30)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-03",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 100,
+          "text": "如果是想要認真修日文，但是又不要份量太重的話會很適合。可以的話，趁放假的時候學一下50音，就能輕鬆上課半學期。但是如果只是想要修一門語言學分，背50音會有一點痛苦，所以不太推薦。\n上課內容前半學期是50音，後面會教一些簡單的文法。老師教的文法內容至扎實，但是考試不至於會考到那麼難。不過，老師考試的範圍有時候會講不太清楚，所以有問題的話一定要去問。",
+          "rawHeader": "1101｜5星｜甜度10｜涼度8｜100分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-04",
+          "term": "1101",
+          "stars": 4,
+          "sweet": 7,
+          "cool": 5,
+          "grade": 91,
+          "text": "恩...聽說真正涼的是日文二(有鑑於某次日文二未開成，老師會在上課大力宣傳日文二XD)，對於完全沒基礎的學起來多少有點吃力，建議可以先利用寒暑假自學五十音，那麼到期中會相對輕鬆很多；期中後學必較多偏動詞與介係詞的語法，雖然很基本的東西但是對於初學的我還是花了一點時間啦:P，而且老師上課有點跳痛，如果沒有很專心聽他上課常常會聽不懂她在說啥，但至少她同一個概念會重複個3、4堂課吧XD 然後...看到成績蠻意外的，我以為自己不會太高，結果有9開頭，那說明老師上課雖然有點機車但給分歧時還不賴啦XD",
+          "rawHeader": "1101｜4星｜甜度7｜涼度5｜91分(18/30)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-05",
+          "term": "1091",
+          "stars": 4,
+          "sweet": 7,
+          "cool": 6,
+          "grade": 77,
+          "text": "會有小考、期中、期末，老師偏嚴肅，但可以學到東西",
+          "rawHeader": "1091｜4星｜甜度7｜涼度6｜77分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-06",
+          "term": "1091",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 90,
+          "text": "作業10% 平時20% 期中考30% 期末考40%\n\n可以學到很多東西!但對沒學過日文的人來說，是需要花時間準備的科目(期中考五十音)，老師給分沒有特別甜，付出多少努力就得到多少分。學期中活動多又沒學過日文的人要慎選",
+          "rawHeader": "1091｜4星｜90分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g03-07",
+          "term": "1091",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 100,
+          "text": "作業10%+出席&平時20%+期中30%+期末40%\n\n很甜很涼or很甜普通涼(看有沒有50音基礎)\n\n上課範圍不會超過日檢N5，有日文50音基礎的基本上來選可以混整學期（誤）。老師沒有打算要刁難學生的意思，期中、期末考題跟作業都不難。平時成績是四人一組，然後上台練習課本裡的會話(一個人負責1-2句而已)。期中考會提前給20個單字然後考10題聽寫+50音默寫。作業就是抄50音3次&寫期末自我介紹草稿(老師會給範本，照著填然後背起來就好了，自我介紹內容只有6-7句話左右）。期末考考口試，就是背一次自我介紹給老師聽，然後問你幾個簡單的小問題這樣。老師上課會點名。",
+          "rawHeader": "1091｜3星｜100分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g03.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE519A-liliyun",
+      "code": "HE519A",
+      "name": "日語(二)",
+      "domain": "yuyan",
+      "teacher": "李麗雲",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g04-01",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 9,
+          "grade": 97.5,
+          "text": "期中+期末兩篇報告\n\n老師教的進度會比日文一還快，整體的課程十分的充實。不過上完新的內容，通常會在下一堂課複習一下，所以不太會有壓力。唯二的作業就是那兩篇期中期末報告，所以挺輕鬆的。只要會五十音和簡單的句型，非常推薦來這門課！",
+          "rawHeader": "1102｜5星｜甜度10｜涼度9｜97.5(2/25)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g04.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g04-02",
+          "term": "1092",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "超爆簡單の期中期末作業\n\n超甜超涼\n\n期中期末作業就是寫小短文，老師會說參考課本第幾頁的哪一篇文章，然後就自己代換單詞進去就收工了。上課老師會叫你讀課本的句子，所以要有一點50音基礎~",
+          "rawHeader": "1092｜5星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g04.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE522A-chenyuyang",
+      "code": "HE522A",
+      "name": "德語(一)",
+      "domain": "yuyan",
+      "teacher": "陳昱仰",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g05-01",
+          "term": "1101",
+          "stars": 1,
+          "sweet": 4,
+          "cool": 4,
+          "grade": 83,
+          "text": "有考試或是拍影片可以自選\n如果是對德語沒興趣的人，沒事不要選，有事也不要。不然會很無聊…",
+          "rawHeader": "1101｜1星｜甜度4｜涼度4｜83分(全班第三)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g05-02",
+          "term": "1101",
+          "stars": 2,
+          "sweet": 2,
+          "cool": 7,
+          "grade": 87,
+          "text": "期末影片100%\n這堂課很無聊，老師上課無法讓人有興趣，有想學德文的請自己學會比較好。而且期末影片沒什麼參考方向，要自己想台詞，但他其實教很少。分數很不甜",
+          "rawHeader": "1101｜2星｜甜度2｜涼度7｜87分(2/17)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g05-03",
+          "term": "1091",
+          "stars": 2,
+          "sweet": null,
+          "cool": null,
+          "grade": 77,
+          "text": "期末要拍兩個兩分鐘的德文對話影片，要求不能看稿，上課可以做自己的事",
+          "rawHeader": "1091｜2星｜77分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g05.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g05-04",
+          "term": "1081",
+          "stars": 1,
+          "sweet": null,
+          "cool": null,
+          "grade": 82,
+          "text": "覺得很普通，老師上課不太能帶起學生興趣。建議對德文真的很有興趣再修。",
+          "rawHeader": "1081｜1星｜82分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g05.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE520A-chenyuyang",
+      "code": "HE520A",
+      "name": "法語(一)",
+      "domain": "yuyan",
+      "teacher": "陳昱仰",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g07-01",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 77,
+          "text": "期末考成績=學期成績\n\n1. 上課過程輕鬆，老師認真，也不會管大家在幹嘛，努力學努力背的話可以學到不少，但如果沒興趣的話就會有點吃力。\n2. 沒點過名，只是偶爾會在名單裡面抽同學讀單字。\n3. 沒期中考，期末考可以選錄影片或考試，我們這學期選考試，變遠距之後就用open book的方式考，考題數量蠻多偏難，但老師說他會以全班程度調分。",
+          "rawHeader": "1092｜3星｜77分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g07-02",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 88,
+          "text": "上課速度慢，有點無聊。不適合已經有基礎的同學選修。",
+          "rawHeader": "1092｜3星｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g07-03",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 93,
+          "text": "期末考試100%（可以選考試或拍影片），普通甜 非常涼，\n老師上課不會點名但很認真教，可以學到東西，法文一些基本對話應該是沒問題。每次上課都會複習之前教的才開始上新的。",
+          "rawHeader": "1092｜4星｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g07.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g07-04",
+          "term": "1091",
+          "stars": 0,
+          "sweet": null,
+          "cool": null,
+          "grade": 81,
+          "text": "老師上課有點無聊，但有心還是學的到東西，期末作業記得要選拍片，很麻煩但比較簡單",
+          "rawHeader": "1091｜0星｜81分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g07.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE527A-wuyanchun",
+      "code": "HE527A",
+      "name": "韓語初階",
+      "domain": "yuyan",
+      "teacher": "吳艷蓴",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g09-01",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 100,
+          "text": "期中+期末+出席\n\n又涼又甜的優質好課♡",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜100分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g09-02",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 95,
+          "text": "出席+筆試+口試\n\n上課很有趣、輕鬆（很涼），考試很簡單，分數超甜",
+          "rawHeader": "1101｜5星｜甜度10｜涼度10｜95+分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g09-03",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "出席、期中考、期末筆試、期末口試、手機打韓文字加分\n\n老師很有趣，上課時間一半韓語一半個人在韓國的奇聞軼事，很適合拿來讀書或聽他講話當消遣，不過我覺得發音跟文法很紮實，雖然內容不多。\n發音跟句子要會寫，還有上課奇聞逸事要聽，考試都會考，很簡單！不騙！",
+          "rawHeader": "1091｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g09.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g09-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "期中考試+期末考試+期末念課文\n\n超甜&涼。\n推薦平時有在聽韓文歌或是看韓劇的學弟妹選，期中前都是教基本的母音子音(意思是如果你自己本來就會的話前半學期完全不用擔心)，期中之後才會教一些簡單的文法，本身就能讀出韓文發音的人這堂課真的很輕鬆。\n老師期中考時說會考他平常上課講的韓國文化(其實就是他的閒聊，例如在韓國隱眼跟眼鏡哪個比較貴之類)要作筆記，上課要認真聽。唯一比較惱人的是：他期中考會有一兩題韓國文化題上課根本沒提過只能用猜的。\n整體而言背好發音，上課筆記韓國文化，拿97、98大有人在",
+          "rawHeader": "1091｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g09.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "LN405A-jamie",
+      "code": "LN405A",
+      "name": "高階英文寫作",
+      "domain": "yuyan",
+      "teacher": "Jamie",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g10-01",
+          "term": "1092",
+          "stars": 0,
+          "sweet": 5,
+          "cool": 2,
+          "grade": 93,
+          "text": "硬\n\n上課內容不知所云，幾乎都在討論Abstract跟Introduction的不同之類的論文相關的問題，我覺得偏無聊，不太能做自己的事情，學期末還要交一篇英文論文，不推",
+          "rawHeader": "1092｜0星｜甜度5｜涼度2｜93分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-02",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "很甜很涼\n\n除了期末要交一篇小型的research paper以外，其餘時間超涼。上課內容蠻不知所云的，但偶爾可以做自己的事",
+          "rawHeader": "1092｜4星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-03",
+          "term": "1092",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "很涼但是普通甜！\n\n不太能學習到英文寫作技巧，課程有點無聊，但是對英文能力的維持還是有一些幫助，畢竟是外師。",
+          "rawHeader": "1092｜3星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-04",
+          "term": "1092",
+          "stars": 4,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "很甜 普通涼\n\n平常就每個禮拜跟大家英文喇賽，這學期loading有一個期末小論文要寫跟報告，比較重，其他都蠻快樂",
+          "rawHeader": "1092｜4星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-05",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 97,
+          "text": "只要讓老師對你有好印象分數就好看，期末考稍有負擔，但提前準備就較輕鬆",
+          "rawHeader": "1091｜5星｜97分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-06",
+          "term": "1081",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "出席、作業、報告\n\n我上課因為很活潑，都幫忙錄影打雜等等，意外跟JBC很熟，所以最後他給我不錯的分數。但平常都有出席跟交作業，寫作的話，期末要交類似小論文的報告(至少6面A4)，也要上台簡報(6分鐘)，最好不要混，我覺得外國人應該很看態度；會話期末要報告(6分鐘)，都說是會話了，當然是重頭戲。上課會分組，有時候講一堆幹話非常好玩。",
+          "rawHeader": "1081｜3星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g10-07",
+          "term": "1081",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "寫作作業、課堂表現、期中期末報告\n\n滿硬的，因為要處理很多寫作相關的東西，如果對於論文有一點概念再來修會好一點。但上課主動跟Jamie互動（幹話也可以）他就會很喜歡你然後給你很高分。",
+          "rawHeader": "1081｜3星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g10.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "LN406A-jamie",
+      "code": "LN406A",
+      "name": "高階英語會話",
+      "domain": "yuyan",
+      "teacher": "Jamie",
+      "reviews": [
+        {
+          "id": "lg-yuyan-g11-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 97,
+          "text": "分數頗甜，95 以上不是問題。建議取一個特別的英文名字，他就會記得你、常常跟你講話。如果可以在課堂上多跟他聊天講話他會很開心。沒有考試，作業量偏少(這次的期末作業是錄podcast)，而且他其實不會認真改作業。分數多半是印象分。",
+          "rawHeader": "1112｜5星｜甜度10｜涼度10｜97分(1/28)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g11-02",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "老師非常認真準備各式主題資料供大家討論，每次也都有額外的食物可以吃。對於想認真上可的人，可以選擇前排座位和老師多對話，絕對會收穫良多。如果只想吃東西和做自己的事，建議坐後排。老師上課方式非常有趣，建議大家去捧場一下。大推！",
+          "rawHeader": "1091｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g11-03",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 96,
+          "text": "每周上課跟Jamie聊個天，期末這學期採分組報告，一組15分鐘，讓老師對你有印象應該都會拿掉不錯的分數。",
+          "rawHeader": "1091｜5星｜96分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g11-04",
+          "term": "1091",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 94,
+          "text": "平時成績為出缺席，期末考小組報告一篇\n\n課堂上人很多可作自己的事，更方便的事是可以同時處理上一堂高階英語的期末報告",
+          "rawHeader": "1091｜5星｜94分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g11-05",
+          "term": "1082",
+          "stars": 5,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "期末報告、課堂表現與出席率\n\n如果是敢講英文的人很有優勢，因為上課真的就都是在跟老師同學幹話，如果願意參與課堂的話會發現這堂課真的滿歡樂的XD有問題其實也都可以直接跟老師提出並討論，老師很喜歡會表達意見的學生，多說話分數真的會很高！",
+          "rawHeader": "1082｜5星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-yuyan-g11-06",
+          "term": "1081",
+          "stars": 3,
+          "sweet": null,
+          "cool": null,
+          "grade": 95,
+          "text": "出席、作業、報告\n\n我上課因為很活潑，都幫忙錄影打雜等等，意外跟JBC很熟，所以最後他給我不錯的分數。\n但平常都有出席跟交作業，寫作的話，期末要交類似小論文的報告(至少6面A4)，也要上台簡報(6分鐘)，最好不要混，我覺得外國人應該很看態度；會話期末要報告(6分鐘)，都說是會話了，當然是重頭戲。\n上課會分組，有時候講一堆幹話非常好玩。",
+          "rawHeader": "1081｜3星｜95分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n07_yuyan/g11.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "軍訓全民國防教育軍事訓練-chenxiangji",
+      "code": null,
+      "name": "軍訓(全民國防教育軍事訓練)",
+      "domain": "other",
+      "teacher": "陳祥吉",
+      "reviews": [
+        {
+          "id": "lg-other-h01-01",
+          "term": "1112",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 10,
+          "grade": 81.5,
+          "text": "從這學期開始換教官了，課程形式也稍微不同，不過重點一樣是報告與考試。報告是集中在下半學期才進行。考試則不能使用手機，但是可以拿課本出來考。平時的上課是可以翹課的，只是如果錯過考試或報告會直接當掉。",
+          "rawHeader": "1112｜5星｜甜度9｜涼度10｜81.5分(10/19)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-other-h01-02",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 6,
+          "cool": 10,
+          "grade": 88,
+          "text": "期中期末+報告\n\n期中期末開書考，可以找答案。修這堂課基本上是為了抵役期。聽說快改一年了。如果改一年的話可以抵更多天數喔。分數不甜，最高91分。但0學分只要60分就好，推薦男生來修抵當兵時間",
+          "rawHeader": "1102｜5星｜甜度6｜涼度10｜88分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-other-h01-03",
+          "term": "1102",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": null,
+          "text": "1次報告+期中期末(開書考)\n\n又甜又涼又抵兵役，不算在學期成績內，所以會過就好。",
+          "rawHeader": "1102｜5星｜甜度10｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-other-h01-04",
+          "term": "1101",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 10,
+          "grade": null,
+          "text": "期中期末開書考+一次課堂報告\n\n上課可以儲值滿滿愛國價值，而且又甜又涼又可以抵兵役，小哥哥們不修麼?",
+          "rawHeader": "1101｜5星｜甜度9｜涼度10",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h01.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-other-h01-05",
+          "term": "1091",
+          "stars": 5,
+          "sweet": 6,
+          "cool": 10,
+          "grade": 82,
+          "text": "期中期末+報告+出席\n\n超涼、涼爆\n\n好課，必修！0學分的課，只要考60分就好。男生可以抵2天的兵役，最多抵10天，加上高中的5天就是15天了。期中期末考可以用手機找答案，所以不難，報告也很簡單。大家快點修，能抵兵役ㄟ，能早一天脫離軍營是一天。你能想像你旁邊的還要繼續待在裡面，然後你可以說「不好意思，我先退伍了」的爽感嗎？快來修",
+          "rawHeader": "1091｜5星｜甜度6｜涼度10｜82分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h01.html",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "課程名稱-unknown",
+      "code": null,
+      "name": "課程名稱",
+      "domain": "other",
+      "teacher": "很多位老師",
+      "reviews": [
+        {
+          "id": "lg-other-h02-01",
+          "term": "1101",
+          "stars": 0,
+          "sweet": 5,
+          "cool": 1,
+          "grade": 86,
+          "text": "基本上學生在這堂課就是要學會如何巴結老師和三芝區公所的人，當免費勞工，秀一秀自己和家長在馬偕體系的人脈，然後相信主的恩惠。要做一堆沒有意義的報告，然後還要在老師面前講一番大道理(幹話)。可惜這堂課一定是必修，沒得選。唯一的好處就是會有服務學習時數，會依照成績來給，所以上課的學習單和課後回饋要記得好好寫。但是感覺批改學習單的方式也沒有什麼準則，所以記得抱持隨緣的心，不要得失心太重。",
+          "rawHeader": "1101｜0星｜甜度5｜涼度1｜86(137/175)",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h02.html",
+          "hidden": false
+        },
+        {
+          "id": "lg-other-h02-02",
+          "term": "1091",
+          "stars": 0,
+          "sweet": 7,
+          "cool": 3,
+          "grade": 91,
+          "text": "被傳教，講者們不尊重其他宗教信仰的人，會被強迫禱告(結束禱告，如果做中間你沒機會可以自己離開，因為怕走出去會干擾到其他人)。部分獎者還會發表歧視性言論，是沒想到這個年代還能聽到的話，果然教會ㄏㄏ。還要莫名其妙做一個無法改變現狀又可能會打擾當地居民的服務學習專題。很無聊的必修，寫完心得給旁邊的人幫你交就可以閃人了",
+          "rawHeader": "1091｜0星｜甜度7｜涼度3｜91分",
+          "submittedAt": null,
+          "source": "legacy",
+          "sourceFile": "n08_other/h02.html",
+          "hidden": false
+        }
+      ],
+      "needsReview": [
+        "代碼=\"課程代碼\"",
+        "課名=\"課程名稱\"",
+        "教師=\"很多位老師\""
+      ]
+    }
+  ]
+}
