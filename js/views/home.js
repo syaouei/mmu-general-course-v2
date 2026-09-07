@@ -11,7 +11,6 @@ import { buildIndex, query } from '../search.js';
 import {
   courseList, sectionHead, domainTag, termBadge, domainHref, courseHref,
 } from '../ui.js';
-import { visibleReviews, formatTerm } from '../format.js';
 
 const DEBOUNCE_MS = 150;
 

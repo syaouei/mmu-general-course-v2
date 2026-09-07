@@ -58,13 +58,17 @@ const soon = (title) => async () => async () => {
 
 router.define(/^\/$/, 'home', () => import('./views/home.js').then((m) => m.default));
 
-router.define(/^\/d\/([^/]+)$/, 'domain', soon('領域頁'),
+router.define(/^\/d\/([^/]+)$/, 'domain',
+  () => import('./views/domain.js').then((m) => m.default),
   (m) => ({ id: decodeURIComponent(m[1]) }));
 
-router.define(/^\/c\/(.+)$/, 'course', soon('課程頁'),
+router.define(/^\/c\/(.+)$/, 'course',
+  () => import('./views/course.js').then((m) => m.default),
   (m) => ({ id: decodeURIComponent(m[1]) }));
 
-router.define(/^\/search$/, 'search', soon('搜尋結果頁'));
+router.define(/^\/search$/, 'search',
+  () => import('./views/search.js').then((m) => m.default));
+
 router.define(/^\/guide$/, 'guide', soon('介面說明'));
 router.define(/^\/about$/, 'about', soon('關於'));
 

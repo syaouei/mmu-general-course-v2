@@ -147,8 +147,12 @@ export function starsLabel(stat) {
   return `平均星級 ${formatStat(stat, 1)} 顆星，共 ${stat.n} 則評分`;
 }
 
-/** 量表的無障礙描述，對應 role="img" + aria-label。 */
+/**
+ * 量表的無障礙描述，對應 role="img" + aria-label。
+ * 平均值會是 9.666666666666666 這種數字，唸出來很荒謬，跟畫面上顯示的
+ * 位數保持一致（整數不補小數，非整數取一位）。
+ */
 export function meterLabel(name, value, max = 10) {
   if (typeof value !== 'number' || Number.isNaN(value)) return `${name}：${NO_DATA}`;
-  return `${name} ${trimZero(String(value))}，滿分 ${max}`;
+  return `${name} ${formatValue(value, Number.isInteger(value) ? 0 : 1)}，滿分 ${max}`;
 }

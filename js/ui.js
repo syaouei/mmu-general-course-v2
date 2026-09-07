@@ -30,20 +30,22 @@ export function domainTag(domain) {
  * 星等。
  * 圖形是輔助，數字才是內容 —— 沒有樣本時顯示「尚無資料」而不是空的五顆星，
  * 空星會被讀成「0 分」。
+ *
+ * single: true 用在「單一則心得」的情境。那不是平均值，唸成「平均星級⋯⋯
+ * 共 1 則評分」是錯的，會讓人以為那是整門課的統計。
  */
-export function starsView(stat) {
+export function starsView(stat, { single = false } = {}) {
   if (!stat || stat.avg === null) {
     return el('span', { class: 'stars is-none', title: NO_DATA }, NO_DATA);
   }
   const filled = Math.round(stat.avg);
   const glyphs = [];
   for (let i = 1; i <= 5; i++) {
-    glyphs.push(el('span', { class: i <= filled ? '' : 'off', 'aria-hidden': 'true' }, '★'));
+    glyphs.push(el('span', { class: i <= filled ? '' : 'off' }, '★'));
   }
-  return el('span', { class: 'stars', role: 'img', 'aria-label': starsLabel(stat) }, [
-    ...glyphs,
-    el('span', { class: 'sr-only' }, starsLabel(stat)),
-  ]);
+  const label = single ? `這則評 ${formatValue(stat.avg, 0)} 顆星` : starsLabel(stat);
+  // role="img" + aria-label 時，後代內容會被忽略，所以不需要再放一份 sr-only。
+  return el('span', { class: 'stars', role: 'img', 'aria-label': label }, glyphs);
 }
 
 /**

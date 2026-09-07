@@ -365,3 +365,292 @@
 .site-footer p { margin-bottom: var(--s1); }
 .site-footer strong { color: var(--ink-2); font-weight: 600; }
 .site-footer .disclaimer { margin-top: var(--s3); max-width: 42rem; }
+
+/* ===========================================================================
+   階段三：領域頁（儀表）與課程頁（螢光筆）
+   =========================================================================== */
+
+/* ------------------------------------------------------------- 頁面標頭 */
+
+.page-head {
+  padding-block: var(--s6) var(--s4);
+  border-bottom: var(--hair) solid var(--line);
+}
+.page-head .crumb {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  margin-bottom: var(--s2);
+}
+.page-head .crumb a { color: inherit; }
+.page-head h1 { display: flex; align-items: baseline; gap: var(--s3); flex-wrap: wrap; }
+.page-head .sub { color: var(--muted); font-size: var(--fs-sm); font-weight: 400; }
+
+/* 領域頁的標題左邊掛一道該領域的色條，取代舊站的粗黑框。 */
+.page-head.is-domain h1 { border-left: 4px solid var(--d); padding-left: var(--s3); }
+
+/* ----------------------------------------------------------- 排序與篩選 */
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s4);
+  align-items: flex-end;
+  padding-block: var(--s4);
+}
+
+.control { display: flex; flex-direction: column; gap: var(--s1); }
+.control > span { font-size: var(--fs-xs); color: var(--muted); }
+
+.control select,
+.control input[type="number"] {
+  padding: var(--s1) var(--s2);
+  background: var(--surface);
+  color: var(--ink);
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-sm);
+  min-inline-size: 7rem;
+}
+
+.control.is-check { flex-direction: row; align-items: center; gap: var(--s2); }
+.control.is-check label { font-size: var(--fs-sm); }
+
+.controls .reset {
+  margin-left: auto;
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+  background: none;
+  border: 0;
+  padding: var(--s2);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.filter-note {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  padding-bottom: var(--s3);
+}
+
+/* --------------------------------------------------------- 儀表：資料表格 */
+/* 桌機 ≥900px 才出現。密度高、對齊嚴格，這是掃描任務的主場。 */
+
+.table-wrap { overflow-x: auto; }
+
+table.data {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+}
+
+table.data caption { text-align: left; padding: var(--s3) var(--s4); color: var(--muted); }
+
+table.data th,
+table.data td {
+  padding: var(--s2) var(--s3);
+  border-bottom: var(--hair) solid var(--panel-line);
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.data thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--panel-2);
+  font-weight: 600;
+  font-size: var(--fs-xs);
+  color: var(--panel-ink);
+  padding: 0;
+}
+
+/* 排序鈕是真的 <button>，鍵盤可以操作，螢幕閱讀器讀得出來。 */
+table.data thead button {
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: var(--s2) var(--s3);
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+table.data thead button:hover { background: var(--panel); }
+table.data thead button .arrow { opacity: 0; font-size: 0.8em; }
+table.data th[aria-sort] button .arrow { opacity: 1; }
+
+table.data tbody tr:hover { background: var(--panel-2); }
+table.data tbody tr:last-child td { border-bottom: 0; }
+
+table.data .c-code { font-family: var(--mono); color: var(--muted); }
+table.data .c-name a { text-decoration: none; font-weight: 600; white-space: normal; }
+table.data .c-name a:hover { text-decoration: underline; }
+table.data .c-num { text-align: right; font-family: var(--mono); }
+table.data .c-meter { inline-size: 8.5rem; }
+
+/* 儀表面板內的次要文字要壓下來，不然每一格都一樣重。 */
+.panel .is-none { color: var(--muted); }
+
+.only-wide { display: none; }
+.only-narrow { display: block; }
+@media (min-width: 900px) {
+  .only-wide { display: block; }
+  .only-narrow { display: none; }
+}
+
+/* ----------------------------------------------------- 螢光筆：課程頁頁首 */
+
+.course-page { background: var(--paper); }
+
+.course-head {
+  padding-block: var(--s7) var(--s5);
+}
+
+.course-head .code {
+  font-family: var(--mono);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  display: block;
+  margin-bottom: var(--s2);
+}
+
+.course-head h1 {
+  font-size: var(--fs-2xl);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--s3);
+  /* 螢光筆痕靠 .course-name（見上方招牌元件）。 */
+  line-height: 1.35;
+}
+
+.course-head .meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  color: var(--ink-2);
+}
+
+.course-head .actions { margin-left: auto; display: flex; gap: var(--s3); }
+
+.linkbtn {
+  background: none;
+  border: 0;
+  padding: var(--s1) 0;
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.linkbtn[aria-pressed="true"] { color: var(--ink); font-weight: 600; }
+
+/* --------------------------------------------------------------- 統計摘要 */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: var(--s4) var(--s5);
+  padding-block: var(--s5);
+  border-block: var(--hair) solid var(--line);
+}
+
+.stat-label { font-size: var(--fs-xs); color: var(--muted); margin-bottom: var(--s1); }
+.stat-value { font-size: var(--fs-lg); font-weight: 600; font-variant-numeric: tabular-nums; }
+.stat-value.is-none { font-size: var(--fs-base); font-weight: 400; }
+.stat-sample { font-size: var(--fs-xs); color: var(--muted); }
+
+.stat-meters { padding-block: var(--s4); display: grid; gap: var(--s3); }
+
+/* -------------------------------------------------------------- 心得列表 */
+/* 沒有卡片，只有髮絲線。留白多、好讀。 */
+
+.reviews { padding-block: var(--s4); }
+
+.review {
+  padding-block: var(--s5);
+  border-bottom: var(--hair) solid var(--line);
+}
+.review:last-child { border-bottom: 0; }
+
+.review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  margin-bottom: var(--s3);
+  font-size: var(--fs-sm);
+}
+
+.review-body {
+  font-size: var(--fs-md);
+  line-height: 1.75;
+  max-inline-size: var(--maxw-read);
+  overflow-wrap: anywhere;
+}
+
+.review-foot {
+  margin-top: var(--s3);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  display: flex;
+  gap: var(--s3);
+  align-items: center;
+}
+.review-foot a { color: inherit; }
+
+/* --- 閱讀模式 -------------------------------------------------------------
+   規格第五節：襯線字、行高 1.95、字級放大、評分退到側欄。
+   只換排版，不動內容，也不重新渲染 —— 切換不會讓讀到一半的位置跑掉。 */
+
+[data-reading="on"] .review-body {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  line-height: var(--lh-read);
+}
+
+@media (min-width: 860px) {
+  [data-reading="on"] .review {
+    display: grid;
+    grid-template-columns: 1fr 11rem;
+    gap: var(--s5);
+    align-items: start;
+  }
+  [data-reading="on"] .review-body { grid-column: 1; grid-row: 1; }
+  [data-reading="on"] .review-foot { grid-column: 1; grid-row: 2; }
+  /* 評分退到側欄：縮小、去除橫向排列、不再是進入視線的第一個東西。 */
+  [data-reading="on"] .review-meta {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s2);
+    margin-bottom: 0;
+    padding-left: var(--s4);
+    border-left: var(--hair) solid var(--line);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+  }
+}
+
+/* ------------------------------------------------------------- 相關課程 */
+
+.related { padding-block: var(--s5); }
+.related h2 { font-size: var(--fs-md); margin-bottom: var(--s3); }
+
+/* --------------------------------------------------------------- 提示條 */
+
+.low-sample {
+  display: inline-block;
+  font-size: var(--fs-xs);
+  color: var(--warn-ink);
+  background: var(--warn-bg);
+  padding: 0 var(--s2);
+  border-radius: var(--r-sm);
+}
+
+.copied { font-size: var(--fs-xs); color: var(--muted); }
