@@ -165,12 +165,22 @@ export default async function courseView(ctx) {
 
   // -------------------------------------------------------------- 心得列表
 
+  /**
+   * 回報連結。
+   *
+   * 優先用 reportPrefillUrl —— 那是 scripts/create-forms.gs 產生的預填
+   * 網址範本，裡面的 __REVIEW_ID__ 換成心得 id 後，表單的「心得編號」
+   * 欄位會自動帶入。Google 表單的預填參數是 entry.<數字ID>，不是我們
+   * 自己取的名字，所以不能用 searchParams 硬加一個 review=。
+   *
+   * 沒設定範本就退回純表單網址，回報者自己描述是哪一則。
+   */
   function reportHref(review) {
-    const base = config.forms?.reportUrl;
-    if (!base) return null;
-    const u = new URL(base);
-    u.searchParams.set('review', review.id);
-    return u.toString();
+    const tpl = config.forms?.reportPrefillUrl;
+    if (tpl && tpl.includes('__REVIEW_ID__')) {
+      return tpl.replace('__REVIEW_ID__', encodeURIComponent(review.id));
+    }
+    return config.forms?.reportUrl || null;
   }
 
   function renderReview(r) {

@@ -1,8 +1,10 @@
 {
   "$comment": [
     "投稿表單與 repo 設定。表單網址不寫死在 JS 裡（規格第十三節）。",
+    "forms 區塊由 scripts/create-forms.gs 產生 —— 到 script.google.com 貼上並執行 setUp，",
+    "把執行紀錄印出的 JSON 貼回這裡即可。",
     "submissionsCsv 留空代表停用執行期即時投稿，只顯示已烘焙資料。",
-    "階段五接上表單後再填入。"
+    "reportPrefillUrl 內含哨兵 __REVIEW_ID__，前端會換成實際的心得 id。"
   ],
   "site": {
     "name": "馬偕通識分享區",
@@ -14,6 +16,7 @@
   "forms": {
     "submitUrl": "",
     "reportUrl": "",
+    "reportPrefillUrl": "",
     "submissionsCsv": "",
     "reportsCsv": ""
   },
