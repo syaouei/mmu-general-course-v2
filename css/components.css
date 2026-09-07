@@ -654,3 +654,144 @@ table.data .c-meter { inline-size: 8.5rem; }
 }
 
 .copied { font-size: var(--fs-xs); color: var(--muted); }
+
+/* ===========================================================================
+   階段四：說明頁、關於頁、外觀切換
+   =========================================================================== */
+
+/* --------------------------------------------------------------- 外觀切換 */
+
+.icon-btn {
+  position: relative;
+  flex: none;
+  inline-size: 2rem;
+  block-size: 2rem;
+  display: grid;
+  place-items: center;
+  background: none;
+  border: var(--hair) solid transparent;
+  border-radius: var(--r-sm);
+  color: var(--ink-2);
+  font-size: var(--fs-md);
+  line-height: 1;
+  cursor: pointer;
+}
+.icon-btn:hover { background: var(--surface-2); border-color: var(--line); color: var(--ink); }
+
+/* 觸控裝置把可點範圍撐到 44px，但不改變版面尺寸 ——
+   手機頁首只剩 16px 餘裕，真的把按鈕變大會擠到導覽列。 */
+.icon-btn::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+/* ----------------------------------------------------------------- 內文頁 */
+/* 說明與關於用襯線字，行長收窄。這兩頁是拿來讀的，不是拿來掃的。 */
+
+.prose {
+  max-inline-size: var(--maxw-read);
+  padding-block: var(--s6) var(--s7);
+}
+
+.prose h1 { margin-bottom: var(--s5); }
+
+.prose h2 {
+  font-size: var(--fs-lg);
+  margin-top: var(--s7);
+  margin-bottom: var(--s3);
+  padding-bottom: var(--s2);
+  border-bottom: var(--hair) solid var(--line);
+}
+
+.prose h3 { font-size: var(--fs-md); margin-top: var(--s5); margin-bottom: var(--s2); }
+
+.prose p { margin-bottom: var(--s3); color: var(--ink-2); }
+.prose p.lede { font-size: var(--fs-md); color: var(--ink); }
+
+.prose ul { margin-bottom: var(--s3); padding-left: var(--s5); list-style: disc; }
+.prose ul li { margin-bottom: var(--s2); color: var(--ink-2); }
+
+.prose strong { color: var(--ink); }
+.prose a { color: var(--ink); }
+
+.prose code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  background: var(--surface-2);
+  padding: 0 var(--s1);
+  border-radius: var(--r-sm);
+}
+
+/* --- 欄位說明的示範區塊 --------------------------------------------------
+   每一項都拿站上真實的資料當範例，而不是編一個假的。 */
+
+.field {
+  padding: var(--s4) 0;
+  border-bottom: var(--hair) solid var(--line);
+}
+.field:last-child { border-bottom: 0; }
+
+.field-demo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s3) var(--s4);
+  margin-bottom: var(--s3);
+  background: var(--surface);
+  border-left: 3px solid var(--d);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+}
+
+.field-demo .from {
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  margin-left: auto;
+}
+
+.field dt { font-weight: 600; margin-bottom: var(--s1); }
+.field dd { margin: 0; color: var(--ink-2); }
+
+/* 兩欄對照：「—」與「尚無資料」的差別 */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--hair);
+  background: var(--line);
+  border: var(--hair) solid var(--line);
+  margin-block: var(--s4);
+}
+@media (max-width: 560px) { .compare { grid-template-columns: 1fr; } }
+
+.compare > div { background: var(--surface); padding: var(--s4); }
+.compare h3 { font-size: var(--fs-sm); margin-top: 0; margin-bottom: var(--s2); }
+.compare p { font-size: var(--fs-sm); margin-bottom: 0; }
+
+/* --------------------------------------------------------------- 免責聲明 */
+
+.disclaimer-box {
+  margin-top: var(--s6);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border-radius: var(--r-md);
+  font-size: var(--fs-sm);
+}
+.disclaimer-box h2 { margin-top: 0; border: 0; padding: 0; font-size: var(--fs-md); }
+.disclaimer-box p { margin-bottom: var(--s2); }
+.disclaimer-box p:last-child { margin-bottom: 0; }
+
+/* ------------------------------------------------------------- 投稿呼籲 */
+
+.cta {
+  display: block;
+  margin-block: var(--s5);
+  padding: var(--s5);
+  background: var(--surface);
+  border: var(--hair) solid var(--line-2);
+  border-radius: var(--r-md);
+  text-decoration: none;
+}
+.cta:hover { background: var(--surface-2); }
+.cta strong { display: block; font-size: var(--fs-md); margin-bottom: var(--s1); }
+.cta span { color: var(--muted); font-size: var(--fs-sm); }

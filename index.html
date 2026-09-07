@@ -15,6 +15,16 @@
 <meta property="og:image" content="assets/og.png">
 
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<script>
+// 在 CSS 之前套用記住的外觀設定，避免深色使用者先閃一下白畫面。
+// 這件事一定要同步、在 <head> 裡做完，所以不能放進 js/theme.js（那是
+// module，會被延後執行）。沒有記錄時什麼都不做 —— 沒有 data-theme
+// 屬性就是「跟隨系統」，由 tokens.css 的 prefers-color-scheme 決定。
+try {
+  var t = localStorage.getItem('mmc:theme');
+  if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+} catch (e) { /* 私密視窗會擋 localStorage，跟隨系統即可 */ }
+</script>
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/components.css">
@@ -30,7 +40,9 @@
       <a href="#/">首頁</a>
       <a href="#/guide">介面說明</a>
       <a href="#/about">關於</a>
+      <a id="submit-link" href="#/about">投稿</a>
     </nav>
+    <button id="theme-toggle" class="icon-btn" type="button" aria-label="外觀：跟隨系統">◐</button>
   </div>
 </header>
 

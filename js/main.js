@@ -6,6 +6,7 @@
 import { el, replace } from './dom.js';
 import * as router from './router.js';
 import * as store from './store.js';
+import * as theme from './theme.js';
 import { visibleReviews } from './format.js';
 
 // --------------------------------------------------------------------- 頁尾
@@ -69,8 +70,11 @@ router.define(/^\/c\/(.+)$/, 'course',
 router.define(/^\/search$/, 'search',
   () => import('./views/search.js').then((m) => m.default));
 
-router.define(/^\/guide$/, 'guide', soon('介面說明'));
-router.define(/^\/about$/, 'about', soon('關於'));
+router.define(/^\/guide$/, 'guide',
+  () => import('./views/guide.js').then((m) => m.default));
+
+router.define(/^\/about$/, 'about',
+  () => import('./views/about.js').then((m) => m.default));
 
 // 後台只有真的走到 #/admin 才載入，平常一個 byte 都不下載。
 router.define(/^\/admin$/, 'admin', soon('後台'));
@@ -104,6 +108,35 @@ addEventListener('keydown', (e) => {
   q.focus();
   q.select();
 });
+
+// --------------------------------------------------------------- 外觀切換
+
+function setupTheme() {
+  const btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+
+  const paint = (v) => {
+    const { icon, label } = theme.themeLabel(v);
+    btn.textContent = icon;
+    btn.setAttribute('aria-label', label);
+    btn.title = label + '（點擊切換）';
+  };
+
+  paint(theme.getTheme());
+  btn.addEventListener('click', () => paint(theme.cycleTheme()));
+}
+
+// ------------------------------------------------------------- 投稿入口
+
+function setupSubmitLink() {
+  const a = document.getElementById('submit-link');
+  if (!a) return;
+  const url = store.getState().config?.forms?.submitUrl;
+  if (!url) return;                    // 尚未設定，維持指向關於頁的說明
+  a.href = url;
+  a.target = '_blank';
+  a.rel = 'noopener noreferrer';
+}
 
 // 目前所在的導覽項目標記 aria-current。
 function markNav() {
@@ -140,6 +173,8 @@ addEventListener('hashchange', markNav);
 
   store.subscribe(renderFooter);
   renderFooter();
+  setupTheme();
+  setupSubmitLink();
   if (boot) boot.remove();
   await router.start();
   markNav();
