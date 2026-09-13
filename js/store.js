@@ -10,9 +10,10 @@
 // 即時的，只改 courses.json 殺不掉惡意內容。
 
 import { termOrder, visibleReviews } from './format.js';
-import { parseRecords } from './csv.js';
-import { parseBlocklist, gateBatch } from './gate.js';
-import { recordToFields, mergeSubmissions, stableId, courseKey } from './submissions.js';
+
+// csv / gate / submissions 刻意不在這裡靜態 import —— 它們只有即時投稿那一軌
+// 用得到，而那一軌跑在首屏渲染之後。靜態 import 會把這三個模組（約 20KB）
+// 拖進首屏，違反規格第十節的預算。改在 loadLive() 裡動態載入。
 
 const state = {
   config: null,
@@ -117,10 +118,16 @@ export async function loadLive() {
   if (!url) return;
 
   try {
-    const [csvRes, blocklistText] = await Promise.all([
+    // 這三個模組與網路請求一起併發，不會多花一趟來回。
+    const [{ parseRecords }, gate, subs, csvRes, blocklistText] = await Promise.all([
+      import('./csv.js'),
+      import('./gate.js'),
+      import('./submissions.js'),
       fetch(url, { cache: 'no-cache' }),
       fetch('scripts/blocklist.txt').then((r) => (r.ok ? r.text() : '')).catch(() => ''),
     ]);
+    const { parseBlocklist, gateBatch } = gate;
+    const { recordToFields, mergeSubmissions, stableId, courseKey } = subs;
     if (!csvRes.ok) throw new Error(`HTTP ${csvRes.status}`);
 
     const { records } = parseRecords(await csvRes.text());
