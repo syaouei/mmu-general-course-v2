@@ -10,10 +10,15 @@ import { buildIndex, query as runQuery, filter, sort, SORTS } from '../search.js
 import { courseList, bindSearchInput } from '../ui.js';
 
 let index = null;
+let indexVersion = -1;
 
 export default async function searchView(ctx) {
   const main = document.getElementById('main');
-  if (!index) index = buildIndex(store.getCourses());
+  // 資料版本變了就重建索引（即時投稿併入後會變）。
+  if (!index || indexVersion !== store.getVersion()) {
+    index = buildIndex(store.getCourses());
+    indexVersion = store.getVersion();
+  }
 
   const domainsById = new Map(store.getDomains().map((d) => [d.id, d]));
 

@@ -135,6 +135,11 @@ function focusMain() {
   window.scrollTo({ top: 0, behavior: 'auto' });
 }
 
+/** 重跑目前這條路由。資料在背景更新後要重畫畫面時用。 */
+export function refresh() {
+  return handle();
+}
+
 export function start() {
   addEventListener('hashchange', handle);
   return handle();

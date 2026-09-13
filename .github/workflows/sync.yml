@@ -1,0 +1,51 @@
+name: 同步投稿
+
+# 規格第六節：每 6 小時把表單投稿併進 data/courses.json 並自動 commit。
+#
+# 這條路徑的價值不是速度（執行期那一軌已經即時了），而是**版本歷史**：
+# 每次同步都是一個 commit，惡意內容進來的那一刻、以及它被移除的那一刻，
+# 都留在 git log 裡可以追溯與還原。維護者不需要按任何按鈕。
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:        # 需要立刻同步時可以手動觸發
+
+permissions:
+  contents: write           # 只要這一個，用來 commit 資料檔
+
+concurrency:
+  group: sync-submissions
+  cancel-in-progress: false # 同步中途被砍掉會留下半寫入的資料檔
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          # 沒有 dependencies，不需要 cache 也不需要 npm install
+
+      - name: 同步投稿
+        id: sync
+        run: node scripts/sync-submissions.mjs
+
+      - name: 驗證資料
+        # 併進去的資料要先過 schema 與一致性檢查才 commit。
+        # 寧可讓 Action 紅，也不要把壞掉的 courses.json 推上正式站。
+        run: node scripts/validate-data.mjs
+
+      - name: Commit
+        run: |
+          if git diff --quiet -- data/; then
+            echo "資料沒有變動，不 commit。"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "chore(data): sync submissions"
+          git push

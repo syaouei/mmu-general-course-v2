@@ -16,6 +16,7 @@ import {
 const DEBOUNCE_MS = 150;
 
 let index = null;
+let indexVersion = -1;
 
 export default async function home(ctx) {
   const main = document.getElementById('main');
@@ -23,7 +24,11 @@ export default async function home(ctx) {
 
   const domains = store.getDomains();
   const domainsById = new Map(domains.map((d) => [d.id, d]));
-  if (!index) index = buildIndex(store.getCourses());
+  // 資料版本變了就重建索引（即時投稿併入後會變）。
+  if (!index || indexVersion !== store.getVersion()) {
+    index = buildIndex(store.getCourses());
+    indexVersion = store.getVersion();
+  }
 
   const initialQ = ctx.query.get('q') ?? '';
 
@@ -151,9 +156,4 @@ export default async function home(ctx) {
   if (!initialQ && matchMedia('(min-width: 700px)').matches) {
     input.focus({ preventScroll: true });
   }
-}
-
-/** 給 main.js 用：資料更新後（例如併入即時投稿）重建索引。 */
-export function invalidate() {
-  index = null;
 }

@@ -128,7 +128,7 @@ function parseHeader(raw) {
 
 // -------------------------------------------------------------------- 主流程
 
-const pinyinTable = JSON.parse(await readFile('scripts/teacher-pinyin.json', 'utf8'));
+const pinyinTable = JSON.parse(await readFile('data/teacher-pinyin.json', 'utf8'));
 const PINYIN = pinyinTable.map;
 
 function slugifyName(name) {
@@ -285,7 +285,7 @@ for (const dom of DOMAINS) {
 
 // 教師表缺項 → 中止，不猜 slug（id 會進網址，猜錯等於連結永久錯誤）
 if (unknownTeachers.size) {
-  console.error('拼音表缺少下列教師，請補進 scripts/teacher-pinyin.json 後重跑：');
+  console.error('拼音表缺少下列教師，請補進 data/teacher-pinyin.json 後重跑：');
   for (const t of unknownTeachers) console.error('  -', JSON.stringify(t));
   process.exit(1);
 }

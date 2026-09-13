@@ -1,0 +1,20 @@
+{
+  "name": "mmc-general-course-v2",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "馬偕通識分享區 v2 —— 純靜態，無執行期相依套件",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "migrate": "node scripts/migrate-legacy.mjs",
+    "sync": "node scripts/sync-submissions.mjs",
+    "validate": "node scripts/validate-data.mjs",
+    "test": "node --test test/"
+  },
+  "comment": [
+    "刻意沒有 dependencies 也沒有 devDependencies。",
+    "這個檔案存在的唯一理由是 type:module —— 讓 Node 能直接 import js/ 底下",
+    "的模組，使品質閘在執行期（瀏覽器）與建置期（Node）共用同一份程式碼。",
+    "兩邊各寫一份的話，遲早會有一邊漏掉某條規則。"
+  ]
+}

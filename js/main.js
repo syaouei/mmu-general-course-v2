@@ -30,8 +30,8 @@ function renderFooter() {
     el('p', {}, [el('strong', {}, '馬偕通識分享區 v2')]),
     el('p', {}, '設計者 syaouei ｜ 資料與前身站台 by Bean1450'),
     el('p', { class: 'num' },
-      `最後更新 ${updated}｜${courses.length} 門課、${reviewCount} 則心得` +
-      (store.isLive() ? '｜含即時投稿' : '')),
+      `最後更新 ${updated}｜${courses.length} 門課、${reviewCount} 則心得`
+      + (store.isLive() ? `｜含即時投稿 ${store.getLiveCount()} 則` : '')),
     el('p', { class: 'disclaimer' },
       '所有心得為學生個人主觀經驗，課程內容與評分方式可能逐年變動。'),
   ]);
@@ -109,6 +109,37 @@ addEventListener('keydown', (e) => {
   q.select();
 });
 
+// ------------------------------------------------------- 即時投稿進來之後
+//
+// 併入即時投稿後要重畫畫面，但重畫會把 DOM 整個換掉 —— 如果使用者正在
+// 搜尋框打字（尤其是中文輸入法組字中），節點被換掉會讓輸入直接中斷。
+// 所以：正在打字就先不動，等他離開輸入框或換頁再補上。
+
+let pendingRefresh = false;
+
+function isTyping() {
+  const t = document.activeElement;
+  if (!(t instanceof HTMLElement)) return false;
+  return t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable;
+}
+
+function onLiveData(s) {
+  if (!s.live) return;
+  if (isTyping()) {
+    pendingRefresh = true;
+    // 離開輸入框的那一刻補畫。once 讓它只觸發一次。
+    document.addEventListener('focusout', flushRefresh, { once: true });
+    return;
+  }
+  router.refresh();
+}
+
+function flushRefresh() {
+  if (!pendingRefresh || isTyping()) return;
+  pendingRefresh = false;
+  router.refresh();
+}
+
 // --------------------------------------------------------------- 外觀切換
 
 function setupTheme() {
@@ -178,4 +209,9 @@ addEventListener('hashchange', markNav);
   if (boot) boot.remove();
   await router.start();
   markNav();
+
+  // 烘焙資料已經上畫面了，這時才去抓即時投稿（規格第六節的雙軌讀取）。
+  // 放在 router.start() 之後，首屏不會被這個請求拖慢。
+  store.subscribe(onLiveData);
+  store.loadLive();
 })();
