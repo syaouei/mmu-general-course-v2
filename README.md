@@ -104,6 +104,64 @@ node scripts/dev-server.mjs
 
 ---
 
+## 後台安全模型
+
+`#/admin` 可以隱藏心得、編輯內文、處理待審區、編輯封鎖字表。
+所有修改透過 GitHub Contents API 寫回 repo，**每次儲存 = 一個 commit**。
+
+### 密碼不是用來驗證身分的
+
+純靜態站的前端沒有可信執行環境。把密碼或它的雜湊寫進 JS 做比對，
+那個 `if` 跑在使用者自己的機器上，改一行就過了 —— 那是 UI 鎖，
+不是安全邊界。而且 `courses.json` 本來就是公開檔案，「擋住讀取」
+從一開始就不是目標。
+
+要保護的是**寫入權**，而寫入權在 GitHub、由 token 決定。所以密碼的
+工作是解開一把你本來就沒有的鑰匙：
+
+```
+沒有正確密碼 → AES-GCM 解出來是垃圾 → GitHub 直接回 401
+```
+
+**逆向這個網站的程式碼沒有用，因為程式碼裡沒有秘密 —— 秘密在密文裡。**
+
+這麼做把安全問題從「我的 JS 判斷得對不對」（不可驗證）換成
+「PBKDF2 600k + AES-GCM 擋不擋得住離線爆破」（可量化）。
+
+### ⚠️ 誠實的風險說明
+
+> `admin/vault.enc` 是**公開檔案**，任何人都能下載回去離線爆破。
+> PBKDF2 60 萬次只能把每次嘗試的成本拉高，**不能歸零**。
+
+因此：
+
+- 密碼**必須**是長通關密語 —— 四到五個不相干的詞，例如
+  `鯨魚-鉛筆-火山-拖鞋-42`。不可以是 `mmc2026` 這種。
+- `make-vault.mjs` 會估算密碼熵並在低於 60 bits 時警告。它用字元類別
+  推算字集大小而不是數字元數 —— 一個中文字是幾千選一，跟一個小寫
+  字母不等價。
+- token 要用 **fine-grained** PAT，只給這一個 repo 的
+  `Contents: Read and write`，不要給別的權限。洩漏時能造成的最大損害
+  就是它被授予的範圍。
+- token 只存在 module scope 的變數裡，**不寫入 localStorage /
+  sessionStorage / cookie**，閒置 15 分鐘自動上鎖，重新整理即失效。
+
+### token 外洩時怎麼辦（五分鐘）
+
+1. GitHub → Settings → Developer settings → 撤銷舊 token
+2. 產生新 token（同樣只給這個 repo 的 Contents 權限）
+3. `node scripts/make-vault.mjs --token <新 token>`，設一組**新密碼**
+4. `git add admin/vault.enc && git commit && git push`
+
+舊的 vault 就算被爆破開，裡面的 token 也已經失效。
+
+### 後台路徑不是秘密
+
+`robots.txt` 有 `Disallow: /admin/`，但那只是不想被搜尋引擎收錄。
+**藏路徑不算安全防護**，不要把它當成第二道防線。
+
+---
+
 ## 資料
 
 所有內容在 [`data/courses.json`](data/courses.json)，單一真實來源。

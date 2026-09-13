@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# 後台不需要被搜尋引擎收錄。
+#
+# 要講清楚的是：這一行不是安全措施。後台頁面本身不是秘密，藏路徑也不算
+# 防護 —— 真正的邊界在 GitHub token 的加密與權限範圍，見 README 的安全模型。
+# 這裡只是不想讓 #/admin 出現在搜尋結果裡而已。
+Disallow: /admin/
+
+Sitemap: https://example.github.io/sitemap.xml

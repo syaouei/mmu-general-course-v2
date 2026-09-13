@@ -37,24 +37,6 @@ function renderFooter() {
   ]);
 }
 
-// ------------------------------------------------------------- 尚未完成的頁
-// 階段三～六會逐一換成真的 view。留一個誠實的佔位頁，比讓導覽壞掉好。
-
-const soon = (title) => async () => async () => {
-  router.setMeta(title, `${title}（建置中）`);
-  document.getElementById('main').replaceChildren(
-    el('div', { class: 'wrap' }, [
-      el('p', { class: 'empty' }, [
-        el('strong', {}, `${title}`),
-        el('br'),
-        '這一頁還在建置中。',
-        el('br'),
-        el('a', { href: '#/' }, '← 回首頁'),
-      ]),
-    ]),
-  );
-};
-
 // --------------------------------------------------------------------- 路由
 
 router.define(/^\/$/, 'home', () => import('./views/home.js').then((m) => m.default));
@@ -77,7 +59,9 @@ router.define(/^\/about$/, 'about',
   () => import('./views/about.js').then((m) => m.default));
 
 // 後台只有真的走到 #/admin 才載入，平常一個 byte 都不下載。
-router.define(/^\/admin$/, 'admin', soon('後台'));
+// 它不是秘密 —— 藏路徑不算安全，robots.txt 擋收錄就夠了。
+router.define(/^\/admin$/, 'admin',
+  () => import('./views/admin.js').then((m) => m.default));
 
 router.setNotFound(() => async (ctx) => {
   router.setMeta('找不到頁面', '這個網址不存在。');
