@@ -75,6 +75,8 @@ export const getCurrent = () => current;
 export function setMeta(title, description) {
   const full = title ? `${title}｜馬偕通識分享區` : '馬偕通識分享區';
   document.title = full;
+  // 每次切頁都先清掉上一頁的結構化資料，需要的 view 會自己再設一次。
+  setJsonLd(null);
   let tag = document.querySelector('meta[name="description"]');
   if (!tag) {
     tag = document.createElement('meta');
@@ -94,6 +96,26 @@ export function setMeta(title, description) {
     }
     og.setAttribute('content', val);
   }
+}
+
+/**
+ * 設定或清除結構化資料（規格第九節的 JSON-LD）。
+ *
+ * 傳 null 就移除 —— 切換路由時一定要清掉，不然課程頁的結構化資料會
+ * 殘留在首頁上，變成對爬蟲的錯誤宣告。
+ *
+ * 內容用 textContent 寫入。JSON.stringify 的輸出不會含 </script>，
+ * 但走 textContent 就不必依賴這個假設。
+ */
+export function setJsonLd(obj) {
+  const ID = 'ld-json';
+  document.getElementById(ID)?.remove();
+  if (!obj) return;
+  const s = document.createElement('script');
+  s.type = 'application/ld+json';
+  s.id = ID;
+  s.textContent = JSON.stringify(obj);
+  document.head.appendChild(s);
 }
 
 let pending = 0;

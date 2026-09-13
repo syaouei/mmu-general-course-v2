@@ -9,7 +9,10 @@
     "migrate": "node scripts/migrate-legacy.mjs",
     "sync": "node scripts/sync-submissions.mjs",
     "validate": "node scripts/validate-data.mjs",
-    "test": "node --test test/"
+    "test": "node --test test/*.test.mjs",
+    "check-links": "node scripts/check-links.mjs",
+    "sitemap": "node scripts/build-sitemap.mjs",
+    "ci": "npm test && npm run validate && npm run check-links"
   },
   "comment": [
     "刻意沒有 dependencies 也沒有 devDependencies。",

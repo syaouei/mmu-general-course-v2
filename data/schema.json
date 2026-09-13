@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/syaouei/mmc-general-course-v2/data/schema.json",
+  "title": "馬偕通識分享區 courses.json",
+  "$comment": [
+    "這份 schema 是給人看的契約文件。實際執行檢查的是 scripts/validate-data.mjs",
+    "—— 專案沒有任何相依套件，所以不跑 JSON Schema 驗證器。兩邊要一起改。",
+    "",
+    "最重要的規則沒辦法用 schema 表達，寫在這裡：",
+    "  1. 評分欄位缺項一律是 null，不是 0、不是省略欄位。",
+    "  2. 統計只計入非 null 的值。全部為 null 時平均必須是 null，不得回傳 0。",
+    "  3. 同一個 code 由不同 teacher 開課，是兩筆獨立的 course，評價不共用。",
+    "  4. course.id 一旦建立就不再變動 —— 它已經進了網址。"
+  ],
+  "type": "object",
+  "required": ["meta", "domains", "courses"],
+  "additionalProperties": false,
+
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["updatedAt", "schemaVersion", "courseCount", "reviewCount"],
+      "properties": {
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "頁尾的「最後更新」讀這個欄位，不是手動維護的字串。"
+        },
+        "schemaVersion": { "type": "integer", "const": 2 },
+        "courseCount": { "type": "integer", "minimum": 0 },
+        "reviewCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "檔案裡的心得總數，含 hidden。前台顯示的則數會另外扣掉 hidden。"
+        },
+        "generatedBy": { "type": "string" },
+        "lastSync": {
+          "type": "object",
+          "description": "sync-submissions.mjs 每次執行的結果摘要。",
+          "properties": {
+            "at": { "type": "string", "format": "date-time" },
+            "added": { "type": "integer" },
+            "quarantined": { "type": "integer" },
+            "discarded": { "type": "integer" }
+          }
+        }
+      }
+    },
+
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "order"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z]+$" },
+          "name": { "type": "string", "minLength": 1 },
+          "order": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+
+    "courses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "code", "name", "domain", "teacher", "reviews"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "{code}-{teacher 拼音}。撞號時依來源順序加 -2、-3 後綴。永不變動。"
+          },
+          "code": {
+            "type": ["string", "null"],
+            "description": "舊站有兩門課沒有課程代碼，那是已知情況，不是錯誤。不捏造代碼。"
+          },
+          "name": { "type": ["string", "null"] },
+          "domain": { "type": "string" },
+          "teacher": {
+            "type": ["string", "null"],
+            "description": "照來源原字串保留。舊站有幾格塞了多位教師，也有樣板佔位字串。"
+          },
+          "teachers": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "teacher 欄塞了多位教師時，拆開後的結果。"
+          },
+          "needsReview": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "metadata 來自舊站未填的樣板，課名或代碼待人工確認。心得本身是真的。"
+          },
+          "reviews": { "type": "array", "items": { "$ref": "#/$defs/review" } }
+        }
+      }
+    }
+  },
+
+  "$defs": {
+    "review": {
+      "type": "object",
+      "required": ["id", "term", "stars", "sweet", "cool", "grade", "text", "source", "hidden"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "舊站資料是 lg-{領域}-{頁碼}-{序號}；表單投稿是 fm-{hash}。抑制清單靠它比對，格式不可變動。"
+        },
+        "term": {
+          "type": ["string", "null"],
+          "pattern": "^\\d{3,4}$",
+          "description": "1101 = 110 學年上學期。"
+        },
+        "stars": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 5,
+          "description": "新投稿限制在 1–5，但舊站有 6 則真實的 0 星資料，所以下界是 0。"
+        },
+        "sweet": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 10,
+          "description": "給分寬鬆程度。null 代表沒有人填過，不是 0。"
+        },
+        "cool": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 10,
+          "description": "課業負擔輕重。null 代表沒有人填過，不是 0。"
+        },
+        "grade": {
+          "type": ["number", "null"],
+          "minimum": 0,
+          "maximum": 100,
+          "description": "可以是小數。舊站有 94.88、97.7 這種值，不四捨五入。"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "description": "純文字，換行是 \\n。渲染一律 textContent，全專案禁止對它使用 innerHTML。"
+        },
+        "rawHeader": {
+          "type": ["string", "null"],
+          "description": "舊站評分摘要的原始字串。解析再爛都不會丟資料，班排等額外註記也保存在這裡。"
+        },
+        "submittedAt": { "type": ["string", "null"], "format": "date-time" },
+        "sourceFile": { "type": "string", "description": "舊站來源檔，供追溯。" },
+        "source": { "enum": ["legacy", "form"] },
+        "hidden": {
+          "type": "boolean",
+          "description": "後台軟刪除。前台不渲染、不計入統計、不計入則數，但內容留在檔案裡。"
+        },
+        "hiddenReason": { "type": "string" },
+        "hiddenAt": { "type": "string", "format": "date-time" },
+        "originalText": {
+          "type": "string",
+          "description": "後台編輯過的心得在這裡永久保留原文。"
+        },
+        "editedAt": { "type": "string", "format": "date-time" },
+        "maskedFields": {
+          "type": "array",
+          "items": { "enum": ["email", "phone", "nationalId", "landline"] },
+          "description": "品質閘自動遮罩掉的個資類型。"
+        }
+      }
+    }
+  }
+}

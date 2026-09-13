@@ -7,7 +7,7 @@
 // 而不是 0 —— 誤把「沒人填」讀成「涼度 0」會直接害人選錯課。
 
 import { el, replace, multiline } from '../dom.js';
-import { setMeta } from '../router.js';
+import { setMeta, setJsonLd } from '../router.js';
 import * as store from '../store.js';
 import {
   courseHref, domainTag, domainClass, starsView, meterView, termBadge, statCell,
@@ -61,6 +61,36 @@ export default async function courseView(ctx) {
     `${course.name ?? ''}（${course.teacher ?? '教師不明'}）的學生評價，` +
     `共 ${st.count} 則心得。` +
     (st.stars.avg !== null ? `平均 ${st.stars.avg.toFixed(1)} 星。` : ''));
+
+  // 結構化資料（規格第九節）。
+  //
+  // aggregateRating 只在真的有評分時才輸出 —— 沒有樣本卻宣告 ratingValue: 0
+  // 等於告訴 Google「這門課評價是 0 分」，那是把「沒有資料」謊報成「最低分」。
+  // 這是整個資料模型那條規則在結構化資料上的同一個要求。
+  setJsonLd({
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: course.name ?? course.code ?? '未命名課程',
+    ...(course.code ? { courseCode: course.code } : {}),
+    description: `${course.name ?? ''}的學生修課心得，共 ${st.count} 則。`,
+    url: location.href,
+    inLanguage: 'zh-Hant',
+    provider: {
+      '@type': 'CollegeOrUniversity',
+      name: '馬偕醫學院',
+    },
+    ...(course.teacher ? { instructor: { '@type': 'Person', name: course.teacher } } : {}),
+    ...(st.stars.avg !== null && st.stars.n > 0 ? {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: Number(st.stars.avg.toFixed(2)),
+        ratingCount: st.stars.n,
+        reviewCount: st.count,
+        bestRating: 5,
+        worstRating: 0,
+      },
+    } : {}),
+  });
 
   let sortKey = 'new';
   let reading = readReading();

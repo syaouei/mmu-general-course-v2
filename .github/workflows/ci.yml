@@ -1,0 +1,80 @@
+name: CI
+
+# 規格第十一節：每次 push 跑資料驗證、內部連結檢查、單元測試。
+#
+# 沒有 npm install —— 這個專案零相依套件，所以 CI 只有一個 setup-node
+# 步驟，整輪大約十秒。快到沒有人會想跳過它。
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 單元測試
+        run: node --test test/*.test.mjs
+
+      - name: 資料驗證
+        run: node scripts/validate-data.mjs
+
+      - name: 內部連結與資源檢查
+        # 大小寫敏感度是這一步的重點：Windows 與 macOS 不分大小寫，
+        # GitHub Pages 的 Linux 分。本機好好的檔案上線後 404 就是這樣來的。
+        run: node scripts/check-links.mjs
+
+      - name: 確認沒有 innerHTML
+        # 規格第十三節：全專案禁止對投稿內容使用 innerHTML。
+        # 這條規則靠 code review 守不住，靠 grep 才守得住。
+        run: |
+          if grep -rnE '\.innerHTML|\.outerHTML|insertAdjacentHTML|document\.write' js/; then
+            echo "::error::找到 innerHTML 用法。心得內文一律走 textContent，見 js/dom.js。"
+            exit 1
+          fi
+          echo "✅ 沒有 innerHTML"
+
+      - name: 確認顏色只定義在 tokens.css
+        # 規格第八節：所有顏色只在 tokens.css 定義一次。
+        run: |
+          if grep -nE '#[0-9a-fA-F]{3,8}\b|rgb\(|hsl\(' css/base.css css/components.css; then
+            echo "::error::base.css 或 components.css 出現色碼。顏色一律走 var(--token)。"
+            exit 1
+          fi
+          echo "✅ 顏色沒有外洩到元件層"
+
+      - name: 確認沒有 token 進到瀏覽器儲存空間
+        # 規格第七節：解密後的 token 絕不可存進 localStorage / sessionStorage。
+        run: |
+          if grep -nE '(localStorage|sessionStorage)\.(setItem|getItem)' js/vault.js js/github.js js/views/admin.js; then
+            echo "::error::後台程式碼碰到了瀏覽器儲存空間。token 只能活在 module scope。"
+            exit 1
+          fi
+          echo "✅ 後台沒有碰 storage"
+
+      - name: 首屏 JS 體積
+        # 規格第十節的預算。超過不擋 CI，但要讓它在紀錄裡看得見。
+        run: |
+          node -e "
+          const fs = require('fs');
+          const zlib = require('zlib');
+          const first = ['js/dom.js','js/format.js','js/main.js','js/router.js',
+                         'js/search.js','js/store.js','js/ui.js','js/theme.js','js/views/home.js'];
+          const raw = first.reduce((s,f) => s + Buffer.byteLength(fs.readFileSync(f,'utf8')), 0);
+          const strip = first.reduce((s,f) => s + Buffer.byteLength(
+            fs.readFileSync(f,'utf8').replace(/^\s*\/\/.*\$/gm,'').replace(/\/\*[\s\S]*?\*\//g,'')), 0);
+          const gz = first.reduce((s,f) => s + zlib.gzipSync(fs.readFileSync(f)).length, 0);
+          const kb = n => (n/1024).toFixed(1) + 'KB';
+          console.log('首屏 JS：' + kb(raw) + '（去註解 ' + kb(strip) + '、gzip ' + kb(gz) + '）');
+          console.log('規格上限 30KB 指的是程式碼本身；中文註解在 UTF-8 是 3 bytes/字。');
+          "
