@@ -28,7 +28,13 @@ function renderFooter() {
 
   replace(foot, [
     el('p', {}, [el('strong', {}, '馬偕通識分享區 v2')]),
-    el('p', {}, '設計者 syaouei ｜ 資料與前身站台 by Bean1450'),
+    el('p', {}, [
+      '設計者 syaouei ｜ 資料與前身站台 by Bean1450 ｜ ',
+      // 後台入口放在頁尾：每一頁都找得到，但不搶學生的注意力。
+      // 公開放連結不會降低安全性 —— 規格第七節講得很清楚，藏路徑不算防護，
+      // 真正的邊界是加密的 GitHub token 與密碼的熵。
+      el('a', { href: '#/admin', rel: 'nofollow' }, '管理後台'),
+    ]),
     el('p', { class: 'num' },
       `最後更新 ${updated}｜${courses.length} 門課、${reviewCount} 則心得`
       + (store.isLive() ? `｜含即時投稿 ${store.getLiveCount()} 則` : '')),
