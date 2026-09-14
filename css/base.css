@@ -114,7 +114,11 @@ button, input, select, textarea {
   padding-inline: var(--s4);
 }
 
-#main { min-height: 60vh; }
+/* 內容是 JS 畫出來的，畫出來之前 #main 只有一行「載入中」。
+   高度不夠時頁尾一開始就在視窗裡，內容一出現就把它往下推 ——
+   Lighthouse 實測這一跳讓 CLS 到 0.18–0.24，桌機效能掉到 88。
+   撐滿一個視窗高，頁尾一開始就在視窗外，被推下去也不算版面位移。 */
+#main { min-height: 100vh; }
 
 /* 髮絲線是這個站的分隔語彙，不是卡片。 */
 .hair { border: 0; border-top: var(--hair) solid var(--line); margin: 0; }

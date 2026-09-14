@@ -15,7 +15,10 @@
   --surface-2: #EAECE8;
   --ink: #15181A;
   --ink-2: #3F4A45;
-  --muted: #697570;
+  /* 原本是 #697570，在 --ground 上只有 4.38:1，差一點達不到 WCAG AA 的 4.5:1
+     （Lighthouse 實測抓到頁尾、教師名、課程代碼）。現值在 --ground 5.1、
+     --surface 5.6、--surface-2 4.7。 */
+  --muted: #5F6B66;
   --line: #DCE0DB;
   --line-2: #C6CCC4;
 
@@ -29,6 +32,7 @@
   --panel: #131311;
   --panel-2: #1B1B18;
   --panel-ink: #E9EAE4;
+  --panel-muted: #939A90;  /* 面板上的次要文字：--panel 6.4、--panel-2 6.0 */
   --panel-line: #2A2B27;
   --meter-off: #2F312C;
 
@@ -208,3 +212,17 @@
 
 /* 沒有領域脈絡時的預設，讓元件不會落到 undefined。 */
 :root { --d: var(--ink-2); --m: var(--mark); }
+
+/* 領域色當「文字」用的版本（領域標籤）。
+   領域色本來是給色塊與量表用的，直接當 12px 小字，在淺色底上只有 2.9–4.4:1，
+   達不到 WCAG AA 的 4.5:1（Lighthouse 實測抓到）。往目前的文字色拉 30%：
+   色相保留，淺色底上變深，深色底上變亮。最差的對比度是淺色 4.9、深色 5.9；
+   只拉 25% 淺色就掉回 4.49，不要再往回調。
+   目前領域標籤不會出現在儀表面板裡。要放進去，得先在那個作用域把 --ink
+   換成 --panel-ink，否則淺色主題會變成深字壓深底。
+
+   必須和 --d 宣告在同一個元素上：自訂屬性在宣告處就算好值才往下繼承，
+   放在 :root 會算成預設色。不支援 color-mix 的舊瀏覽器會退回繼承的文字色。 */
+.d-tian, .d-di, .d-ren, .d-xin, .d-xuanxiu, .d-tiyu, .d-yuyan, .d-other {
+  --d-ink: color-mix(in oklab, var(--d) 70%, var(--ink));
+}

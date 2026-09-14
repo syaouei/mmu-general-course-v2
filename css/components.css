@@ -112,7 +112,9 @@
   gap: var(--s1);
   font-size: var(--fs-xs);
   font-weight: 600;
-  color: var(--d);
+  /* 文字用 --d-ink（往文字色拉近的領域色），小圓點才用原色。
+     原色直接當 12px 小字，在淺色底上只有 2.9–4.4:1（見 tokens.css）。 */
+  color: var(--d-ink);
   white-space: nowrap;
 }
 .tag-domain::before {
@@ -299,6 +301,9 @@
 
 .panel {
   --meter-track: var(--meter-off);
+  /* 面板在淺色主題裡也是深底。--muted 不換的話，表格裡的課程代碼只剩 3.6:1
+     （Lighthouse 實測抓到）。--ink 不換：.badge-term 壓在亮色底上要靠它。 */
+  --muted: var(--panel-muted);
   background: var(--panel);
   color: var(--panel-ink);
   border-radius: var(--r-md);

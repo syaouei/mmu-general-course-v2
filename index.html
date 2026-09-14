@@ -34,6 +34,11 @@ try {
   if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
 } catch (e) { /* 私密視窗會擋 localStorage，跟隨系統即可 */ }
 </script>
+<!-- 字型要等 JS 把內容畫出來，瀏覽器才會發現需要它，晚到就會換字型、跳版面。
+     兩個檔案每一頁都用得到（拉丁字母與數字），所以直接預載。
+     檔名改了 CI 的連結檢查會擋下來。 -->
+<link rel="preload" href="assets/fonts/archivo-400-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/base.css">
