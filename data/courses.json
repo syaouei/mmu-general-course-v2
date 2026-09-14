@@ -1,10 +1,16 @@
 {
   "meta": {
-    "updatedAt": "2026-09-07T13:25:03.016Z",
+    "updatedAt": "2026-09-14T12:05:39.521Z",
     "schemaVersion": 2,
     "courseCount": 89,
     "reviewCount": 258,
-    "generatedBy": "scripts/migrate-legacy.mjs"
+    "generatedBy": "scripts/migrate-legacy.mjs",
+    "lastSync": {
+      "at": "2026-09-14T12:05:39.522Z",
+      "added": 0,
+      "quarantined": 0,
+      "discarded": 0
+    }
   },
   "domains": [
     {
