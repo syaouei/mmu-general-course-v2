@@ -22,7 +22,10 @@
 .site-header > .wrap {
   display: flex;
   align-items: center;
-  gap: var(--s4);
+  /* 手機上要在一行塞下「品牌＋四個連結＋外觀按鈕」（實測共 285px），
+     間距跟著螢幕寬度縮：360px 寬時約 10px，572px 以上回到 16px。
+     固定 16px 時要 397px 寬才塞得下，360–390px 的手機連結會被擠成一字一行。 */
+  gap: clamp(var(--s2), 2.8vw, var(--s4));
   min-height: 3.25rem;
 }
 
@@ -35,13 +38,28 @@
 }
 .brand span { color: var(--muted); font-weight: 500; }
 
+/* 375px 以下（例如 360px 寬的 Android 手機），間距縮小了也放不下「v2」，
+   先藏版本號，讓導覽列維持一行。 */
+@media (max-width: 374.98px) {
+  .brand span { display: none; }
+}
+
 .site-nav {
   margin-left: auto;
   display: flex;
-  gap: var(--s4);
+  /* 真的塞不下時（320px 寬的舊手機）以整個連結為單位換行，
+     不會再把「首頁」拆成「首／頁」。 */
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: clamp(var(--s2), 2.8vw, var(--s4));
   font-size: var(--fs-sm);
 }
-.site-nav a { color: var(--ink-2); text-decoration: none; }
+.site-nav a {
+  color: var(--ink-2);
+  text-decoration: none;
+  white-space: nowrap;
+  padding-block: var(--s2);   /* 可點範圍加高，頁首高度不變 */
+}
 .site-nav a:hover,
 .site-nav a[aria-current="page"] { color: var(--ink); text-decoration: underline; }
 
