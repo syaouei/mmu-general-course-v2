@@ -95,7 +95,7 @@ reviews[].hidden      軟刪除。不渲染、不計入統計、不計入則數�
 ### 輪替後台密碼或 token
 
 ```bash
-node scripts/make-vault.mjs --token github_pat_xxxxx
+node scripts/make-vault.mjs
 git add admin/vault.enc && git commit -m "chore(admin): 輪替 vault"
 ```
 

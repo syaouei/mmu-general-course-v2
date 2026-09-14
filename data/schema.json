@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/syaouei/mmc-general-course-v2/data/schema.json",
+  "$id": "https://github.com/syaouei/mmu-general-course-v2/data/schema.json",
   "title": "馬偕通識分享區 courses.json",
   "$comment": [
     "這份 schema 是給人看的契約文件。實際執行檢查的是 scripts/validate-data.mjs",

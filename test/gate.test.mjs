@@ -89,8 +89,8 @@ test('recordToFields：吃得下使用者實際的欄位名', () => {
 // ===========================================================================
 test('個資遮罩：遮掉但放行', async (t) => {
   await t.test('Email', () => {
-    const r = maskPii('找我 abc123@mmc.edu.tw 一起修');
-    assert.ok(!r.text.includes('abc123@mmc.edu.tw'));
+    const r = maskPii('找我 abc123@mmu.edu.tw 一起修');
+    assert.ok(!r.text.includes('abc123@mmu.edu.tw'));
     assert.deepEqual(r.masked, ['email']);
   });
 
@@ -284,10 +284,10 @@ test('gateOne', async (t) => {
   });
 
   await t.test('個資遮罩後仍然放行', () => {
-    const r = run({ text: '想一起修可以找我 abc@mmc.edu.tw，這門課很不錯。' });
+    const r = run({ text: '想一起修可以找我 abc@mmu.edu.tw，這門課很不錯。' });
     assert.equal(r.verdict, 'accept', '個資是遮罩不是擋下');
     assert.deepEqual(r.masked, ['email']);
-    assert.ok(!r.fields.text.includes('abc@mmc.edu.tw'));
+    assert.ok(!r.fields.text.includes('abc@mmu.edu.tw'));
   });
 });
 

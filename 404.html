@@ -5,19 +5,37 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>轉向中⋯⋯｜馬偕通識分享區</title>
 <meta name="robots" content="noindex">
-<script>
-// GitHub Pages 對未知路徑回這一頁。把路徑與 hash 保住再導回 app shell，
-// 這樣分享出去的深層連結（例如 /c/HE139A-caiweimin）不會斷掉。
-(function () {
-  var l = window.location;
-  var base = l.pathname.replace(/\/[^/]*$/, '/');
-  var rest = l.pathname.slice(base.length).replace(/^\/+/, '');
-  var target = base + (l.hash ? '' : (rest ? '#/' + rest : '')) + l.search + l.hash;
-  l.replace(target || base);
-})();
-</script>
 </head>
 <body>
-<p>轉向中⋯⋯如果沒有自動跳轉，<a href="./">請回首頁</a>。</p>
+<p>轉向中⋯⋯如果沒有自動跳轉，<a id="home" href="/">請回首頁</a>。</p>
+<script>
+// GitHub Pages 對不存在的路徑回這一頁。把路徑轉成 hash 路由再導回 app shell，
+// 分享出去的深層連結（例如 /c/HE139A-caiweimin）才不會斷掉。
+//
+// base 的判斷：
+//   *.github.io 專案站 → 網站在 /<repo>/ 底下，base 是第一段路徑
+//   自訂網域或本機     → 網站在根目錄，base 是 /
+// （帳號名稱.github.io 這種使用者站不適用這個規則；本專案是專案站。）
+//
+// 舊版拿「最後一個斜線之前」當 base，在專案站的巢狀路徑上會算錯：
+// /repo/c/X 會被導到 /repo/c/#/X —— 那個路徑同樣不存在，又回到這一頁，
+// 然後導回自己，無限重新整理。
+(function () {
+  var l = window.location;
+  var segs = l.pathname.split('/').filter(Boolean);
+  var keep = /\.github\.io$/i.test(l.hostname) && segs.length ? 1 : 0;
+  var base = '/' + segs.slice(0, keep).join('/') + (keep ? '/' : '');
+  var rest = segs.slice(keep).join('/');
+
+  var home = document.getElementById('home');
+  if (home) home.href = base;
+
+  // 已經在 base 上就不再導向，否則會導回自己、無限重新整理。
+  if (l.pathname === base) return;
+
+  if (l.hash) l.replace(base + l.search + l.hash);
+  else if (rest) l.replace(base + '#/' + rest + l.search);
+})();
+</script>
 </body>
 </html>

@@ -35,7 +35,7 @@ export default async function about() {
     el('div', { class: 'wrap' }, el('article', { class: 'prose' }, [
       el('h1', {}, '關於'),
       el('p', { class: 'lede' },
-        '馬偕通識分享區收錄馬偕醫學院通識課程的學生修課心得，' +
+        '馬偕通識分享區收錄馬偕醫學大學通識課程的學生修課心得，' +
         `目前有 ${courses.length} 門課、${reviewCount} 則心得。`),
 
       el('h2', {}, '投稿'),
@@ -108,7 +108,7 @@ export default async function about() {
           '。',
         ]),
         el('p', {},
-          '本站與馬偕醫學院無官方關聯，內容不代表校方立場。' +
+          '本站與馬偕醫學大學無官方關聯，內容不代表校方立場。' +
           '所有心得為學生個人主觀經驗，課程內容與評分方式可能逐年變動。'),
         meta.updatedAt
           ? el('p', {}, `資料最後更新：${new Date(meta.updatedAt).toLocaleString('zh-Hant')}`)

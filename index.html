@@ -5,13 +5,13 @@
 <!-- 允許縮放。舊版寫了 maximum-scale=2.0 把使用者鎖住，這是可及性缺陷。 -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>馬偕通識分享區</title>
-<meta name="description" content="馬偕醫學院通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。">
+<meta name="description" content="馬偕醫學大學通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。">
 <meta name="color-scheme" content="light dark">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="馬偕通識分享區">
 <meta property="og:title" content="馬偕通識分享區">
-<meta property="og:description" content="馬偕醫學院通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。">
+<meta property="og:description" content="馬偕醫學大學通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。">
 <meta property="og:image" content="assets/og.png">
 
 <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
@@ -21,7 +21,7 @@
 // module，會被延後執行）。沒有記錄時什麼都不做 —— 沒有 data-theme
 // 屬性就是「跟隨系統」，由 tokens.css 的 prefers-color-scheme 決定。
 try {
-  var t = localStorage.getItem('mmc:theme');
+  var t = localStorage.getItem('mmu:theme');
   if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
 } catch (e) { /* 私密視窗會擋 localStorage，跟隨系統即可 */ }
 </script>

@@ -17,7 +17,7 @@ import {
   isLowSample, termOrder, comparator, NONE, NO_DATA, LOW_SAMPLE,
 } from '../format.js';
 
-const READING_KEY = 'mmc:reading';
+const READING_KEY = 'mmu:reading';
 
 const SORTS = {
   new: { label: '新到舊', cmp: (a, b) => termOrder(b.term) - termOrder(a.term) },
@@ -77,7 +77,8 @@ export default async function courseView(ctx) {
     inLanguage: 'zh-Hant',
     provider: {
       '@type': 'CollegeOrUniversity',
-      name: '馬偕醫學院',
+      name: '馬偕醫學大學',
+      alternateName: 'MacKay Medical University',
     },
     ...(course.teacher ? { instructor: { '@type': 'Person', name: course.teacher } } : {}),
     ...(st.stars.avg !== null && st.stars.n > 0 ? {

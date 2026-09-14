@@ -6,7 +6,7 @@
 還沒建立的話，`#/admin` 會告訴你去跑：
 
 ```bash
-node scripts/make-vault.mjs --token github_pat_xxxxx
+node scripts/make-vault.mjs
 ```
 
 ## 為什麼公開放一個加密檔是可以的

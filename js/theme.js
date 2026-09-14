@@ -10,7 +10,7 @@
 // 首次套用發生在 index.html 的行內 script（見那裡的註解），這裡只
 // 負責之後的切換與記憶。
 
-const KEY = 'mmc:theme';
+const KEY = 'mmu:theme';
 export const ORDER = [null, 'light', 'dark'];
 
 export const LABELS = new Map([

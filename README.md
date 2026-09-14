@@ -1,6 +1,8 @@
 # 馬偕通識分享區 v2
 
-馬偕醫學院通識課程的學生修課心得。純靜態網站，放在 GitHub Pages 上。
+馬偕醫學大學通識課程的學生修課心得。純靜態網站，放在 GitHub Pages 上。
+
+網站：<https://syaouei.github.io/mmu-general-course-v2/>
 
 設計者 **syaouei**｜資料與前身站台 by **Bean1450**
 （[舊站](https://haoyu050735.github.io/MMCGeneralCourse/) · [原始碼](https://github.com/haoyu050735/MMCGeneralCourse)）
@@ -136,7 +138,9 @@ node scripts/dev-server.mjs
 因此：
 
 - 密碼**必須**是長通關密語 —— 四到五個不相干的詞，例如
-  `鯨魚-鉛筆-火山-拖鞋-42`。不可以是 `mmc2026` 這種。
+  `鯨魚-鉛筆-火山-拖鞋-42` 這種格式
+  （**但不要直接用這組** —— 它公開在這份文件裡，`make-vault.mjs` 會拒絕）。
+  不可以是 `mmu2026` 這種。
 - `make-vault.mjs` 會估算密碼熵並在低於 60 bits 時警告。它用字元類別
   推算字集大小而不是數字元數 —— 一個中文字是幾千選一，跟一個小寫
   字母不等價。
@@ -150,7 +154,7 @@ node scripts/dev-server.mjs
 
 1. GitHub → Settings → Developer settings → 撤銷舊 token
 2. 產生新 token（同樣只給這個 repo 的 Contents 權限）
-3. `node scripts/make-vault.mjs --token <新 token>`，設一組**新密碼**
+3. `node scripts/make-vault.mjs`，貼上新 token 並設一組**新密碼**
 4. `git add admin/vault.enc && git commit && git push`
 
 舊的 vault 就算被爆破開，裡面的 token 也已經失效。
@@ -182,5 +186,5 @@ node scripts/dev-server.mjs
 
 ## 授權與聲明
 
-本站與馬偕醫學院無官方關聯，內容不代表校方立場。
+本站與馬偕醫學大學無官方關聯，內容不代表校方立場。
 所有心得為學生個人主觀經驗，未經查證，課程內容與評分方式可能逐年變動。

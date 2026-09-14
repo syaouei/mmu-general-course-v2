@@ -20,7 +20,7 @@ let indexVersion = -1;
 
 export default async function home(ctx) {
   const main = document.getElementById('main');
-  setMeta('', '馬偕醫學院通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。');
+  setMeta('', '馬偕醫學大學通識課程評價。搜尋課程代碼、課名或教師，查看學生心得、甜度與涼度。');
 
   const domains = store.getDomains();
   const domainsById = new Map(domains.map((d) => [d.id, d]));
@@ -57,7 +57,7 @@ export default async function home(ctx) {
   main.replaceChildren(
     el('section', { class: 'hero wrap' }, [
       el('h1', {}, '這門課到底甜不甜？'),
-      el('p', {}, '馬偕醫學院通識課程的學生心得。輸入課程代碼、課名或教師姓名開始查。'),
+      el('p', {}, '馬偕醫學大學通識課程的學生心得。輸入課程代碼、課名或教師姓名開始查。'),
       el('div', { class: 'searchbox' }, [
         el('label', { class: 'sr-only', for: 'q' }, '搜尋課程'),
         input,

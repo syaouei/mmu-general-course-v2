@@ -8,4 +8,4 @@ Allow: /
 # 這裡只是不想讓 #/admin 出現在搜尋結果裡而已。
 Disallow: /admin/
 
-Sitemap: https://syaouei.github.io/mmc-general-course-v2/sitemap.xml
+Sitemap: https://syaouei.github.io/mmu-general-course-v2/sitemap.xml

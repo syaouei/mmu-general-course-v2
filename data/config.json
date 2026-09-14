@@ -38,8 +38,8 @@
     "reportsCsv": "https://docs.google.com/spreadsheets/d/165UetzzZPlsEGBgXEbULodmvOX3_Elb23V3R8dVchSs/gviz/tq?tqx=out:csv"
   },
   "repo": {
-    "owner": "",
-    "name": "",
+    "owner": "syaouei",
+    "name": "mmu-general-course-v2",
     "branch": "main"
   }
 }
