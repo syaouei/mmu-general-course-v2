@@ -50,11 +50,43 @@ const OUT = argOf('--out') ? resolve(argOf('--out')) : join(ROOT, 'admin', 'vaul
 
 // --------------------------------------------------------------------- 輸入
 
-let pipedLines = null;
-async function readPipedLines() {
-  const chunks = [];
-  for await (const c of process.stdin) chunks.push(c);
-  return Buffer.concat(chunks).toString('utf8').split(/\r?\n/);
+/**
+ * 沒有可以打字的視窗，也沒有人用 pipe 餵輸入。
+ *
+ * 從編輯器的 Run 按鈕、排程或其他自動執行的方式啟動時就會這樣。舊版在這種
+ * 情況直接回報「沒有輸入 token」—— 使用者其實根本沒機會輸入，卻被告知是
+ * 自己漏了，只好一直重試同一個不可能成功的做法。
+ */
+class NoTerminalError extends Error {}
+
+let pipedLines;   // undefined：還沒讀過　null：確定沒有任何輸入
+
+function readPipedLines(waitMs = 1500) {
+  return new Promise((done) => {
+    const stdin = process.stdin;
+    const chunks = [];
+    let settled = false;
+
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      stdin.removeListener('data', onData);
+      stdin.removeListener('end', finish);
+      // 不銷毀的話，某些啟動方式會讓 stdin 一直掛著，行程永遠結束不了。
+      stdin.destroy();
+      done(chunks.length ? Buffer.concat(chunks).toString('utf8').split(/\r?\n/) : null);
+    };
+    const onData = (c) => chunks.push(c);
+
+    // 有些啟動方式會讓 stdin 保持開啟卻永遠不給資料。等一下還是空的，
+    // 就當成沒有輸入，不要讓人對著一個不會動的視窗乾等。
+    const timer = setTimeout(() => { if (!chunks.length) finish(); }, waitMs);
+
+    stdin.on('data', onData);
+    stdin.on('end', finish);
+    stdin.resume();
+  });
 }
 
 /**
@@ -63,7 +95,8 @@ async function readPipedLines() {
  */
 async function ask(prompt, { hidden = false } = {}) {
   if (!process.stdin.isTTY) {
-    pipedLines ??= await readPipedLines();
+    if (pipedLines === undefined) pipedLines = await readPipedLines();
+    if (pipedLines === null) throw new NoTerminalError();
     process.stdout.write(`${prompt}\n`);
     return (pipedLines.shift() ?? '').trim();
   }
@@ -181,6 +214,29 @@ function fail(message) {
   process.exitCode = 1;
 }
 
+/** 說清楚是「視窗不能打字」，並直接給出能用的做法與實際路徑。 */
+function explainNoTerminal() {
+  const script = join(ROOT, 'scripts', 'make-vault.mjs');
+  const launcher = join(ROOT, 'scripts', 'make-vault.cmd');
+
+  console.error('');
+  console.error('✗ 這個視窗沒辦法讓你打字，所以拿不到 token —— 不是你沒有輸入。');
+  console.error('  （從編輯器的 Run 按鈕或其他自動執行的方式啟動時，會變成這樣。）');
+  console.error('');
+  console.error('請改用下面任一種方式：');
+  console.error('');
+  if (process.platform === 'win32') {
+    console.error('  1. 在檔案總管找到這個檔案，雙擊它：');
+    console.error(`       ${launcher}`);
+    console.error('');
+    console.error('  2. 從開始選單打開 PowerShell，貼上這行後按 Enter：');
+  } else {
+    console.error('  打開終端機，貼上這行後按 Enter：');
+  }
+  console.error(`       node "${script}"`);
+  process.exitCode = 1;
+}
+
 async function main() {
   console.log('');
   console.log('建立後台金鑰（admin/vault.enc）');
@@ -268,4 +324,7 @@ async function main() {
   console.log('  GitHub 撤銷舊 token → 產生新 token → 重跑這支並設新密碼 → commit');
 }
 
-main().catch((err) => fail(err.message));
+main().catch((err) => {
+  if (err instanceof NoTerminalError) explainNoTerminal();
+  else fail(err.message);
+});
