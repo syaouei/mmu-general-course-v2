@@ -56,8 +56,9 @@ export default async function home(ctx) {
 
   main.replaceChildren(
     el('section', { class: 'hero wrap' }, [
-      el('h1', {}, '這門課到底甜不甜？'),
-      el('p', {}, '馬偕醫學大學通識課程的學生心得。輸入課程代碼、課名或教師姓名開始查。'),
+      // 分兩段、各自不斷行，手機換行時才不會把「馬偕」拆開（見 .hero h1 span）。
+      el('h1', {}, [el('span', {}, '你也想成為'), el('span', {}, '馬偕的大王嗎?')]),
+      el('p', {}, '那你需要好好選課，恭喜你來對地方了，輸入課程代碼、課名或教師姓名開始搜尋。'),
       el('div', { class: 'searchbox' }, [
         el('label', { class: 'sr-only', for: 'q' }, '搜尋課程'),
         input,

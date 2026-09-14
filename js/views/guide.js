@@ -11,7 +11,7 @@ import { el } from '../dom.js';
 import { setMeta } from '../router.js';
 import * as store from '../store.js';
 import { starsView, meterView, termBadge, courseHref, domainClass } from '../ui.js';
-import { courseStats, formatTerm, LOW_SAMPLE } from '../format.js';
+import { courseStats, LOW_SAMPLE } from '../format.js';
 
 /** 找一門符合條件的真課，找不到就回 null（說明頁自己會略過那一段）。 */
 function pick(test) {
@@ -24,7 +24,7 @@ export default async function guide() {
 
   // 各挑一門真實課程來示範。
   // 甜度與涼度刻意挑差距大的那門 —— 兩條量表長得一樣的話，
-  // 「甜度高不代表涼度高」這句話就沒有東西可以指。
+  // 讀者看不出那是兩個不同的欄位。
   const complete = (c) => {
     const s = courseStats(c);
     return s.count >= 4 && s.sweet.avg !== null && s.cool.avg !== null && s.grade.avg !== null;
@@ -62,24 +62,19 @@ export default async function guide() {
         rich ? el('div', { class: 'field' }, [
           demo(rich, [starsView(richStats.stars)]),
           el('dt', {}, '星級（0–5）'),
-          el('dd', {}, '整體推薦程度，由填寫的同學自己給。這是最主觀的一項 ——' +
-            '有人給星看甜度，有人給星看學到多少，兩種人給的分數不能直接比。'),
+          el('dd', {}, '整體推薦程度。'),
         ]) : null,
 
         rich ? el('div', { class: 'field' }, [
           demo(rich, [meterView('甜度', richStats.sweet.avg)]),
           el('dt', {}, '甜度（0–10）＝ 給分寬鬆程度'),
-          el('dd', {}, '數字越高代表老師給分越寬鬆、越容易拿高分。' +
-            '甜度 10 是「幾乎人人高分」，甜度 2 是「這門課分數很難看」。' +
-            '注意它跟課程好不好、有沒有學到東西無關。'),
+          el('dd', {}, '數字越高代表老師給分越寬鬆、越容易拿高分。'),
         ]) : null,
 
         rich ? el('div', { class: 'field' }, [
           demo(rich, [meterView('涼度', richStats.cool.avg)]),
           el('dt', {}, '涼度（0–10）＝ 課業負擔輕重'),
-          el('dd', {}, '數字越高代表越輕鬆：作業少、不點名、不用做報告、不用考試。' +
-            '涼度 10 是「幾乎不用花時間」，涼度 2 是「作業報告接連不斷」。' +
-            '甜度高不代表涼度高 —— 有的課要交一堆東西，但只要交了就給高分。'),
+          el('dd', {}, '數字越高代表越輕鬆：作業少、不點名、不用做報告、不用考試。'),
         ]) : null,
 
         rich && richStats.grade.avg !== null ? el('div', { class: 'field' }, [
@@ -88,18 +83,13 @@ export default async function guide() {
             el('span', { class: 'stat-sample' }, `／ ${richStats.grade.n} 則`),
           ]),
           el('dt', {}, '分數'),
-          el('dd', {}, '填寫的同學該學期實際拿到的學期成績。這是全站最有參考價值、' +
-            '但也最容易誤導的欄位 —— 會回來填分數的人，通常是分數不錯的人。'),
+          el('dd', {}, '填寫的同學該學期實際拿到的學期成績。'),
         ]) : null,
 
         rich ? el('div', { class: 'field' }, [
           demo(rich, [termBadge(richStats.termTo)]),
           el('dt', {}, '學期'),
-          el('dd', {}, [
-            `${formatTerm(richStats.termTo)} 代表 ${String(richStats.termTo).slice(0, -1)} 學年的`,
-            String(richStats.termTo).slice(-1) === '1' ? '上' : '下',
-            '學期。教授換人、評分方式改動都很常見，越舊的心得越要打折看。',
-          ]),
+          el('dd', {}, '舊內容因年代久遠，多少會有失真狀況，請自行留意。'),
         ]) : null,
       ]),
 

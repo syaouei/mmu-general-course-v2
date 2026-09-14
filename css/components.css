@@ -72,6 +72,9 @@
   letter-spacing: -0.02em;
   margin-bottom: var(--s2);
 }
+/* 標語分成兩段，各自不斷行：窄螢幕只會在兩段之間換行，
+   不會把「馬偕」拆到兩行。 */
+.hero h1 span { white-space: nowrap; }
 
 .hero p {
   color: var(--muted);
