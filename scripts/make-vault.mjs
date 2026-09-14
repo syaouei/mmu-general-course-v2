@@ -15,7 +15,7 @@
 //
 // ⚠️ 這支腳本會碰到明文 token，只在你自己的機器上跑，不要放進 CI。
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { pbkdf2Sync, randomBytes, createCipheriv } from 'node:crypto';
 import { dirname, join, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -47,6 +47,9 @@ const argOf = (name) => {
 
 // --out 有給就照 CLI 慣例相對於目前目錄；沒給就寫到專案的 admin/。
 const OUT = argOf('--out') ? resolve(argOf('--out')) : join(ROOT, 'admin', 'vault.enc');
+
+// 略過「先向 GitHub 確認 token」那一步。只給自動化測試用（測試用的是假 token）。
+const SKIP_VERIFY = args.includes('--skip-verify');
 
 // --------------------------------------------------------------------- 輸入
 
@@ -171,6 +174,70 @@ function checkToken(token) {
 }
 
 /**
+ * 寫出金鑰檔之前，先問 GitHub 這串 token 能不能用。
+ *
+ * 沒有這一步的話，貼錯的 token（複製到舊的、已作廢的，或跑完之後又按了
+ * Regenerate）要等到提交、部署、打開後台解鎖之後才會發現 —— 每繞一圈就是
+ * 好幾分鐘，畫面上又只看得到一個 401。在這裡擋下來，當場就知道。
+ *
+ * token 只會送到 api.github.com，也就是它本來就要被使用的地方。
+ */
+async function verifyToken(token) {
+  let repo = {};
+  try {
+    repo = JSON.parse(await readFile(join(ROOT, 'data', 'config.json'), 'utf8')).repo ?? {};
+  } catch { /* 讀不到設定就略過確認 */ }
+
+  if (!repo.owner || !repo.name) {
+    return { warn: 'data/config.json 沒有 repo 設定，略過向 GitHub 確認這組 token。' };
+  }
+  const full = `${repo.owner}/${repo.name}`;
+
+  let res;
+  try {
+    res = await fetch(`https://api.github.com/repos/${full}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': 'mmu-make-vault',
+      },
+      signal: AbortSignal.timeout(15000),
+    });
+  } catch (err) {
+    return { warn: `連不上 GitHub（${err.message}），沒辦法先確認 token。可以繼續，但上線後請到後台解鎖一次確認。` };
+  }
+
+  if (res.status === 401) {
+    return {
+      error: [
+        'GitHub 不認得這串 token（401），所以沒有產生金鑰檔。它可能：',
+        '  - 已經被作廢，或是複製之後又按了一次 Regenerate',
+        '  - 是從別的地方複製來的舊 token，不是 GitHub 頁面上剛產生的那串',
+        '  - 複製時漏掉了頭尾幾個字',
+        '',
+        '請回到 GitHub 的 token 頁面再產生一次，直接從那個頁面複製，馬上重跑這支。',
+      ].join('\n'),
+    };
+  }
+  if (res.status === 404) {
+    return { error: `這串 token 看不到 ${full}（404）。建立 token 時，Repository access 要選到這個 repo。` };
+  }
+  if (!res.ok) {
+    return { warn: `GitHub 回應 HTTP ${res.status}，沒辦法確認 token。可以繼續，但上線後請到後台解鎖一次確認。` };
+  }
+
+  const body = await res.json().catch(() => ({}));
+  if (body.permissions && body.permissions.push === false) {
+    return {
+      error: `這串 token 沒有 ${full} 的寫入權限。請到 token 設定把 Contents 改成 Read and write 並存檔`
+        + '（改權限不會換掉 token，不用重新複製），然後重跑這支。',
+    };
+  }
+  return { ok: `GitHub 確認這組 token 有效，可以存取 ${full}` };
+}
+
+/**
  * 粗估密碼的熵（bits）。
  *
  * 不用「至少幾個字元」當標準 —— 那對中文是錯的。一個中文字是從幾千個字
@@ -256,6 +323,17 @@ async function main() {
     console.log('');
     const yes = await ask('確定要繼續用這組 token 嗎？輸入 yes 繼續：');
     if (yes.toLowerCase() !== 'yes') return fail('已取消。');
+  }
+
+  console.log('');
+  if (SKIP_VERIFY) {
+    console.log('（--skip-verify：略過向 GitHub 確認 token，只給自動化測試用）');
+  } else {
+    console.log('正在向 GitHub 確認這組 token⋯⋯');
+    const vr = await verifyToken(token);
+    if (vr.error) return fail(vr.error);
+    if (vr.warn) console.log(`⚠️  ${vr.warn}`);
+    if (vr.ok) console.log(`✅ ${vr.ok}`);
   }
 
   console.log('');
