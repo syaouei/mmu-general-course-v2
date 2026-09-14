@@ -61,7 +61,11 @@ export class GitHubClient {
       });
 
       if (res.status === 401) {
-        throw new Error('GitHub 拒絕了這把 token（401）。可能是密碼錯、token 已過期或已被撤銷。');
+        // 走到這裡代表 AES-GCM 已經解密成功 —— 密碼錯的話 vault.unlock() 會先丟出
+        // 「密碼錯誤」，請求根本不會送到 GitHub。所以 401 一定是 token 本身失效。
+        // 舊版訊息寫「可能是密碼錯」，會讓人對著一個其實正確的密碼一直重試。
+        throw new Error('密碼正確，但金鑰裡的 GitHub token 已經失效（401：已被撤銷或已過期）。'
+          + '請用一組有效的 token 重新雙擊 scripts/make-vault.cmd，產生新的金鑰檔。');
       }
       if (res.status === 403) {
         const body = await res.json().catch(() => ({}));
