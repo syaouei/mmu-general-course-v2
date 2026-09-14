@@ -129,14 +129,24 @@ async function run() {
   const { courses, summary } = mergeSubmissions(data, result.accepted, { pinyinMap, suppressed });
 
   const reviewCount = courses.reduce((a, c) => a + c.reviews.length, 0);
+  const now = new Date().toISOString();
+
+  // 只有內容真的變了才寫檔。
+  //
+  // 舊版每次同步都重寫 meta.updatedAt、lastSync 與 quarantine.json 的時間戳。
+  // 沒有任何新投稿時，每 6 小時照樣產生一個 commit —— git 紀錄塞滿空的同步，
+  // 頁尾的「最後更新」也變成「最後一次同步的時間」，明明資料根本沒動。
+  // 第一次排程同步（2026-09-14 20:05）就留下了這樣一個只改時間戳的 commit。
+  const coursesChanged = JSON.stringify(courses) !== JSON.stringify(data.courses);
+
   const next = {
     meta: {
       ...data.meta,
-      updatedAt: new Date().toISOString(),
+      updatedAt: now,
       courseCount: courses.length,
       reviewCount,
       lastSync: {
-        at: new Date().toISOString(),
+        at: now,
         added: summary.added,
         quarantined: result.quarantined.length,
         discarded: result.discarded.length,
@@ -148,14 +158,19 @@ async function run() {
 
   // ------------------------------------------------------------- 待審區
 
+  const quarantineItems = result.quarantined.map((r) => ({
+    fields: r.fields,
+    reasons: r.reasons,
+    masked: r.masked,
+  }));
+  const previousQuarantine = await readJson('data/quarantine.json', { items: [] });
+  const quarantineChanged =
+    JSON.stringify(previousQuarantine.items ?? []) !== JSON.stringify(quarantineItems);
+
   const quarantine = {
     $comment: '被自動品質閘擋下、等待後台處理的投稿。逐筆放行或永久丟棄。',
-    updatedAt: new Date().toISOString(),
-    items: result.quarantined.map((r) => ({
-      fields: r.fields,
-      reasons: r.reasons,
-      masked: r.masked,
-    })),
+    updatedAt: now,
+    items: quarantineItems,
   };
 
   // --------------------------------------------------------------------- 輸出
@@ -183,16 +198,22 @@ async function run() {
     return stop(0);
   }
 
-  await writeFile('data/courses.json', JSON.stringify(next, null, 2) + '\n', 'utf8');
-  await writeFile('data/quarantine.json', JSON.stringify(quarantine, null, 2) + '\n', 'utf8');
-
   console.log('');
-  console.log(`已寫入 data/courses.json（${courses.length} 門課、${reviewCount} 則心得）`);
-  console.log(`已寫入 data/quarantine.json（${quarantine.items.length} 筆待審）`);
+  if (!coursesChanged && !quarantineChanged) {
+    console.log('沒有任何變動，不寫入檔案（不產生空的 commit，也不改動頁尾的「最後更新」）。');
+  }
+  if (coursesChanged) {
+    await writeFile('data/courses.json', JSON.stringify(next, null, 2) + '\n', 'utf8');
+    console.log(`已寫入 data/courses.json（${courses.length} 門課、${reviewCount} 則心得）`);
+  }
+  if (quarantineChanged) {
+    await writeFile('data/quarantine.json', JSON.stringify(quarantine, null, 2) + '\n', 'utf8');
+    console.log(`已寫入 data/quarantine.json（${quarantine.items.length} 筆待審）`);
+  }
 
   // 給 GitHub Actions 判斷要不要 commit
   if (process.env.GITHUB_OUTPUT) {
-    const changed = summary.added > 0 || result.quarantined.length > 0;
+    const changed = coursesChanged || quarantineChanged;
     await writeFile(process.env.GITHUB_OUTPUT, `changed=${changed}\nadded=${summary.added}\n`, { flag: 'a' });
   }
 }
