@@ -50,6 +50,38 @@ for (const m of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
 if (!await existsExact('404.html')) err('缺少 404.html —— 分享出去的深層連結會失效');
 if (!await existsExact('robots.txt')) err('缺少 robots.txt');
 
+// ---------------------------------------------------- 1b. 社群預覽圖
+
+// og:image 必須是完整網址，而且要指到真的存在的檔案。這一項以前沒檢查，
+// index.html 就引用了一張不存在的 assets/og.png 好一陣子都沒人發現 ——
+// 分享到 LINE 時只會「沒有預覽圖」，不會出現任何錯誤訊息。
+{
+  const og = (html.match(/<meta\s+property="og:image"\s+content="([^"]+)"/) ?? [])[1];
+  const cfg = JSON.parse(await readFile('data/config.json', 'utf8').catch(() => '{}'));
+  const siteBase = cfg.repo?.owner && cfg.repo?.name
+    ? `https://${cfg.repo.owner}.github.io/${cfg.repo.name}/` : null;
+
+  if (!og) {
+    err('index.html 沒有 og:image');
+  } else if (!/^https?:\/\//.test(og)) {
+    err(`og:image 必須是完整網址（社群平台的爬蟲不會替相對路徑補網域）：${og}`);
+  } else if (siteBase && og.startsWith(siteBase)) {
+    const local = og.slice(siteBase.length);
+    if (!await existsExact(local)) {
+      err(`og:image 指到不存在的檔案：${local}`);
+    } else if (local.endsWith('.png')) {
+      const b = await readFile(local);
+      const w = b.readUInt32BE(16);
+      const h = b.readUInt32BE(20);
+      const dw = (html.match(/og:image:width"\s+content="(\d+)"/) ?? [])[1];
+      const dh = (html.match(/og:image:height"\s+content="(\d+)"/) ?? [])[1];
+      if ((dw && Number(dw) !== w) || (dh && Number(dh) !== h)) {
+        err(`og:image:width/height（${dw}×${dh}）與實際圖片（${w}×${h}）不符`);
+      }
+    }
+  }
+}
+
 // -------------------------------------------------- 2. ES module 的 import
 
 async function walk(dir) {
