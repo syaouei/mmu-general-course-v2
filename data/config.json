@@ -4,17 +4,17 @@
     "⚠️ 這個檔案會跟著網站公開到 GitHub Pages，只放公開的 /d/e/.../viewform 網址，",
     "   絕對不要放表單的 /edit 網址 —— 那是編輯權限的入口。",
     "",
-    "使用中的是手動建立的那份表單（設計者指定）。已驗證：",
-    "  - 回應試算表 CSV 可在無登入狀態讀取，11 欄含星級，且沒有 Email 欄位",
-    "  - 表單本身需要登入 Google 帳號才能填寫（requiresLogin: true）",
-    "requiresLogin 只影響文案：關於頁與說明頁不能再寫「匿名、不需登入」。",
+    "使用中的是 scripts/create-forms.gs 建立的投稿表單。已驗證（皆以未登入請求）：",
+    "  - 表單公開可填，不需登入；十題與八個領域選項齊全",
+    "  - 回應試算表 CSV 可讀取，11 欄含星級，沒有 Email 欄位",
+    "requiresLogin 只影響文案：為 false 時關於頁寫「匿名，不會蒐集姓名、學號或 Email」。",
     "",
     "⚠️ 回應試算表是公開唯讀的。如果日後在表單開啟「蒐集電子郵件地址」，",
-    "   填表者的信箱會跟著心得一起公開。sync-submissions.mjs 會擋掉未知欄位，",
-    "   但最保險的是不要開那個設定。",
+    "   填表者的信箱會跟著心得一起公開。sync-submissions.mjs 偵測到會大聲警告，",
+    "   但那時外洩已經發生 —— 不要開那個設定。",
     "",
     "回報表單依要求不啟用：reportUrl 留空時，心得下方的「回報不當內容」會指向關於頁。",
-    "  formsDisabled 裡那組由 scripts/create-forms.gs 產生、已驗證可用，要啟用搬回 forms 即可。"
+    "  formsDisabled 裡那組同樣由 create-forms.gs 產生、已驗證可用，要啟用搬回 forms 即可。"
   ],
   "site": {
     "name": "馬偕通識分享區",
@@ -24,9 +24,9 @@
     "legacyUrl": "https://haoyu050735.github.io/MMCGeneralCourse/"
   },
   "forms": {
-    "submitUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdyqjb4nbxNZxRmuF_RK0cM4J9skT7rS7Y03yM76KUXH3q8cg/viewform",
-    "submissionsCsv": "https://docs.google.com/spreadsheets/d/1aqpcNUzMLxHkMsTXNM5CAsXG9n-KkP374mfm3yvOvUA/gviz/tq?tqx=out:csv",
-    "requiresLogin": true,
+    "submitUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdATVlLLmALkS-i-oMllxIo3ghnEipINxbHcXtQl9uQnIYVqA/viewform",
+    "submissionsCsv": "https://docs.google.com/spreadsheets/d/1RfDidNWdT7Pmco-Apq529mmd-p9kE8aBf91zaUOsaDw/gviz/tq?tqx=out:csv",
+    "requiresLogin": false,
     "reportUrl": "",
     "reportPrefillUrl": "",
     "reportsCsv": ""
