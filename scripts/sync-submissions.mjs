@@ -15,7 +15,7 @@ import { parseRecords } from '../js/csv.js';
 import { parseBlocklist, gateBatch } from '../js/gate.js';
 import {
   recordToFields, mergeSubmissions, unknownHeaders, piiHeaders, courseKey, stableId,
-  domainChoices,
+  domainChoices, coursePlacer,
 } from '../js/submissions.js';
 
 const args = process.argv.slice(2);
@@ -114,7 +114,10 @@ async function run() {
   const isAlreadySynced = (f) => syncedIds.has(stableId(f.timestamp, f.code, f.text));
 
   const rows = records.map(recordToFields);
-  const result = gateBatch(rows, { blocklist, domainNames, existingTexts, isAlreadySynced });
+  const result = gateBatch(rows, {
+    blocklist, domainNames, existingTexts, isAlreadySynced,
+    placeCourse: coursePlacer(data.courses),   // 老師寫法不同也併對課；分不出來的進待審區
+  });
 
   console.log('');
   console.log(
@@ -179,6 +182,10 @@ async function run() {
   console.log(`新增心得 ${summary.added} 則`);
   if (summary.skippedExisting) console.log(`  （${summary.skippedExisting} 則已存在，略過）`);
   if (summary.skippedSuppressed) console.log(`  （${summary.skippedSuppressed} 則在抑制清單，略過）`);
+  if (summary.skippedAmbiguous) {
+    // 同一批裡先建了新課、後一筆又對到它但分不出來時會走到這裡；下次同步會進待審區。
+    console.log(`  （${summary.skippedAmbiguous} 則分不出是哪一門課，這次先不併，下次同步會進待審區）`);
+  }
   if (summary.newCourses.length) {
     console.log(`新增課程 ${summary.newCourses.length} 門：`);
     for (const c of summary.newCourses) console.log(`  ${c.id}  ${c.code} ${c.name}（${c.teacher}）`);

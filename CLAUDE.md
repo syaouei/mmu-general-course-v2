@@ -33,11 +33,15 @@ const { avg, n } = average(values);
 資料錯誤。課程的身分是 **(code, teacher)** 這一組，不是 code。
 
 ```js
-courseKey(code, teacher)   // js/submissions.js，所有比對都走這個
+matchCourse(courses, code, teacher)   // js/submissions.js，投稿要併進哪門課都走這個
 ```
 
+教師欄當成「名字集合」比：順序、空格／頓號／逗號、結尾的「老師」都不算，
+只寫了其中幾位也認得。**對得上不只一門就不猜**，擋進待審區，由管理者在
+待審區的選單裡指定要併進哪一門（或建立成新課程）。
+
 實際有 5 組同代碼：HE013A、HE022A、PE103A（三位）、PE109A、
-ME241A（同代碼同教師但是兩門不同課，靠 `-2` 後綴區分）。
+ME241A（同代碼同教師但是兩門不同課，靠 `-2` 後綴區分；這個代碼的投稿一律進待審區）。
 
 ### 3. 心得內文永遠走 `textContent`
 

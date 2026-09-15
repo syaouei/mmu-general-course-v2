@@ -127,7 +127,7 @@ export async function loadLive() {
       fetch('scripts/blocklist.txt').then((r) => (r.ok ? r.text() : '')).catch(() => ''),
     ]);
     const { parseBlocklist, gateBatch } = gate;
-    const { recordToFields, mergeSubmissions, stableId, courseKey, domainChoices } = subs;
+    const { recordToFields, mergeSubmissions, stableId, courseKey, domainChoices, coursePlacer } = subs;
     if (!csvRes.ok) throw new Error(`HTTP ${csvRes.status}`);
 
     const { records } = parseRecords(await csvRes.text());
@@ -154,6 +154,8 @@ export async function loadLive() {
       domainNames,
       existingTexts,
       isAlreadySynced: (f) => syncedIds.has(stableId(f.timestamp, f.code, f.text)),
+      // 老師寫法不同也併進同一門課；分不出來的先不顯示，等管理者在待審區決定。
+      placeCourse: coursePlacer(data.courses),
     });
 
     if (!result.accepted.length) return;

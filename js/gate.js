@@ -247,15 +247,20 @@ function minuteKey(ts) {
 /**
  * 整批檢查。
  *
- * 先逐列跑 gateOne，再做兩項需要看全局的檢查：
+ * 先逐列跑 gateOne，再做需要看全局的檢查：
  *   洗版：同一分鐘內超過 burstPerMinute 筆 → 那一分鐘全部擋下
+ *   歸屬：分不出要併進哪一門課 → 擋進待審區（有傳 placeCourse 才做）
  *   重複：與同課程既有心得相似度超過門檻 → 丟棄
  *
  * existingTexts 是 Map<courseKey, string[]>，courseKey 由呼叫端決定
  * （通常是 code + teacher），讓不同老師的同名課程不會互相誤判。
+ *
+ * placeCourse(fields) 回傳 { type: 'match', key } / { type: 'new' } /
+ * { type: 'ambiguous', labels }，由 submissions.js 的 coursePlacer 產生。
+ * 閘門本身不認識課程資料，只依結果決定放行或待審。
  */
 export function gateBatch(rows, {
-  blocklist, domainNames, existingTexts = new Map(), isAlreadySynced = null,
+  blocklist, domainNames, existingTexts = new Map(), isAlreadySynced = null, placeCourse = null,
 } = {}) {
   const results = rows.map((r) => ({ row: r, ...gateOne(r, { blocklist, domainNames }) }));
 
@@ -288,10 +293,26 @@ export function gateBatch(rows, {
 
   // --- 重複 -------------------------------------------------------------
   // 同批內也要比，不然一次貼十遍相同內容會全部放行。
+  //
+  // 比之前先決定每筆要併進哪一門課（placeCourse）：老師寫法不同（順序、頓號、
+  // 只寫其中一位）時用那門課的鍵來比，換個寫法重送同一則才抓得到；
+  // 對得上不只一門就不猜，擋進待審區由管理者選。
+  if (placeCourse) {
+    for (const r of results) {
+      if (r.verdict !== 'accept') continue;
+      const placed = placeCourse(r.fields);
+      if (placed.type === 'match') r.courseKey = placed.key;
+      if (placed.type === 'ambiguous') {
+        r.verdict = 'quarantine';
+        r.reasons.push(`分不出是哪一門課，可能是：${placed.labels.join('、')}。請到後台待審區選擇要併進哪一門`);
+      }
+    }
+  }
+
   const seen = new Map(existingTexts);
   for (const r of results) {
     if (r.verdict !== 'accept') continue;
-    const key = `${r.fields.code}::${r.fields.teacher}`;
+    const key = r.courseKey ?? `${r.fields.code}::${r.fields.teacher}`;
     const prior = seen.get(key) ?? [];
     const dup = prior.find((t) => similarity(t, r.fields.text) > LIMITS.duplicateSimilarity);
     if (dup !== undefined) {

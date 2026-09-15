@@ -11,6 +11,7 @@ import * as vault from '../vault.js';
 import { GitHubClient, commitMessage, ConflictError } from '../github.js';
 import { formatTerm, courseStats, NONE } from '../format.js';
 import { domainClass } from '../ui.js';
+import { mergeSubmissions, matchCourse, NEW_COURSE } from '../submissions.js';
 
 const FILES = {
   courses: 'data/courses.json',
@@ -467,53 +468,101 @@ function renderQuarantine(panel) {
 
   const draw = () => replace(panel, [
     el('p', { class: 'admin-note-sm' },
-      `${items.length} 筆被自動品質閘擋下。放行會把它寫進 courses.json；`
+      `${items.length} 筆被自動品質閘擋下。放行前先選好要併進哪一門課，放行會把它寫進 courses.json；`
       + '丟棄只從待審區移除，下一次同步時如果那筆投稿還在表單裡，會再被擋下來一次。'),
-    ...items.map((item, i) => el('article', { class: 'admin-review' }, [
-      el('div', { class: 'admin-review-meta' }, [
-        el('code', {}, item.fields.code || '（無代碼）'),
-        el('span', {}, item.fields.name || '（無課名）'),
-        el('span', { class: 'muted' }, item.fields.teacher || '（無教師）'),
-        el('span', {}, formatTerm(item.fields.term)),
-      ]),
-      el('ul', { class: 'admin-reasons' }, item.reasons.map((x) => el('li', {}, x))),
-      el('div', { class: 'admin-review-body' }, multiline(item.fields.text)),
-      el('div', { class: 'admin-actions' }, [
-        el('button', {
-          class: 'btn btn-sm btn-primary', type: 'button',
-          onclick: async () => {
-            const ok = await releaseOne(item);
-            if (ok) { items.splice(i, 1); draw(); }
-          },
-        }, '放行'),
-        el('button', {
-          class: 'btn btn-sm btn-danger', type: 'button',
-          onclick: async () => {
-            const ok = await save('quarantine', commitMessage.dropQuarantine(1), (d) => {
-              d.items = (d.items ?? []).filter((x) => x !== item);
-            }, { confirmText: '這筆會從待審區移除。它不會被寫進網站資料。' });
-            if (ok) { items.splice(i, 1); draw(); }
-          },
-        }, '丟棄'),
-      ]),
-    ])),
+    ...items.map((item, i) => {
+      const target = courseTarget(item);
+      return el('article', { class: 'admin-review' }, [
+        el('div', { class: 'admin-review-meta' }, [
+          el('code', {}, item.fields.code || '（無代碼）'),
+          el('span', {}, item.fields.name || '（無課名）'),
+          el('span', { class: 'muted' }, item.fields.teacher || '（無教師）'),
+          el('span', {}, formatTerm(item.fields.term)),
+        ]),
+        el('ul', { class: 'admin-reasons' }, item.reasons.map((x) => el('li', {}, x))),
+        el('div', { class: 'admin-review-body' }, multiline(item.fields.text)),
+        el('label', { class: 'admin-field' }, [el('span', {}, '放行後併進哪一門課'), target.select]),
+        el('div', { class: 'admin-actions' }, [
+          el('button', {
+            class: 'btn btn-sm btn-primary', type: 'button',
+            onclick: async () => {
+              const courseId = target.select.value;
+              if (!courseId) {
+                toast('請先選擇這筆要併進哪一門課。', 'error');
+                return;
+              }
+              const ok = await releaseOne(item, courseId, target.labelOf(courseId));
+              if (ok) { items.splice(i, 1); draw(); }
+            },
+          }, '放行'),
+          el('button', {
+            class: 'btn btn-sm btn-danger', type: 'button',
+            onclick: async () => {
+              const ok = await save('quarantine', commitMessage.dropQuarantine(1), (d) => {
+                d.items = (d.items ?? []).filter((x) => x !== item);
+              }, { confirmText: '這筆會從待審區移除。它不會被寫進網站資料。' });
+              if (ok) { items.splice(i, 1); draw(); }
+            },
+          }, '丟棄'),
+        ]),
+      ]);
+    }),
   ]);
 
   draw();
 }
 
-/** 放行一筆：寫進 courses.json，再從待審區移除。 */
-async function releaseOne(item) {
-  const mod = await import('../submissions.js');
+/**
+ * 放行時的課程選單：同代碼的課全部列出，最後一項是「建立成新課程」。
+ * 系統對得上唯一一門就預設選它、完全沒有對得上的就預設建新課；
+ * 分不出來（例如同一位老師的（一）（二））就停在「請選擇」——
+ * 預設選一門等於替管理者猜，而這正是送進待審區要避免的事。
+ */
+function courseTarget(item) {
   const f = item.fields;
+  const courses = files.courses.data.courses;
+  const code = String(f.code ?? '').toUpperCase();
+  const sameCode = courses.filter((c) => String(c.code ?? '').toUpperCase() === code);
+  const m = matchCourse(courses, f.code, f.teacher);
+  const preset = m.type === 'match' ? m.course.id : (m.type === 'new' ? NEW_COURSE : '');
+
+  const label = (c) => `${c.name ?? '（無課名）'}（${c.teacher ?? '教師不明'}）・${c.reviews.length} 則・${c.id}`;
+  const select = el('select', { class: 'admin-input' }, [
+    el('option', { value: '', selected: preset === '' }, '（請選擇）'),
+    ...sameCode.map((c) => el('option', { value: c.id, selected: preset === c.id }, label(c))),
+    el('option', { value: NEW_COURSE, selected: preset === NEW_COURSE }, '建立成新課程'),
+  ]);
+  const labelOf = (id) => {
+    if (id === NEW_COURSE) return `新課程：${f.name}（${f.teacher}）`;
+    const c = sameCode.find((x) => x.id === id);
+    return c ? `${c.name ?? c.id}（${c.teacher ?? '教師不明'}）` : id;
+  };
+  return { select, labelOf };
+}
+
+/** 放行一筆：併進管理者選的課（或建立新課程），寫進 courses.json，再從待審區移除。 */
+async function releaseOne(item, courseId, targetLabel) {
+  const f = item.fields;
+  const merge = (data) => mergeSubmissions(data, [{ fields: f, masked: item.masked ?? [], courseId }], {
+    pinyinMap: store.getState().pinyinMap ?? {},
+    suppressed: new Set(files.suppressed.data.ids ?? []),
+  });
+
+  // 開確認框之前先試併一次：指定的課不見了、或這筆早就在資料裡，直接說清楚，
+  // 不要產生一個什麼都沒改的 commit。（save 裡的 mutate 丟出的錯誤不會顯示給管理者。）
+  try {
+    if (!merge(files.courses.data).summary.added) {
+      toast('這筆沒有寫進去：它已經在資料裡，或在抑制清單上。', 'error');
+      return false;
+    }
+  } catch (err) {
+    toast(err.message, 'error');
+    return false;
+  }
 
   const ok = await save('courses', commitMessage.releaseQuarantine(1), (d) => {
-    const { courses } = mod.mergeSubmissions(d, [{ fields: f, masked: item.masked ?? [] }], {
-      pinyinMap: store.getState().pinyinMap ?? {},
-      suppressed: new Set(files.suppressed.data.ids ?? []),
-    });
-    d.courses = courses;
-  }, { confirmText: `「${f.name}」這筆會寫進 courses.json 並顯示在站上。` });
+    d.courses = merge(d).courses;
+  }, { confirmText: `「${f.name}」這筆會併進「${targetLabel}」並顯示在站上。` });
 
   if (!ok) return false;
 

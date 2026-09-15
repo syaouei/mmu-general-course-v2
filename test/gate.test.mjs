@@ -15,6 +15,7 @@ import {
   stableId, teacherSlug, recordToFields, parseTimestamp,
   mergeSubmissions, courseKey, unknownHeaders, piiHeaders,
   domainChoices, parseDomainChoice,
+  teacherNames, matchCourse, coursePlacer, NEW_COURSE,
 } from '../js/submissions.js';
 
 const DOMAINS = new Set(['天領域', '地領域', '人領域', '心領域', '系選修', '體育類', '語言類', '其他類']);
@@ -554,6 +555,110 @@ test('系選修分系：表單選項「系選修／醫學系」', async (t) => {
     const { courses } = mergeSubmissions(base,
       row({ domain: '系選修／醫學系', code: 'ME237A', teacher: '陳奕全', name: '閱讀醫學人文' }));
     assert.equal(courses[0].dept, 'aud');
+  });
+});
+
+// ===========================================================================
+test('多位老師：寫法不同也認得是同一門課，分不出來就不猜', async (t) => {
+  const make = (id, code, teacher, name = '某門課') => ({ id, code, name, domain: 'tian', teacher, reviews: [] });
+  const courses = [
+    make('OP108A-a', 'OP108A', '陳又溱 邱美妙', '解剖學實驗'),
+    make('HE013A-chen', 'HE013A', '陳尚仁'),
+    make('HE013A-zhang', 'HE013A', '張志偉'),
+    make('ME241A-zeng', 'ME241A', '曾祥洸', '高齡社會面對面(一)'),
+    make('ME241A-zeng-2', 'ME241A', '曾祥洸', '高齡社會面對面(二)'),
+    make('HE222A-x', 'HE222A', '鄭淑利，楊星瑜，洪佳黛'),
+  ];
+  const ids = (m) => (m.course ? [m.course.id] : (m.candidates ?? []).map((c) => c.id));
+
+  await t.test('教師欄拆成名字：分隔符號、順序、結尾的「老師」都不算', () => {
+    assert.deepEqual(teacherNames('陳又溱 邱美妙'), ['陳又溱', '邱美妙']);
+    assert.deepEqual(teacherNames('邱美妙、陳又溱'), ['邱美妙', '陳又溱']);
+    assert.deepEqual(teacherNames('陳旭照 、 徐堅棋'), ['陳旭照', '徐堅棋']);
+    assert.deepEqual(teacherNames('鄭淑利，楊星瑜／洪佳黛老師'), ['鄭淑利', '楊星瑜', '洪佳黛']);
+    assert.deepEqual(teacherNames('  '), []);
+  });
+
+  await t.test('順序或符號不同 → 同一門課', () => {
+    for (const written of ['邱美妙、陳又溱', '陳又溱，邱美妙', '邱美妙老師 陳又溱老師', '陳又溱/邱美妙']) {
+      const m = matchCourse(courses, 'op108a', written);
+      assert.equal(m.type, 'match', written);
+      assert.deepEqual(ids(m), ['OP108A-a'], written);
+    }
+  });
+
+  await t.test('只寫其中一位，而且只有一門課有他 → 併進那門', () => {
+    assert.deepEqual(ids(matchCourse(courses, 'OP108A', '邱美妙')), ['OP108A-a']);
+    assert.deepEqual(ids(matchCourse(courses, 'HE222A', '楊星瑜')), ['HE222A-x']);
+  });
+
+  await t.test('同代碼不同老師仍然是不同的課', () => {
+    assert.deepEqual(ids(matchCourse(courses, 'HE013A', '張志偉')), ['HE013A-zhang']);
+    assert.equal(matchCourse(courses, 'HE013A', '王大明').type, 'new', '沒開過這門的老師建新課');
+  });
+
+  await t.test('分不出來就不猜', () => {
+    const same = matchCourse(courses, 'ME241A', '曾祥洸');
+    assert.equal(same.type, 'ambiguous', '同一位老師開了兩門');
+    assert.deepEqual(ids(same), ['ME241A-zeng', 'ME241A-zeng-2']);
+    assert.equal(matchCourse(courses, 'HE013A', '陳尚仁、張志偉').type, 'ambiguous', '兩門課的老師寫在一起');
+    assert.equal(matchCourse(courses, 'OP108A', '陳又溱 王大明').type, 'ambiguous', '只有部分重疊');
+  });
+
+  await t.test('閘門：分不出來的進待審區，而且列得出候選', () => {
+    const r = gateBatch([good({ code: 'ME241A', teacher: '曾祥洸' })],
+      { domainNames: DOMAINS, placeCourse: coursePlacer(courses) });
+    assert.equal(r.accepted.length, 0);
+    assert.equal(r.quarantined.length, 1);
+    assert.match(r.quarantined[0].reasons.join(), /分不出是哪一門課.*高齡社會面對面\(一\).*高齡社會面對面\(二\)/);
+  });
+
+  await t.test('閘門：老師換個寫法重送同一則，一樣算重複', () => {
+    const text = '老師人很好，每週看一部電影寫心得，作業不多但要認真寫。';
+    const existing = new Map([[courseKey('OP108A', '陳又溱 邱美妙'), [text]]]);
+    const r = gateBatch([good({ code: 'OP108A', teacher: '邱美妙、陳又溱', text })],
+      { domainNames: DOMAINS, existingTexts: existing, placeCourse: coursePlacer(courses) });
+    assert.equal(r.discarded.length, 1);
+  });
+
+  const data = () => ({
+    meta: {},
+    domains: [{ id: 'tian', name: '天領域', order: 1 }],
+    courses: courses.map((c) => ({ ...c, reviews: [] })),
+  });
+  const row = (over, extra = {}) => [{ fields: gateOne(good(over), { domainNames: DOMAINS }).fields, masked: [], ...extra }];
+
+  await t.test('合併：寫法不同的投稿併進既有課程，不會多出一門', () => {
+    const { courses: out, summary } = mergeSubmissions(data(), row({ code: 'OP108A', teacher: '邱美妙、陳又溱' }));
+    assert.equal(out.length, courses.length);
+    assert.equal(out.find((c) => c.id === 'OP108A-a').reviews.length, 1);
+    assert.equal(summary.newCourses.length, 0);
+  });
+
+  await t.test('合併：分不出來又沒有指定就不併', () => {
+    const { courses: out, summary } = mergeSubmissions(data(), row({ code: 'ME241A', teacher: '曾祥洸' }));
+    assert.equal(summary.added, 0);
+    assert.equal(summary.skippedAmbiguous, 1);
+    assert.equal(out.reduce((a, c) => a + c.reviews.length, 0), 0);
+  });
+
+  await t.test('合併：管理者指定哪一門就併進哪一門', () => {
+    const { courses: out } = mergeSubmissions(data(),
+      row({ code: 'ME241A', teacher: '曾祥洸' }, { courseId: 'ME241A-zeng' }));
+    assert.equal(out.find((c) => c.id === 'ME241A-zeng').reviews.length, 1);
+    assert.equal(out.find((c) => c.id === 'ME241A-zeng-2').reviews.length, 0);
+  });
+
+  await t.test('合併：指定「建立成新課程」時，就算對得上也建新課', () => {
+    const { courses: out, summary } = mergeSubmissions(data(),
+      row({ code: 'ME241A', teacher: '曾祥洸', name: '高齡社會面對面(三)' }, { courseId: NEW_COURSE }));
+    assert.equal(summary.newCourses.length, 1);
+    assert.equal(out.length, courses.length + 1);
+  });
+
+  await t.test('合併：指定的課不存在就報錯，不默默建新課', () => {
+    assert.throws(() => mergeSubmissions(data(),
+      row({ code: 'ME241A', teacher: '曾祥洸' }, { courseId: '不存在的課' })));
   });
 });
 
