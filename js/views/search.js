@@ -16,7 +16,7 @@ export default async function searchView(ctx) {
   const main = document.getElementById('main');
   // 資料版本變了就重建索引（即時投稿併入後會變）。
   if (!index || indexVersion !== store.getVersion()) {
-    index = buildIndex(store.getCourses());
+    index = buildIndex(store.getCourses(), store.getDomains());
     indexVersion = store.getVersion();
   }
 

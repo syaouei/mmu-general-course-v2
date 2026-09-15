@@ -127,14 +127,15 @@ export async function loadLive() {
       fetch('scripts/blocklist.txt').then((r) => (r.ok ? r.text() : '')).catch(() => ''),
     ]);
     const { parseBlocklist, gateBatch } = gate;
-    const { recordToFields, mergeSubmissions, stableId, courseKey } = subs;
+    const { recordToFields, mergeSubmissions, stableId, courseKey, domainChoices } = subs;
     if (!csvRes.ok) throw new Error(`HTTP ${csvRes.status}`);
 
     const { records } = parseRecords(await csvRes.text());
     if (!records.length) return;
 
     const data = state.data;
-    const domainNames = new Set(data.domains.map((d) => d.name));
+    // 含「系選修／醫學系」這種帶系的選項，和建置期同步用同一份清單。
+    const domainNames = domainChoices(data.domains);
 
     // 已烘焙的心得 id。建置期同步過的不要再併一次。
     const syncedIds = new Set();

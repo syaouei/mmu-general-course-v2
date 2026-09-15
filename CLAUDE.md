@@ -58,6 +58,8 @@ courses[].code        可以是 null（舊站有兩門課沒有代碼，不捏�
 reviews[].id          lg-{領域}-{頁}-{序} 或 fm-{hash}。抑制清單靠它比對，格式不可改
 reviews[].rawHeader   舊站評分摘要原字串。解析再爛都不會丟資料
 reviews[].hidden      軟刪除。不渲染、不計入統計、不計入則數，但留在檔案裡
+courses[].dept        所屬的系（只有系選修這種分系的領域才有）。沒分系就不要有這個欄位
+domains[].groups      領域底下的系 [{ id, name }]。id 進了網址（#/d/xuanxiu?dept=med），不要改
 ```
 
 `reviews[].id` 的 hash 函式（`js/submissions.js` 的 `stableId`）
@@ -68,6 +70,17 @@ reviews[].hidden      軟刪除。不渲染、不計入統計、不計入則數�
 ---
 
 ## 常見任務
+
+### 新增一個系（系選修）
+
+1. `data/courses.json` → `domains` 裡系選修的 `groups` 加一筆
+   `{ "id": "英文小寫", "name": "系名" }`。id 會進網址，建立後不要改。
+2. Google 表單「領域」題加選項 `系選修／系名`（全形斜線），文字要和 `name` 一字不差。
+   建置期同步與即時投稿都靠這串字把投稿分到那個系（`js/submissions.js` 的 `parseDomainChoice`）。
+3. `scripts/create-forms.gs` 的 `CONFIG.domains` 加上同一個選項，之後重建表單才不會漏。
+
+表單上的舊選項「系選修」（不帶系）一樣收得下，那些課會列在「未分系」，
+到後台課程分頁補上系即可。
 
 ### 新增一門課
 

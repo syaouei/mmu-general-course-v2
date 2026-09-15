@@ -14,6 +14,7 @@ import {
 import {
   stableId, teacherSlug, recordToFields, parseTimestamp,
   mergeSubmissions, courseKey, unknownHeaders, piiHeaders,
+  domainChoices, parseDomainChoice,
 } from '../js/submissions.js';
 
 const DOMAINS = new Set(['天領域', '地領域', '人領域', '心領域', '系選修', '體育類', '語言類', '其他類']);
@@ -476,6 +477,83 @@ test('mergeSubmissions', async (t) => {
     const rows = [{ fields: gateOne(good({}), { domainNames: DOMAINS }).fields, masked: ['email'] }];
     const { courses } = mergeSubmissions(base(), rows);
     assert.deepEqual(courses[0].reviews[0].maskedFields, ['email']);
+  });
+});
+
+// ===========================================================================
+test('系選修分系：表單選項「系選修／醫學系」', async (t) => {
+  const domains = [
+    { id: 'tian', name: '天領域', order: 1 },
+    { id: 'xuanxiu', name: '系選修', order: 5, groups: [
+      { id: 'med', name: '醫學系' },
+      { id: 'aud', name: '聽語系-聽力組' },
+    ] },
+  ];
+
+  await t.test('閘門接受帶系的選項，也接受改版前的「系選修」', () => {
+    const choices = domainChoices(domains);
+    assert.ok(choices.has('系選修／醫學系'));
+    assert.ok(choices.has('系選修／聽語系-聽力組'), '系名裡的連字號不能被當成分隔');
+    assert.ok(choices.has('系選修'), '表單改版前送出的投稿還是這個值');
+    assert.ok(!choices.has('天領域／醫學系'), '沒有分系的領域不能帶系');
+
+    const rejected = (domain) => gateOne(good({ domain }), { domainNames: choices }).reasons
+      .some((r) => r.includes('領域不在清單中'));
+    assert.equal(rejected('系選修／醫學系'), false);
+    assert.equal(rejected('系選修'), false);
+    assert.equal(rejected('系選修／不存在系'), true);
+  });
+
+  await t.test('選項拆回領域與系', () => {
+    assert.deepEqual(parseDomainChoice('系選修／醫學系', domains), { domain: 'xuanxiu', dept: 'med' });
+    assert.deepEqual(parseDomainChoice('系選修／聽語系-聽力組', domains), { domain: 'xuanxiu', dept: 'aud' });
+    assert.deepEqual(parseDomainChoice('系選修', domains), { domain: 'xuanxiu', dept: null });
+    assert.deepEqual(parseDomainChoice('天領域', domains), { domain: 'tian', dept: null });
+    assert.equal(parseDomainChoice('系選修／不存在系', domains), null);
+    assert.equal(parseDomainChoice('不存在', domains), null);
+  });
+
+  const data = () => ({
+    meta: {},
+    domains,
+    courses: [{
+      id: 'ME237A-chenyiquan', code: 'ME237A', name: '閱讀醫學人文',
+      domain: 'xuanxiu', teacher: '陳奕全', reviews: [],
+    }],
+  });
+  const row = (over) => [{
+    fields: gateOne(good(over), { domainNames: domainChoices(domains) }).fields, masked: [],
+  }];
+
+  await t.test('新建的課帶著系', () => {
+    const { courses } = mergeSubmissions(data(),
+      row({ domain: '系選修／醫學系', code: 'ME999A', teacher: '王小明', name: '新開的課' }));
+    const created = courses.find((c) => c.code === 'ME999A');
+    assert.equal(created.domain, 'xuanxiu');
+    assert.equal(created.dept, 'med');
+  });
+
+  await t.test('用舊選項建的課沒有 dept 欄位，不是 null', () => {
+    const { courses } = mergeSubmissions(data(),
+      row({ domain: '系選修', code: 'ME998A', teacher: '王小明', name: '另一門課' }));
+    const created = courses.find((c) => c.code === 'ME998A');
+    assert.equal(created.domain, 'xuanxiu');
+    assert.ok(!('dept' in created));
+  });
+
+  await t.test('還沒分系的既有課，之後有人選了系就補上', () => {
+    const { courses } = mergeSubmissions(data(),
+      row({ domain: '系選修／醫學系', code: 'ME237A', teacher: '陳奕全', name: '閱讀醫學人文' }));
+    assert.equal(courses.length, 1, '不該新建課程');
+    assert.equal(courses[0].dept, 'med');
+  });
+
+  await t.test('已經分好系的課不會被投稿改掉', () => {
+    const base = data();
+    base.courses[0].dept = 'aud';
+    const { courses } = mergeSubmissions(base,
+      row({ domain: '系選修／醫學系', code: 'ME237A', teacher: '陳奕全', name: '閱讀醫學人文' }));
+    assert.equal(courses[0].dept, 'aud');
   });
 });
 

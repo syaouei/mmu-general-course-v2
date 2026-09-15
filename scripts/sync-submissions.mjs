@@ -15,6 +15,7 @@ import { parseRecords } from '../js/csv.js';
 import { parseBlocklist, gateBatch } from '../js/gate.js';
 import {
   recordToFields, mergeSubmissions, unknownHeaders, piiHeaders, courseKey, stableId,
+  domainChoices,
 } from '../js/submissions.js';
 
 const args = process.argv.slice(2);
@@ -96,7 +97,7 @@ async function run() {
   const blocklist = parseBlocklist(await readFile('scripts/blocklist.txt', 'utf8').catch(() => ''));
   const suppressedFile = await readJson('data/suppressed.json', { ids: [] });
   const suppressed = new Set(suppressedFile.ids ?? []);
-  const domainNames = new Set(data.domains.map((d) => d.name));
+  const domainNames = domainChoices(data.domains);   // 含「系選修／醫學系」這種帶系的選項
 
   // 既有心得內文，給重複偵測用。依「代碼＋教師」分組，不同老師的同名課
   // 不會互相誤判成重複。

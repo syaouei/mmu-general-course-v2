@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-09-07T13:25:03.016Z",
+    "updatedAt": "2026-09-15T08:44:56.302Z",
     "schemaVersion": 2,
     "courseCount": 89,
     "reviewCount": 258,
@@ -30,7 +30,33 @@
     {
       "id": "xuanxiu",
       "name": "系選修",
-      "order": 5
+      "order": 5,
+      "groups": [
+        {
+          "id": "med",
+          "name": "醫學系"
+        },
+        {
+          "id": "mt",
+          "name": "醫檢系"
+        },
+        {
+          "id": "opt",
+          "name": "視光系"
+        },
+        {
+          "id": "nur",
+          "name": "護理系"
+        },
+        {
+          "id": "aud",
+          "name": "聽語系-聽力組"
+        },
+        {
+          "id": "slp",
+          "name": "聽語系-語言組"
+        }
+      ]
     },
     {
       "id": "tiyu",
@@ -2882,8 +2908,9 @@
     {
       "id": "ME122A-chenxuzhao-xujianqi",
       "code": "ME122A",
-      "name": "[醫學]醫學與人文的對話",
+      "name": "醫學與人文的對話",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "陳旭照 、 徐堅棋",
       "reviews": [
         {
@@ -2951,8 +2978,9 @@
     {
       "id": "ME237A-chenyiquan",
       "code": "ME237A",
-      "name": "[醫學]閱讀醫學人文",
+      "name": "閱讀醫學人文",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "陳奕全",
       "reviews": [
         {
@@ -3016,8 +3044,9 @@
     {
       "id": "NU123A-huangshengmiao",
       "code": "NU123A",
-      "name": "[護理]臨床護理實務入門",
+      "name": "臨床護理實務入門",
       "domain": "xuanxiu",
+      "dept": "nur",
       "teacher": "黃升苗",
       "reviews": [
         {
@@ -3067,8 +3096,9 @@
     {
       "id": "ME236A-wuyizhe",
       "code": "ME236A",
-      "name": "[醫學]輔助、另類醫療與人文素養",
+      "name": "輔助、另類醫療與人文素養",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "吳懿哲",
       "reviews": [
         {
@@ -3104,8 +3134,9 @@
     {
       "id": "ME235A-huanglinglan",
       "code": "ME235A",
-      "name": "[醫學]敘事、理解與溝通",
+      "name": "敘事、理解與溝通",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "黃苓嵐",
       "reviews": [
         {
@@ -3127,8 +3158,9 @@
     {
       "id": "ME241A-zengxiangguang",
       "code": "ME241A",
-      "name": "[醫學]醫學生早期臨床體驗：高齡社會面對面(一)",
+      "name": "醫學生早期臨床體驗：高齡社會面對面(一)",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "曾祥洸",
       "reviews": [
         {
@@ -3164,8 +3196,9 @@
     {
       "id": "ME241A-zengxiangguang-2",
       "code": "ME241A",
-      "name": "[醫學]醫學生早期臨床體驗：高齡社會面對面(二)",
+      "name": "醫學生早期臨床體驗：高齡社會面對面(二)",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "曾祥洸",
       "reviews": [
         {
@@ -3201,8 +3234,9 @@
     {
       "id": "ME519A-liuguotong",
       "code": "ME519A",
-      "name": "[醫學]進階針灸學",
+      "name": "進階針灸學",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "劉國同",
       "reviews": [
         {
@@ -3224,8 +3258,9 @@
     {
       "id": "NU225A-xiongyifang",
       "code": "NU225A",
-      "name": "[護理]生死學",
+      "name": "生死學",
       "domain": "xuanxiu",
+      "dept": "nur",
       "teacher": "熊誼芳",
       "reviews": [
         {
@@ -3247,8 +3282,9 @@
     {
       "id": "ME128A-wuziwei",
       "code": "ME128A",
-      "name": "[醫學]當代生物醫學新知",
+      "name": "當代生物醫學新知",
       "domain": "xuanxiu",
+      "dept": "med",
       "teacher": "吳子維",
       "reviews": [
         {

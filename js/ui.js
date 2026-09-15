@@ -16,14 +16,20 @@ export const domainHref = (id) => `#/d/${encodeURIComponent(id)}`;
 /** 領域的 class，帶出 --d 與 --m 兩個顏色變數。 */
 export const domainClass = (id) => `d-${id}`;
 
+/** 課程所屬的系。只有系選修這種底下有分系的領域才有，其餘回 null。 */
+export const courseGroup = (domain, course) =>
+  (domain?.groups ?? []).find((g) => g.id === course?.dept) ?? null;
+
 /**
- * 領域標籤。
+ * 領域標籤。有分系的課標成「系選修・醫學系」。
  * 規格第八節：領域名稱永遠以文字直接標示，顏色只是輔助 ——
  * 色覺障礙者不會因為分不出兩個色而看錯領域。不要拿掉文字。
  */
-export function domainTag(domain) {
+export function domainTag(domain, course = null) {
   if (!domain) return null;
-  return el('span', { class: `tag-domain ${domainClass(domain.id)}` }, domain.name);
+  const group = courseGroup(domain, course);
+  return el('span', { class: `tag-domain ${domainClass(domain.id)}` },
+    group ? `${domain.name}・${group.name}` : domain.name);
 }
 
 /**
@@ -109,7 +115,7 @@ export function courseRow(course, domain) {
       course.code ?? '無代碼'),
     el('span', { class: 'title' }, course.name ?? '（無課名）'),
     el('span', { class: 'sub' }, [
-      domainTag(domain),
+      domainTag(domain, course),
       course.teacher ? el('span', {}, course.teacher) : el('span', { class: 'is-none' }, '教師不明'),
     ]),
     el('span', { class: 'right' }, [

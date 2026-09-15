@@ -550,6 +550,19 @@ function renderCourses(panel) {
         domains.map((d) => el('option', { value: d.id, selected: c.domain === d.id }, d.name)));
       fields.domain = select;
 
+      // 系：只有底下有分系的領域（系選修）能選，換領域時選項跟著換。
+      const deptSelect = el('select', { class: 'admin-input' });
+      const fillDepts = () => {
+        const groups = domains.find((d) => d.id === select.value)?.groups ?? [];
+        deptSelect.disabled = !groups.length;
+        replace(deptSelect, groups.length
+          ? [el('option', { value: '' }, '（未分系）'),
+             ...groups.map((g) => el('option', { value: g.id, selected: c.dept === g.id }, g.name))]
+          : [el('option', { value: '' }, '（不分系）')]);
+      };
+      select.addEventListener('change', fillDepts);
+      fillDepts();
+
       return el('div', { class: `admin-course-edit ${domainClass(c.domain)}` }, [
         el('div', { class: 'admin-review-meta' }, [
           el('code', {}, c.id),
@@ -561,6 +574,7 @@ function renderCourses(panel) {
           field('name', '課名', c.name),
           field('teacher', '教師', c.teacher),
           el('label', { class: 'admin-field' }, [el('span', {}, '領域'), select]),
+          el('label', { class: 'admin-field' }, [el('span', {}, '系'), deptSelect]),
         ]),
         el('div', { class: 'admin-actions' }, [
           el('button', {
@@ -572,9 +586,12 @@ function renderCourses(panel) {
                 teacher: fields.teacher.value.trim(),
                 domain: fields.domain.value,
               };
+              const dept = deptSelect.disabled ? '' : deptSelect.value;
               const ok = await save('courses', commitMessage.editCourse(c.id), (d) => {
                 const t = d.courses.find((x) => x.id === c.id);
                 Object.assign(t, next);
+                // 沒有系就拿掉欄位而不是寫 null：validate-data 只認「有值」或「沒有這個欄位」。
+                if (dept) t.dept = dept; else delete t.dept;
                 if (t.needsReview) delete t.needsReview;
               }, {
                 confirmText: '課程 id 不會跟著改 —— id 已經進了網址，改了會讓所有分享出去的連結失效。',

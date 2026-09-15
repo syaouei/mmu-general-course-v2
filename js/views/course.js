@@ -10,7 +10,7 @@ import { el, replace, multiline } from '../dom.js';
 import { setMeta, setJsonLd } from '../router.js';
 import * as store from '../store.js';
 import {
-  courseHref, domainTag, domainClass, starsView, meterView, termBadge, statCell,
+  courseHref, domainTag, domainClass, courseGroup, starsView, meterView, termBadge, statCell,
 } from '../ui.js';
 import {
   courseStats, visibleReviews, formatTermRange, formatValue,
@@ -118,10 +118,14 @@ export default async function courseView(ctx) {
     },
   }, reading ? '關閉閱讀模式' : '閱讀模式');
 
+  const deptGroup = courseGroup(domain, course);
+
   const head = el('header', { class: 'course-head' }, [
     el('p', { class: 'crumb' }, [
       el('a', { href: '#/' }, '首頁'), ' ／ ',
       domain ? el('a', { href: `#/d/${domain.id}` }, domain.name) : '未分類',
+      deptGroup ? ' ／ ' : null,
+      deptGroup ? el('a', { href: `#/d/${domain.id}?dept=${deptGroup.id}` }, deptGroup.name) : null,
     ]),
     course.code
       ? el('span', { class: 'code' }, course.code)
@@ -131,7 +135,7 @@ export default async function courseView(ctx) {
       course.teacher
         ? el('span', {}, course.teacher)
         : el('span', { class: 'is-none' }, '教師不明'),
-      domainTag(domain),
+      domainTag(domain, course),
       el('span', { class: 'actions' }, [
         readingBtn,
         el('button', {
@@ -257,9 +261,14 @@ export default async function courseView(ctx) {
 
   // ------------------------------------------------------------ 相關課程
 
-  const sameDomain = store.coursesInDomain(course.domain)
-    .filter((c) => c.id !== course.id)
-    .slice(0, 6);
+  // 有分系的課先列同系的；同系沒有別門課才退回整個領域。
+  const inDomain = store.coursesInDomain(course.domain).filter((c) => c.id !== course.id);
+  const sameGroup = deptGroup ? inDomain.filter((c) => c.dept === course.dept) : [];
+  const peers = (sameGroup.length ? sameGroup : inDomain).slice(0, 6);
+  const peerName = sameGroup.length ? deptGroup.name : domain?.name;
+  const peerHref = sameGroup.length
+    ? `#/d/${course.domain}?dept=${deptGroup.id}`
+    : `#/d/${course.domain}`;
 
   const sameTeacher = course.teacher
     ? store.getCourses().filter((c) => c.id !== course.id && c.teacher === course.teacher)
@@ -271,7 +280,7 @@ export default async function courseView(ctx) {
         el('span', { class: `code${c.code ? '' : ' is-none'}` }, c.code ?? NONE),
         el('span', { class: 'title' }, c.name ?? '（無課名）'),
         el('span', { class: 'sub' }, [
-          domainTag(store.getDomain(c.domain)),
+          domainTag(store.getDomain(c.domain), c),
           c.teacher ? el('span', {}, c.teacher) : null,
         ]),
         el('span', { class: 'right' }, [
@@ -287,12 +296,12 @@ export default async function courseView(ctx) {
           relatedList(sameTeacher),
         ])
       : null,
-    sameDomain.length && domain
+    peers.length && domain
       ? el('section', { style: 'margin-top:var(--s5)' }, [
-          el('h2', {}, `${domain.name}的其他課程`),
-          relatedList(sameDomain),
+          el('h2', {}, `${peerName}的其他課程`),
+          relatedList(peers),
           el('p', { style: 'margin-top:var(--s3)' },
-            el('a', { href: `#/d/${domain.id}` }, `查看${domain.name}全部課程 →`)),
+            el('a', { href: peerHref }, `查看${peerName}全部課程 →`)),
         ])
       : null,
   ]);

@@ -4,6 +4,9 @@
 // 哪門甜、哪門涼。所以密度高、對齊嚴格、等寬數字，桌機是可排序表格。
 //
 // 所有條件都寫進網址 query，貼給同學就是同一個畫面。
+//
+// 底下有分系的領域（系選修）在標題下多一排系的按鈕：選「全部」時依系
+// 分段列出，選了系就只列那個系。選的系一樣寫進網址（?dept=med）。
 
 import { el, replace } from '../dom.js';
 import { setMeta, buildHash, syncUrl } from '../router.js';
@@ -11,6 +14,9 @@ import * as store from '../store.js';
 import { SORTS, filter, sort } from '../search.js';
 import { courseList, meterView, starsView, courseHref, domainClass } from '../ui.js';
 import { courseStats, formatTerm, NONE } from '../format.js';
+
+/** 沒標系的課（表單改版前用舊選項「系選修」投稿建的）在網址裡的代號。 */
+const NO_GROUP = 'none';
 
 /** 從網址讀出條件。缺的一律用預設，不會因為少一個參數就壞掉。 */
 function readParams(query) {
@@ -21,6 +27,7 @@ function readParams(query) {
     return Number.isFinite(n) ? n : null;
   };
   return {
+    dept: query.get('dept') || null,
     sort: SORTS[query.get('sort')] ? query.get('sort') : 'code',
     dir: query.get('dir') === 'asc' || query.get('dir') === 'desc' ? query.get('dir') : null,
     minStars: num('stars'),
@@ -34,6 +41,7 @@ function readParams(query) {
 /** 條件 → 網址。空值不寫進去，網址才不會一堆 &x=。 */
 function toQuery(p) {
   return {
+    dept: p.dept,
     sort: p.sort === 'code' ? null : p.sort,
     dir: p.dir,
     stars: p.minStars,
@@ -65,7 +73,17 @@ export default async function domainView(ctx) {
   const teachers = [...new Set(all.map((c) => c.teacher).filter(Boolean))]
     .sort((a, b) => a.localeCompare(b, 'zh-Hant'));
 
+  // 分系。沒有 groups 的領域這裡是空陣列，底下的分系邏輯全部不會啟動。
+  const groups = domain.groups ?? [];
+  const groupIds = new Set(groups.map((g) => g.id));
+  const inGroup = (id) => (c) => (id === NO_GROUP ? !groupIds.has(c.dept) : c.dept === id);
+  const ungrouped = groups.length ? all.filter(inGroup(NO_GROUP)) : [];
+
   const params = readParams(ctx.query);
+  // 網址裡的系對不上（打錯字，或那個系後來改了 id）就當成「全部」，不給空白頁。
+  if (!groupIds.has(params.dept) && !(params.dept === NO_GROUP && ungrouped.length)) {
+    params.dept = null;
+  }
 
   setMeta(domain.name,
     `${domain.name}共 ${all.length} 門通識課程的學生評價，可依甜度、涼度、星級排序與篩選。`);
@@ -81,10 +99,41 @@ export default async function domainView(ctx) {
         el('span', { class: 'sub num' }, `${all.length} 門課`),
       ]),
     ]),
+    renderGroups(),
     renderControls(),
     status,
     body,
   ]));
+
+  // ---------------------------------------------------------------- 分系按鈕
+
+  /**
+   * 「全部／醫學系 8／醫檢系 0⋯⋯」。數字是那個系的課程總數，不隨篩選條件變。
+   * 點了只切換按下狀態、不重建按鈕 —— 重建會讓鍵盤焦點掉回頁首。
+   */
+  function renderGroups() {
+    if (!groups.length) return null;
+
+    const options = [
+      { id: null, label: '全部', count: all.length },
+      ...groups.map((g) => ({ id: g.id, label: g.name, count: all.filter(inGroup(g.id)).length })),
+      ...(ungrouped.length ? [{ id: NO_GROUP, label: '未分系', count: ungrouped.length }] : []),
+    ];
+
+    const buttons = options.map((o) => el('button', {
+      type: 'button',
+      class: 'chip',
+      'aria-pressed': String(params.dept === o.id),
+      onclick: () => {
+        params.dept = o.id;
+        buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(options[i].id === o.id)));
+        syncUrl(buildHash(`/d/${domain.id}`, toQuery(params)));
+        render();
+      },
+    }, [o.label, el('span', { class: 'chip-count num' }, String(o.count))]));
+
+    return el('div', { class: 'chips', role: 'group', 'aria-label': '依系篩選' }, buttons);
+  }
 
   // ------------------------------------------------------------------ 控制列
 
@@ -139,7 +188,8 @@ export default async function domainView(ctx) {
             sort: 'code', dir: null, minStars: null, minSweet: null,
             minCool: null, teacher: null, hasReviews: false,
           });
-          syncUrl(buildHash(`/d/${domain.id}`));
+          // 選的系不算篩選條件，清除時留著，不然會被丟回「全部」。
+          syncUrl(buildHash(`/d/${domain.id}`, toQuery(params)));
           renderAll();
         },
       }, '清除條件'),
@@ -148,7 +198,7 @@ export default async function domainView(ctx) {
 
   // -------------------------------------------------------------------- 表格
 
-  function renderTable(rows) {
+  function renderTable(rows, label = domain.name) {
     const cols = [
       { key: 'code', label: '代碼', cls: 'c-code' },
       { key: 'name', label: '課名', cls: 'c-name' },
@@ -208,7 +258,7 @@ export default async function domainView(ctx) {
       el('div', { class: 'table-wrap' },
         el('table', { class: 'data' }, [
           el('caption', { class: 'sr-only' },
-            `${domain.name}課程一覽，可依欄位排序。目前 ${rows.length} 門。`),
+            `${label}課程一覽，可依欄位排序。目前 ${rows.length} 門。`),
           el('thead', {}, head),
           el('tbody', {}, body),
         ])),
@@ -218,13 +268,22 @@ export default async function domainView(ctx) {
   // ------------------------------------------------------------------- 渲染
 
   function render() {
-    let rows = filter(all, params);
+    const group = groups.find((g) => g.id === params.dept) ?? null;
+    const scopeName = params.dept === null ? '' : (group ? group.name : '未分系');
+    const scope = params.dept === null ? all : all.filter(inGroup(params.dept));
+
+    let rows = filter(scope, params);
     rows = sort(rows, params.sort, params.dir);
 
-    const filtered = rows.length !== all.length;
-    status.textContent = filtered
-      ? `${all.length} 門課中符合條件的有 ${rows.length} 門`
-      : `${all.length} 門課`;
+    const filtered = rows.length !== scope.length;
+    status.textContent = (scopeName ? `${scopeName} ` : '') + (filtered
+      ? `${scope.length} 門課中符合條件的有 ${rows.length} 門`
+      : `${scope.length} 門課`);
+
+    if (!scope.length && scopeName) {
+      replace(body, el('p', { class: 'empty' }, `還沒有${scopeName}的心得，修過的話歡迎投稿。`));
+      return;
+    }
 
     if (!rows.length) {
       replace(body, el('p', { class: 'empty' },
@@ -233,8 +292,23 @@ export default async function domainView(ctx) {
       return;
     }
 
+    // 有分系又選「全部」：依系分段，一個系一張表。這次篩完沒有課的系不出現。
+    if (groups.length && params.dept === null) {
+      const sections = [
+        ...groups.map((g) => ({ name: g.name, list: rows.filter(inGroup(g.id)) })),
+        { name: '未分系', list: rows.filter(inGroup(NO_GROUP)) },
+      ].filter((s) => s.list.length);
+
+      replace(body, sections.map((s) => el('section', { class: 'dept-group' }, [
+        el('h2', { class: 'dept-head' }, [s.name, el('span', { class: 'sub num' }, `${s.list.length} 門`)]),
+        renderTable(s.list, `${domain.name}・${s.name}`),
+        el('div', { class: 'only-narrow' }, courseList(s.list, domainsById)),
+      ])));
+      return;
+    }
+
     replace(body, [
-      renderTable(rows),
+      renderTable(rows, scopeName ? `${domain.name}・${scopeName}` : domain.name),
       el('div', { class: 'only-narrow' }, courseList(rows, domainsById)),
     ]);
   }

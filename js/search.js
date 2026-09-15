@@ -31,13 +31,20 @@ function grams(s) {
 /**
  * 建立索引。courses 順序即 id，postings 存的是索引位置。
  * 89 門課約 3000 個 gram，建立耗時可忽略；1000 門課仍在毫秒等級。
+ *
+ * 傳入 domains 時，系選修的系名（例如「醫學系」）也進索引 ——
+ * 課名已經拿掉「[醫學]」前綴，不這樣做的話搜「醫學系」會找不到那些課。
  */
-export function buildIndex(courses) {
+export function buildIndex(courses, domains = []) {
+  const groupName = new Map();
+  for (const d of domains) for (const g of d.groups ?? []) groupName.set(`${d.id}/${g.id}`, g.name);
+
   const docs = courses.map((c) => {
     const code = normalize(c.code);
     const name = normalize(c.name);
     const teacher = normalize(c.teacher);
-    return { course: c, code, name, teacher, hay: code + name + teacher };
+    const dept = normalize(groupName.get(`${c.domain}/${c.dept}`));
+    return { course: c, code, name, teacher, dept, hay: code + name + teacher + dept };
   });
 
   const postings = new Map();
@@ -103,6 +110,8 @@ function score(doc, nq) {
 
   if (doc.teacher === nq) s += 70;
   else if (doc.teacher.includes(nq)) s += 20;
+
+  if (doc.dept && doc.dept.includes(nq)) s += 15;
 
   // 同分時讓有心得的排前面，掃描的人才不會先點到空課。
   s += Math.min(visibleReviews(doc.course).length, 10) * 0.5;

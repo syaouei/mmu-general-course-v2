@@ -26,7 +26,7 @@ export default async function home(ctx) {
   const domainsById = new Map(domains.map((d) => [d.id, d]));
   // 資料版本變了就重建索引（即時投稿併入後會變）。
   if (!index || indexVersion !== store.getVersion()) {
-    index = buildIndex(store.getCourses());
+    index = buildIndex(store.getCourses(), store.getDomains());
     indexVersion = store.getVersion();
   }
 
@@ -105,7 +105,7 @@ export default async function home(ctx) {
             termBadge(review.term),
             el('span', { class: 'name' }, course.name ?? '（無課名）'),
             course.teacher ? el('span', { class: 'teacher' }, course.teacher) : null,
-            domainTag(domainsById.get(course.domain)),
+            domainTag(domainsById.get(course.domain), course),
           ]),
           el('p', { class: 'excerpt' }, review.text),
         ]))),

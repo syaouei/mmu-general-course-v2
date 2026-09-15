@@ -34,6 +34,17 @@ const idx = buildIndex(CORPUS);
 const names = (r) => r.map((c) => c.name);
 
 // ===========================================================================
+test('系名進索引：課名拿掉「[醫學]」之後，搜「醫學系」還是找得到', () => {
+  const domains = [{ id: 'xuanxiu', name: '系選修', order: 5, groups: [{ id: 'med', name: '醫學系' }] }];
+  const corpus = [
+    course({ code: 'ME519A', name: '進階針灸學', teacher: '劉國同', domain: 'xuanxiu', dept: 'med' }),
+    course({ code: 'HE118A', name: '易經與人生', teacher: '蕭旭府' }),
+  ];
+  assert.deepEqual(names(query(buildIndex(corpus, domains), '醫學系')), ['進階針灸學']);
+  assert.deepEqual(names(query(buildIndex(corpus), '醫學系')), [], '沒傳 domains 時維持原本行為');
+});
+
+// ===========================================================================
 test('normalize', () => {
   assert.equal(normalize('HE139A'), 'he139a', '轉小寫');
   assert.equal(normalize('HE 139 A'), 'he139a', '去空白');

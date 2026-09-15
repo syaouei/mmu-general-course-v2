@@ -32,6 +32,22 @@ if (errors.length) {
 
 const domainIds = new Set(data.domains.map((d) => d.id));
 
+// 分系（系選修底下的醫學系、護理系⋯⋯）。系的 id 會進網址（?dept=med），
+// 所以格式要乾淨，同一個領域裡不能重複。
+const groupsOf = new Map();
+for (const d of data.domains) {
+  if (d.groups === undefined) continue;
+  if (!Array.isArray(d.groups)) { err(`領域 ${d.id}：groups 不是陣列`); continue; }
+  const ids = new Set();
+  for (const g of d.groups) {
+    if (!/^[a-z]+$/.test(g?.id ?? '')) err(`領域 ${d.id}：系的 id「${g?.id}」只能是小寫英文字母`);
+    else if (ids.has(g.id)) err(`領域 ${d.id}：系的 id「${g.id}」重複`);
+    else ids.add(g.id);
+    if (typeof g?.name !== 'string' || !g.name.trim()) err(`領域 ${d.id}：系「${g?.id}」沒有名稱`);
+  }
+  groupsOf.set(d.id, ids);
+}
+
 // ------------------------------------------------------------------ 逐課檢查
 
 const courseIds = new Set();
@@ -45,6 +61,15 @@ for (const c of data.courses) {
   else courseIds.add(c.id);
 
   if (!domainIds.has(c.domain)) err(`${at}：領域「${c.domain}」不在 domains 清單中`);
+
+  // dept 只能出現在有分系的領域，而且要是那個領域裡的系。
+  // 沒有系就不要有這個欄位（不寫 null），前台才只有一種「未分系」的判斷。
+  if ('dept' in c) {
+    if (!groupsOf.has(c.domain)) err(`${at}：領域「${c.domain}」沒有分系，卻標了系「${c.dept}」`);
+    else if (!groupsOf.get(c.domain).has(c.dept)) err(`${at}：系「${c.dept}」不在 ${c.domain} 的 groups 裡`);
+  } else if (groupsOf.has(c.domain)) {
+    warn(`${at}：在有分系的領域裡但還沒標系，站上會列在「未分系」`);
+  }
 
   // 舊站有兩門課沒有代碼，那是已知且刻意保留的，不是錯誤。
   if (c.code !== null && c.code !== undefined && !CODE_RE.test(c.code)) {

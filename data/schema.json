@@ -57,7 +57,20 @@
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z]+$" },
           "name": { "type": "string", "minLength": 1 },
-          "order": { "type": "integer", "minimum": 1 }
+          "order": { "type": "integer", "minimum": 1 },
+          "groups": {
+            "type": "array",
+            "description": "領域底下再分的系（系選修：醫學系、護理系⋯⋯）。id 會進網址，建立後不要改。",
+            "items": {
+              "type": "object",
+              "required": ["id", "name"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string", "pattern": "^[a-z]+$" },
+                "name": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
         }
       }
     },
@@ -79,6 +92,10 @@
           },
           "name": { "type": ["string", "null"] },
           "domain": { "type": "string" },
+          "dept": {
+            "type": "string",
+            "description": "所屬的系，對應該領域 groups[].id。只有分系的領域才有；還沒分系就不要有這個欄位。"
+          },
           "teacher": {
             "type": ["string", "null"],
             "description": "照來源原字串保留。舊站有幾格塞了多位教師，也有樣板佔位字串。"
