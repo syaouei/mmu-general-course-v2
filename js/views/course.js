@@ -201,21 +201,23 @@ export default async function courseView(ctx) {
   // -------------------------------------------------------------- 心得列表
 
   /**
-   * 回報連結。
+   * 「回報這則」：打開回饋表單，並把這則心得是哪一門課、網址與心得編號先填進欄位，
+   * 回報的人只要補一句哪裡不妥，後台也能用心得編號直接找到那一則。
    *
-   * 優先用 reportPrefillUrl —— 那是 scripts/create-forms.gs 產生的預填
-   * 網址範本，裡面的 __REVIEW_ID__ 換成心得 id 後，表單的「心得編號」
-   * 欄位會自動帶入。Google 表單的預填參數是 entry.<數字ID>，不是我們
-   * 自己取的名字，所以不能用 searchParams 硬加一個 review=。
-   *
-   * 沒設定範本就退回純表單網址，回報者自己描述是哪一則。
+   * feedbackPrefillUrl 是表單的預填網址範本，裡面的 __TEXT__ 會換成上面那段文字。
+   * Google 表單的預填參數是 entry.<數字ID>，不是自己取的名字，所以範本要從表單拿。
+   * 沒有範本就退回純表單網址；連表單都還沒設定，就連到關於頁。
    */
   function reportHref(review) {
-    const tpl = config.forms?.reportPrefillUrl;
-    if (tpl && tpl.includes('__REVIEW_ID__')) {
-      return tpl.replace('__REVIEW_ID__', encodeURIComponent(review.id));
+    const forms = config.forms ?? {};
+    const tpl = forms.feedbackPrefillUrl;
+    if (tpl && tpl.includes('__TEXT__')) {
+      const page = location.origin + location.pathname + courseHref(course);
+      const text = `回報這則心得：${[course.code, course.name].filter(Boolean).join(' ')}`
+        + `（${course.teacher ?? '教師不明'}）\n${page}\n心得編號：${review.id}\n哪裡不妥：`;
+      return tpl.replace('__TEXT__', encodeURIComponent(text));
     }
-    return config.forms?.reportUrl || null;
+    return forms.feedbackUrl || null;
   }
 
   function renderReview(r) {
@@ -236,8 +238,8 @@ export default async function courseView(ctx) {
       el('div', { class: 'review-foot' }, [
         r.editedAt ? el('span', {}, '（經後台編輯）') : null,
         href
-          ? el('a', { href, target: '_blank', rel: 'noopener noreferrer' }, '回報不當內容')
-          : el('a', { href: '#/about' }, '回報不當內容'),
+          ? el('a', { href, target: '_blank', rel: 'noopener noreferrer' }, '回報這則')
+          : el('a', { href: '#/about' }, '回報這則'),
       ]),
     ]);
   }

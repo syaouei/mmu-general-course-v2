@@ -318,8 +318,10 @@ function renderReviews(panel) {
 
   const draw = () => {
     const q = search.value.trim().toLowerCase();
+    // 心得編號也搜得到：網站上「回報這則」帶進回饋表單的就是這個編號。
     const hits = data.courses.filter((c) =>
-      !q || [c.code, c.name, c.teacher].some((v) => String(v ?? '').toLowerCase().includes(q)));
+      !q || [c.code, c.name, c.teacher].some((v) => String(v ?? '').toLowerCase().includes(q))
+        || c.reviews.some((r) => r.id.toLowerCase().includes(q)));
 
     replace(list, hits.slice(0, 30).map((course) => el('details', { class: 'admin-course' }, [
       el('summary', {}, [

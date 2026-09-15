@@ -13,8 +13,9 @@
     "   填表者的信箱會跟著心得一起公開。sync-submissions.mjs 偵測到會大聲警告，",
     "   但那時外洩已經發生 —— 不要開那個設定。",
     "",
-    "回報表單依要求不啟用：reportUrl 留空時，心得下方的「回報不當內容」會指向關於頁。",
-    "  formsDisabled 裡那組同樣由 create-forms.gs 產生、已驗證可用，要啟用搬回 forms 即可。"
+    "回饋表單（feedbackUrl）只有一個欄位，回覆留在 Google 表單裡，不公開。",
+    "  feedbackPrefillUrl 是預填網址範本：心得下方的「回報這則」會把 __TEXT__ 換成課名、網址與心得編號。",
+    "  兩個都留空時，「回報這則」會連到關於頁。"
   ],
   "site": {
     "name": "馬偕通識分享區",
@@ -27,15 +28,8 @@
     "submitUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdATVlLLmALkS-i-oMllxIo3ghnEipINxbHcXtQl9uQnIYVqA/viewform",
     "submissionsCsv": "https://docs.google.com/spreadsheets/d/1RfDidNWdT7Pmco-Apq529mmd-p9kE8aBf91zaUOsaDw/gviz/tq?tqx=out:csv",
     "requiresLogin": false,
-    "reportUrl": "",
-    "reportPrefillUrl": "",
-    "reportsCsv": ""
-  },
-  "formsDisabled": {
-    "$comment": "已建立但目前未啟用。要開啟回報功能，把這三個值搬到上面的 forms 即可。",
-    "reportUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdRWP0ENRGgHGy2I0q9LR-G3j0edxoQGUIL6zUpL7Zi7rwLgg/viewform",
-    "reportPrefillUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdRWP0ENRGgHGy2I0q9LR-G3j0edxoQGUIL6zUpL7Zi7rwLgg/viewform?usp=pp_url&entry.740288354=__REVIEW_ID__",
-    "reportsCsv": "https://docs.google.com/spreadsheets/d/165UetzzZPlsEGBgXEbULodmvOX3_Elb23V3R8dVchSs/gviz/tq?tqx=out:csv"
+    "feedbackUrl": "",
+    "feedbackPrefillUrl": ""
   },
   "repo": {
     "owner": "syaouei",

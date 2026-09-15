@@ -1,4 +1,4 @@
-// 關於頁。也是投稿與回報的入口。
+// 關於頁。也是投稿與回饋的入口。
 //
 // 表單網址從 data/config.json 讀，不寫死在這裡（規格第十三節）。
 // 還沒設定時要老實說「尚未開放」，不要放一個點下去是死的按鈕。
@@ -9,7 +9,7 @@ import * as store from '../store.js';
 import { visibleReviews } from '../format.js';
 
 export default async function about() {
-  setMeta('關於', '關於馬偕通識分享區：這個站是什麼、資料從哪來、怎麼投稿、怎麼回報不當內容。');
+  setMeta('關於', '關於馬偕通識分享區：這個站是什麼、資料從哪來、怎麼投稿、怎麼給我回饋。');
 
   const config = store.getState().config ?? {};
   const site = config.site ?? {};
@@ -57,13 +57,11 @@ export default async function about() {
         '請不要填寫任何可以指認到個人的資訊。系統會自動遮蔽偵測到的手機號碼、' +
         'Email 與身分證字號，但最保險的做法是一開始就不要寫。'),
 
-      el('h2', {}, '回報不當內容'),
-      el('p', {},
-        '因為完全沒有人工審核，惡意或不實的內容有可能短暫出現在站上。' +
-        '看到請回報，管理者會把它下架。'),
-      formCta(forms.reportUrl, '回報不當內容',
-        '也可以直接點每則心得下方的「回報不當內容」。',
-        '回報表單還在設定中。在那之前請直接聯絡管理者。'),
+      el('h2', {}, '回饋與建議'),
+      el('p', {}, '有什麼想法、發現哪裡怪怪的，或看到不該出現的心得，都歡迎跟我說。'),
+      formCta(forms.feedbackUrl, '給我的回饋',
+        '匿名填寫，不會蒐集姓名、學號或 Email。',
+        '回饋表單還在設定中。'),
 
       el('h2', {}, '資料從哪來'),
       el('p', {}, [

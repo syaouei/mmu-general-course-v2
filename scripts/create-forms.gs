@@ -1,12 +1,11 @@
 /**
- * 馬偕通識分享區 v2 —— 一鍵建立投稿與回報表單
+ * 馬偕通識分享區 v2 —— 一鍵建立投稿與回饋表單
  * ===========================================================================
  *
  * 這支腳本跑一次，會建立：
  *   1. 「修課心得投稿」表單（10 個欄位，對應 data/courses.json 的資料模型）
- *   2. 「回報不當內容」表單
- *   3. 兩份表單各自的回應試算表
- *   4. 把試算表設為「知道連結的人可以檢視」，並印出 CSV 讀取網址
+ *   2. 投稿表單的回應試算表，設為「知道連結的人可以檢視」，並組出 CSV 讀取網址
+ *   3. 「回饋與建議」表單（只有一個欄位；回覆留在表單裡，不公開）
  *
  * 最後會在執行紀錄印出一段 JSON，直接貼進 data/config.json 的 forms 區塊。
  *
@@ -25,7 +24,7 @@
  * ---------------------------------------------------------------------------
  * ⚠️ 隱私：這件事務必看懂再跑
  * ---------------------------------------------------------------------------
- * 回應試算表會被設成「知道連結的人可以檢視」—— 這是必要的，因為純靜態
+ * 投稿的回應試算表會被設成「知道連結的人可以檢視」—— 這是必要的，因為純靜態
  * 網站要靠它當免費的唯讀 API。也就是說：**所有投稿內容都是公開可讀的**。
  *
  * 所以腳本刻意做了兩件事：
@@ -33,6 +32,8 @@
  *   - 表單裡沒有姓名、學號、班級任何一個欄位
  *
  * 不要自己加上這些欄位。加了就會連同心得一起公開。
+ *
+ * 回饋表單剛好相反：回覆不接試算表、不公開，因為回饋可能寫到私人的事。
  */
 
 // ===========================================================================
@@ -47,10 +48,10 @@ var CONFIG = {
     '送出後不需要等審核，通過自動品質檢查就會出現在站上。\n\n' +
     '請不要填寫任何可以指認到個人的資訊（包含其他同學與助教）。',
 
-  reportTitle: '馬偕通識分享區 — 回報不當內容',
-  reportDescription:
-    '看到不實、惡意或涉及個資的心得，請在這裡回報。\n' +
-    '管理者確認後會將該則心得下架。',
+  feedbackTitle: '馬偕通識分享區 — 回饋與建議',
+  feedbackDescription:
+    '有什麼想法、發現哪裡怪怪的，或看到不該出現的心得，都可以跟我說。\n' +
+    '匿名填寫，不會蒐集你的姓名、學號或 Email。',
 
   // 順序與 data/courses.json 的 domains 一致。系選修依 groups 拆成「系選修／系名」，
   // 文字要和 groups[].name 一字不差（js/submissions.js 的 parseDomainChoice 靠它對應）。
@@ -68,14 +69,14 @@ var CONFIG = {
 
 function setUp() {
   var submit = buildSubmitForm_();
-  var report = buildReportForm_();
+  var feedback = buildFeedbackForm_();
 
   var out = {
     submitUrl: submit.publishedUrl,
-    reportUrl: report.publishedUrl,
-    reportPrefillUrl: report.prefillUrl,
     submissionsCsv: submit.csvUrl,
-    reportsCsv: report.csvUrl,
+    requiresLogin: false,
+    feedbackUrl: feedback.publishedUrl,
+    feedbackPrefillUrl: feedback.prefillUrl,
   };
 
   Logger.log('');
@@ -88,9 +89,8 @@ function setUp() {
   Logger.log('==========================================================');
   Logger.log('編輯表單用的網址（自己留著，不要公開）：');
   Logger.log('  投稿表單：' + submit.editUrl);
-  Logger.log('  回報表單：' + report.editUrl);
+  Logger.log('  回饋表單：' + feedback.editUrl);
   Logger.log('  投稿回應試算表：' + submit.sheetUrl);
-  Logger.log('  回報回應試算表：' + report.sheetUrl);
   Logger.log('==========================================================');
 
   return out;
@@ -223,56 +223,39 @@ function buildSubmitForm_() {
 }
 
 // ===========================================================================
-// 回報表單
+// 回饋表單
 // ===========================================================================
 
-function buildReportForm_() {
-  var form = FormApp.create(CONFIG.reportTitle)
-    .setDescription(CONFIG.reportDescription)
+function buildFeedbackForm_() {
+  var form = FormApp.create(CONFIG.feedbackTitle)
+    .setDescription(CONFIG.feedbackDescription)
     .setCollectEmail(false)
-    .setConfirmationMessage('收到，謝謝你。管理者會盡快處理。');
+    .setConfirmationMessage('收到，謝謝你！');
 
-  var idItem = form.addTextItem()
-    .setTitle('心得編號')
-    .setHelpText(
-      '從網站上點「回報不當內容」進來的話，這一欄會自動帶入，不用改。\n' +
-      '手動填的話，請一併在下面說明是哪一門課的哪一則。'
-    )
-    .setRequired(false);
-
-  form.addMultipleChoiceItem()
-    .setTitle('回報原因')
-    .setChoiceValues([
-      '含有個人資料（姓名、電話、Email、學號等）',
-      '人身攻擊或辱罵',
-      '內容不實',
-      '廣告或洗版',
-      '其他',
-    ])
+  // 只有一個欄位。從網站上點「回報這則」進來時，課名、網址與心得編號會預先填好。
+  var item = form.addParagraphTextItem()
+    .setTitle('想跟我說什麼')
     .setRequired(true);
 
-  form.addParagraphTextItem()
-    .setTitle('補充說明')
-    .setHelpText('請說明是哪一門課的哪一則心得，以及問題出在哪裡。')
-    .setRequired(true);
-
-  var out = finalize_(form, '回報');
-
-  // 預填網址。Google 表單的預填參數是 entry.<數字ID>，那個數字只能從
-  // toPrefilledUrl() 反推，沒有別的取得方式。這裡先填一個哨兵字串，
-  // 前端再把哨兵換成真正的心得 id。
+  // 刻意不接回應試算表：回饋可能寫到私人的事，不能像投稿一樣公開。
   //
-  // 沒有這個的話，回報的人得自己描述是哪一門課的哪一則，管理者要人工比對。
-  var probe = form.createResponse()
-    .withItemResponse(idItem.createResponse(REVIEW_ID_TOKEN))
+  // 預填網址的參數是 entry.<數字ID>，那個數字只能從 toPrefilledUrl() 反推。
+  // 這裡先填一個哨兵字串，前端再把哨兵換成真正要帶入的文字。
+  var prefillUrl = form.createResponse()
+    .withItemResponse(item.createResponse(FEEDBACK_TEXT_TOKEN))
     .toPrefilledUrl();
-  out.prefillUrl = probe;
 
-  return out;
+  Logger.log('[回饋] 表單建立完成');
+
+  return {
+    publishedUrl: form.getPublishedUrl(),
+    editUrl: form.getEditUrl(),
+    prefillUrl: prefillUrl,
+  };
 }
 
-/** 預填網址裡代表「心得 id 填這裡」的哨兵。前端會把它換成真正的 id。 */
-var REVIEW_ID_TOKEN = '__REVIEW_ID__';
+/** 預填網址裡代表「帶入的文字放這裡」的哨兵。前端會把它換成課名、網址與心得編號。 */
+var FEEDBACK_TEXT_TOKEN = '__TEXT__';
 
 // ===========================================================================
 // 共用：建立回應試算表、開放唯讀、組出 CSV 網址
