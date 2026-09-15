@@ -1,13 +1,13 @@
 {
   "meta": {
-    "updatedAt": "2026-09-15T08:49:51.149Z",
+    "updatedAt": "2026-09-15T18:04:44.357Z",
     "schemaVersion": 2,
-    "courseCount": 94,
-    "reviewCount": 268,
+    "courseCount": 95,
+    "reviewCount": 269,
     "generatedBy": "scripts/migrate-legacy.mjs",
     "lastSync": {
-      "at": "2026-09-15T08:49:50.456Z",
-      "added": 10,
+      "at": "2026-09-15T18:04:44.357Z",
+      "added": 1,
       "quarantined": 0,
       "discarded": 0
     }
@@ -4689,6 +4689,27 @@
           "grade": 82,
           "text": "老師從很基礎開始教，物理基礎不好也不害怕，期中期末考試不會到太難，上課有好好聽跟著作習題問題不大。國考項目，同為視光醫材光學學程。",
           "submittedAt": "2026-09-15T08:36:24.000Z",
+          "source": "form",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "HE433A-t3be19d",
+      "code": "HE433A",
+      "name": "兒童藝術治療",
+      "domain": "xin",
+      "teacher": "呂碧漪",
+      "reviews": [
+        {
+          "id": "fm-da1ea81d9bbec4e9",
+          "term": "1142",
+          "stars": 5,
+          "sweet": 8,
+          "cool": 8,
+          "grade": 88,
+          "text": "基本上就是了解藝術治療是什麼 然後實際帶小學生做藝術治療 期中作業是畫一幅畫 期末作業就是寫帶小學生的心得 課堂上幾乎都有手作、藝術相關的活動 喜歡畫畫的可以來 而且有全程參與實踐就有服學 大推！",
+          "submittedAt": "2026-09-15T22:29:57.000Z",
           "source": "form",
           "hidden": false
         }
