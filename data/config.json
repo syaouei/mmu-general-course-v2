@@ -28,8 +28,8 @@
     "submitUrl": "https://docs.google.com/forms/d/e/1FAIpQLSdATVlLLmALkS-i-oMllxIo3ghnEipINxbHcXtQl9uQnIYVqA/viewform",
     "submissionsCsv": "https://docs.google.com/spreadsheets/d/1RfDidNWdT7Pmco-Apq529mmd-p9kE8aBf91zaUOsaDw/gviz/tq?tqx=out:csv",
     "requiresLogin": false,
-    "feedbackUrl": "",
-    "feedbackPrefillUrl": ""
+    "feedbackUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd9E55MpVsODPPLPLyYOu6gIg8bIOecXMLe8Rebqw_5WqV1aQ/viewform",
+    "feedbackPrefillUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd9E55MpVsODPPLPLyYOu6gIg8bIOecXMLe8Rebqw_5WqV1aQ/viewform?usp=pp_url&entry.2080036727=__TEXT__"
   },
   "repo": {
     "owner": "syaouei",
