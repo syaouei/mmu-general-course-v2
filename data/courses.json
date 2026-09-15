@@ -1,10 +1,16 @@
 {
   "meta": {
-    "updatedAt": "2026-09-15T08:44:56.302Z",
+    "updatedAt": "2026-09-15T08:49:50.456Z",
     "schemaVersion": 2,
-    "courseCount": 89,
-    "reviewCount": 258,
-    "generatedBy": "scripts/migrate-legacy.mjs"
+    "courseCount": 94,
+    "reviewCount": 268,
+    "generatedBy": "scripts/migrate-legacy.mjs",
+    "lastSync": {
+      "at": "2026-09-15T08:49:50.456Z",
+      "added": 10,
+      "quarantined": 0,
+      "discarded": 0
+    }
   },
   "domains": [
     {
@@ -550,6 +556,30 @@
           "source": "legacy",
           "sourceFile": "n01_tian/a08.html",
           "hidden": false
+        },
+        {
+          "id": "fm-d5fd7c7df8b77621",
+          "term": "1141",
+          "stars": 3,
+          "sweet": 5,
+          "cool": 3,
+          "grade": 82,
+          "text": "作業量偏大 很多需要小組討論的環節 大報告需要上台帶活動(扮演小朋友教師之類的) 如果無法放得開的人可能不太適合 但整體課程很有趣",
+          "submittedAt": "2026-09-15T07:08:25.000Z",
+          "source": "form",
+          "hidden": false
+        },
+        {
+          "id": "fm-f694d17ef0ef7252",
+          "term": "1141",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 7,
+          "grade": 86,
+          "text": "設計教案，對象是國小低年級小孩。老師人很好，但同學們投入度高會比較好玩，建議找幾個好朋友一起修。",
+          "submittedAt": "2026-09-15T08:03:03.000Z",
+          "source": "form",
+          "hidden": false
         }
       ]
     },
@@ -804,6 +834,18 @@
           "submittedAt": null,
           "source": "legacy",
           "sourceFile": "n01_tian/a13.html",
+          "hidden": false
+        },
+        {
+          "id": "fm-fb26fb99bee594ad",
+          "term": "1142",
+          "stars": 1,
+          "sweet": 0,
+          "cool": 10,
+          "grade": 78,
+          "text": "期中、期末、學期總共三個報告，老師自己說應該只有第一堂課這麼多人，原則上不點名 不太確定評分標準是甚麼，可能字多就贏了吧。",
+          "submittedAt": "2026-09-15T07:45:07.000Z",
+          "source": "form",
           "hidden": false
         }
       ]
@@ -2364,6 +2406,18 @@
           "submittedAt": null,
           "source": "legacy",
           "sourceFile": "n03_ren/c18.html",
+          "hidden": false
+        },
+        {
+          "id": "fm-860041b9e3f159cd",
+          "term": "1142",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 95,
+          "text": "神課，遠距教學，課程都會留影片檔，期中期末都線上考，老師上課很認真，課程不會點名，再說一次 神課要選。",
+          "submittedAt": "2026-09-15T07:26:22.000Z",
+          "source": "form",
           "hidden": false
         }
       ]
@@ -3963,6 +4017,18 @@
           "source": "legacy",
           "sourceFile": "n07_yuyan/g03.html",
           "hidden": false
+        },
+        {
+          "id": "fm-8a27b31f42e0dc6b",
+          "term": "1141",
+          "stars": 4,
+          "sweet": 10,
+          "cool": 8,
+          "grade": 98,
+          "text": "98(8/35)稍微有一點日文底子(50音、基礎文法)的話，這堂課幾乎沒難度，老師教學進度極慢，想學到東西的話不太可能，但想躺分的話很適合",
+          "submittedAt": "2026-09-15T07:56:36.000Z",
+          "source": "form",
+          "hidden": false
         }
       ]
     },
@@ -4517,6 +4583,111 @@
         "代碼=\"課程代碼\"",
         "課名=\"課程名稱\"",
         "教師=\"很多位老師\""
+      ]
+    },
+    {
+      "id": "HE238A-ta4e7d4",
+      "code": "HE238A",
+      "name": "精準醫療大視界",
+      "domain": "di",
+      "teacher": "陳立強",
+      "reviews": [
+        {
+          "id": "fm-b333002ef649de5a",
+          "term": "1141",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 10,
+          "grade": 84,
+          "text": "唯一的作業就是心得報告，然後分數自評，不點名，但其實課程還算有趣，完全可以選",
+          "submittedAt": "2026-09-15T07:16:04.000Z",
+          "source": "form",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "OP108A-t274f52",
+      "code": "OP108A",
+      "name": "解剖學實驗",
+      "domain": "xuanxiu",
+      "teacher": "陳又溱 邱美妙",
+      "reviews": [
+        {
+          "id": "fm-26de81deb5aa1a2a",
+          "term": "1141",
+          "stars": 2,
+          "sweet": 2,
+          "cool": 1,
+          "grade": 67,
+          "text": "功課跟小考都蠻多的，要記每個構造的位置和英文名字，期末有時間會有機會看到大體老師(不敢看可以不看)，整體來說有趣但很累，且只有一學分。",
+          "submittedAt": "2026-09-15T08:12:18.000Z",
+          "source": "form",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "OP110A-t3d8965",
+      "code": "OP110A",
+      "name": "[視光]視覺科學導論",
+      "domain": "xuanxiu",
+      "teacher": "吳函芳 趙巧瑄 李啟賓",
+      "reviews": [
+        {
+          "id": "fm-06b89fc35340970f",
+          "term": "1141",
+          "stars": 5,
+          "sweet": 10,
+          "cool": 7,
+          "grade": 94,
+          "text": "視光三軌微學分學程中的生醫學程，學習論文的基本架構與閱讀方式，課程整體相對輕鬆，能接觸到其他課程較少提到的內容，期末小組報告paper，推薦對研究、研究所方向有興趣的人修",
+          "submittedAt": "2026-09-15T08:21:33.000Z",
+          "source": "form",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "OP121A-t2b5aa1",
+      "code": "OP121A",
+      "name": "視光生物醫學概論",
+      "domain": "xuanxiu",
+      "teacher": "呂婉榕",
+      "reviews": [
+        {
+          "id": "fm-caa0857c33af1f50",
+          "term": "1142",
+          "stars": 5,
+          "sweet": 9,
+          "cool": 7,
+          "grade": 92,
+          "text": "視光生醫學程。學習實驗室相關知識，有機會看到細胞實驗及動物實驗的進行，找有興趣的視光相關的paper，期中期末就是報這一篇paper(小組)。",
+          "submittedAt": "2026-09-15T08:30:11.000Z",
+          "source": "form",
+          "hidden": false
+        }
+      ]
+    },
+    {
+      "id": "OP122A-t065d74",
+      "code": "OP122A",
+      "name": "基礎光學",
+      "domain": "xuanxiu",
+      "teacher": "吳洛俞",
+      "reviews": [
+        {
+          "id": "fm-13b98177a2a1c9cb",
+          "term": "1142",
+          "stars": 4,
+          "sweet": 8,
+          "cool": 9,
+          "grade": 82,
+          "text": "老師從很基礎開始教，物理基礎不好也不害怕，期中期末考試不會到太難，上課有好好聽跟著作習題問題不大。國考項目，同為視光醫材光學學程。",
+          "submittedAt": "2026-09-15T08:36:24.000Z",
+          "source": "form",
+          "hidden": false
+        }
       ]
     }
   ]
