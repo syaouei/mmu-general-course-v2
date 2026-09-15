@@ -1,6 +1,6 @@
 {
   "meta": {
-    "updatedAt": "2026-09-15T08:49:50.456Z",
+    "updatedAt": "2026-09-15T08:49:51.149Z",
     "schemaVersion": 2,
     "courseCount": 94,
     "reviewCount": 268,
@@ -4611,6 +4611,7 @@
       "code": "OP108A",
       "name": "解剖學實驗",
       "domain": "xuanxiu",
+      "dept": "opt",
       "teacher": "陳又溱 邱美妙",
       "reviews": [
         {
@@ -4630,8 +4631,9 @@
     {
       "id": "OP110A-t3d8965",
       "code": "OP110A",
-      "name": "[視光]視覺科學導論",
+      "name": "視覺科學導論",
       "domain": "xuanxiu",
+      "dept": "opt",
       "teacher": "吳函芳 趙巧瑄 李啟賓",
       "reviews": [
         {
@@ -4653,6 +4655,7 @@
       "code": "OP121A",
       "name": "視光生物醫學概論",
       "domain": "xuanxiu",
+      "dept": "opt",
       "teacher": "呂婉榕",
       "reviews": [
         {
@@ -4674,6 +4677,7 @@
       "code": "OP122A",
       "name": "基礎光學",
       "domain": "xuanxiu",
+      "dept": "opt",
       "teacher": "吳洛俞",
       "reviews": [
         {
