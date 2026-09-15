@@ -237,8 +237,9 @@ export default async function courseView(ctx) {
       el('div', { class: 'review-body' }, multiline(r.text)),
       el('div', { class: 'review-foot' }, [
         r.editedAt ? el('span', {}, '（經後台編輯）') : null,
+        // 同一個分頁打開，填完按返回才回得到這一頁（新分頁沒有上一頁）。
         href
-          ? el('a', { href, target: '_blank', rel: 'noopener noreferrer' }, '回報這則')
+          ? el('a', { href, rel: 'noopener noreferrer' }, '回報這則')
           : el('a', { href: '#/about' }, '回報這則'),
       ]),
     ]);

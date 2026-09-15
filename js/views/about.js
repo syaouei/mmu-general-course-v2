@@ -19,10 +19,13 @@ export default async function about() {
   const courses = store.getCourses();
   const reviewCount = courses.reduce((a, c) => a + visibleReviews(c).length, 0);
 
-  /** 有設定就是外部表單連結，沒設定就誠實說還沒開放。 */
+  /**
+   * 有設定就是外部表單連結，沒設定就誠實說還沒開放。
+   * 在同一個分頁打開：開新分頁的話，表單那頁沒有「上一頁」，按返回鍵沒反應。
+   */
   const formCta = (url, strong, hint, pendingHint) =>
     url
-      ? el('a', { class: 'cta', href: url, target: '_blank', rel: 'noopener noreferrer' }, [
+      ? el('a', { class: 'cta', href: url, rel: 'noopener noreferrer' }, [
           el('strong', {}, strong + ' →'),
           el('span', {}, hint),
         ])
@@ -67,7 +70,7 @@ export default async function about() {
       el('p', {}, [
         '2023 年由 Bean1450 手搓的',
         site.legacyUrl
-          ? el('a', { href: site.legacyUrl, target: '_blank', rel: 'noopener noreferrer' }, '前身站台')
+          ? el('a', { href: site.legacyUrl, rel: 'noopener noreferrer' }, '前身站台')
           : '前身站台',
         '累積了大量心得，已將所有資料完整遷移至此。在此向Bean1450獻上最高敬意，太神了。O7',
       ]),

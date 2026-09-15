@@ -157,7 +157,8 @@ function setupSubmitLink() {
   const url = store.getState().config?.forms?.submitUrl;
   if (!url) return;                    // 尚未設定，維持指向關於頁的說明
   a.href = url;
-  a.target = '_blank';
+  // 在同一個分頁打開。開新分頁的話，表單那頁沒有「上一頁」，按返回鍵沒反應，
+  // 會以為網站壞掉（使用者 2026-09-15 實際遇到）。
   a.rel = 'noopener noreferrer';
 }
 
