@@ -136,15 +136,17 @@ function setupTheme() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
 
-  const paint = (v) => {
-    const { icon, label } = theme.themeLabel(v);
+  const paint = () => {
+    const { icon, label } = theme.themeLabel();
     btn.textContent = icon;
     btn.setAttribute('aria-label', label);
-    btn.title = label + '（點擊切換）';
+    btn.title = label;
   };
 
-  paint(theme.getTheme());
-  btn.addEventListener('click', () => paint(theme.cycleTheme()));
+  paint();
+  btn.addEventListener('click', () => { theme.toggleTheme(); paint(); });
+  // 跟隨系統時，手機或電腦換外觀，按鈕圖示也要跟著換。
+  theme.onSystemThemeChange(paint);
 }
 
 // ------------------------------------------------------------- 投稿入口
